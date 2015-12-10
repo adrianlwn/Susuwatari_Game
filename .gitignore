@@ -1,0 +1,8 @@
+.project
+.cproject
+.cdtproject
+.settings/*
+build/*
+*.arm9
+*.elf
+*.nds
