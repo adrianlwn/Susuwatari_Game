@@ -53,6 +53,7 @@ void displaySprite(){
     		false			// Mosaic
     		);
 
+
     	swiWaitForVBlank();
     	//Update the sprites
 		oamUpdate(&oamMain);
