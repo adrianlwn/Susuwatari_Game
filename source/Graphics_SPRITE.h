@@ -17,4 +17,5 @@ void configureSprite();
 void displaySprite();
 
 
+
 #endif /* GRAPHICS_SPRITE_H_ */

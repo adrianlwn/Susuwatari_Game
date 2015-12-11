@@ -10,6 +10,7 @@
 #include "Graphics_SPRITE.h"
 
 
+
 int main(void) {
 
 	typedef enum {
@@ -38,7 +39,7 @@ int main(void) {
 			state_G = PLAY;
 			break;
 		case PLAY:
-			displaySprite();
+			displayPlayer();
 			//state_G = END;
 			break;
 		case END :

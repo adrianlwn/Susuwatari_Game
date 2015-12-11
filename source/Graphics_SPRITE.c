@@ -5,13 +5,15 @@
  *      Author: adrian
  */
 #include "Graphics_SPRITE.h"
+#include "Player.h"
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
 
 u16* gfx;
-int x = 0, y = 0, keys;
+//int x = 0, y= 0,
+int keys;
 
-void configureSprite(){
+void configurePlayer(){
 	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
 
 	oamInit(&oamMain, SpriteMapping_1D_64,false);
@@ -22,7 +24,7 @@ void configureSprite(){
 	swiCopy(SusuTiles, gfx, SusuTilesLen/2);
 }
 
-void displaySprite(){
+void displayPlayer(){
 
 
 	//Position
