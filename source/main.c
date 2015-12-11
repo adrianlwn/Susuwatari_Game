@@ -9,12 +9,6 @@
 #include "init.h"
 
 int main(void) {
-<<<<<<< HEAD
-	
-    consoleDemoInit();
-    printf("\nTemplate nds loveyolo it\n");
-=======
->>>>>>> master
 
 	typedef enum {
 		INIT,
