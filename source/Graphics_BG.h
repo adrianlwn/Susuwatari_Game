@@ -9,11 +9,17 @@
 #define GRAPHICS_BG_H_
 #include <nds.h>
 
+#include "BG_main.h"
+#include  "BG_sub.h"
+
 // ECRIRE LES HEADERS ICI
 
 void configureGraphis_Main();
 void configureGraphics_Sub();
-void configureGraphics_Sub1();
+
+void loadGraphics_Main();
+void loadGraphics_Sub();
+
 
 
 

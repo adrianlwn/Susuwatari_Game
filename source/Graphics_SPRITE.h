@@ -10,4 +10,11 @@
 #include <nds.h>
 
 
+#include "Susu.h"
+
+void configureSprite();
+
+void displaySprite();
+
+
 #endif /* GRAPHICS_SPRITE_H_ */

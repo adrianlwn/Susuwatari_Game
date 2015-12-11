@@ -7,6 +7,8 @@
 #include <stdio.h>
 
 #include "init.h"
+#include "Graphics_SPRITE.h"
+
 
 int main(void) {
 
@@ -20,26 +22,24 @@ int main(void) {
 
 	state state_G = INIT;
 
-	int i=0;
 
 	while(1){
-		i++;
+
 		switch (state_G) {
 		case INIT :
 			init_NDS();
-		    consoleDemoInit();
-		    printf("C'est l'heure de l'Init %d\n",i);
+
 
 
 			state_G = MENU;
 			break;
 		case MENU:
-			printf("C'est l'heure du Menu %d\n",i);
+
 			state_G = PLAY;
 			break;
 		case PLAY:
-			printf("C'est l'heure du Jeu %d\n",i);
-			state_G = END;
+			displaySprite();
+			//state_G = END;
 			break;
 		case END :
 
@@ -52,7 +52,6 @@ int main(void) {
 
 
 
-		swiWaitForVBlank();
 	}
 
 }

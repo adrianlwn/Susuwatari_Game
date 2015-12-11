@@ -8,4 +8,13 @@
 
 void init_NDS(){
 
+	// Initialization of graphics main and sub :
+	configureGraphis_Main();
+	configureGraphics_Sub();
+
+	loadGraphics_Main();
+	loadGraphics_Sub();
+
+	configureSprite();
+
 }
