@@ -9,12 +9,17 @@
 #define GRAPHICS_SPRITE_H_
 #include <nds.h>
 
-
 #include "Susu.h"
+#include "Star.h"
+#include "Clover.h"
+#include "Mushroom.h"
 
-void configureSprite();
+void configurePlayer();
+void displayPlayer();
+void configureStar();
+void configureClover();
+void configureMushroom();
 
-void displaySprite();
 
 
 

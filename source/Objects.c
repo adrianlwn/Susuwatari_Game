@@ -1,9 +1,9 @@
 /*
- * Player1.c
+ * Objects.cpp
  *
  *  Created on: 11 déc. 2015
  *      Author: valentine
  */
 
-#include "Player1.h"
+#include "Objects.h"
 

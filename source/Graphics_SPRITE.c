@@ -63,3 +63,39 @@ void displayPlayer(){
 
 
 }
+
+
+
+void configureStar(){
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+
+		oamInit(&oamMain, SpriteMapping_1D_32,false);
+
+		gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+
+		swiCopy(StarPal, SPRITE_PALETTE, StarPalLen/2);
+		swiCopy(StarTiles, gfx, StarTilesLen/2);
+	}
+
+void configureClover(){
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+
+	oamInit(&oamMain, SpriteMapping_1D_32,false);
+
+	gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+
+	swiCopy(CloverPal, SPRITE_PALETTE, CloverPalLen/2);
+	swiCopy(CloverTiles, gfx, CloverTilesLen/2);
+}
+
+void configureMushroom(){
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+
+	oamInit(&oamMain, SpriteMapping_1D_32,false);
+
+	gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+
+	swiCopy(MushroomPal, SPRITE_PALETTE, MushroomPalLen/2);
+	swiCopy(MushroomTiles, gfx, MushroomTilesLen/2);
+}
+
