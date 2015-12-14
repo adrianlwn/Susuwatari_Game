@@ -5,41 +5,83 @@
  *      Author: adrian
  */
 #include "Graphics_SPRITE.h"
-#include "Player.h"
+
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
 
-u16* gfx;
-//int x = 0, y= 0,
-int keys;
+u16 *gfx_main, *gfx_sub;
 
-void configurePlayer(){
+
+
+void configureSprite(){
 	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+	VRAM_D_CR = VRAM_ENABLE | VRAM_D_SUB_SPRITE;
 
 	oamInit(&oamMain, SpriteMapping_1D_64,false);
+	oamInit(&oamSub, SpriteMapping_1D_64,false);
 
-	gfx = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
-
+	gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
 	swiCopy(SusuPal, SPRITE_PALETTE, SusuPalLen/2);
-	swiCopy(SusuTiles, gfx, SusuTilesLen/2);
+	swiCopy(SusuPal, SPRITE_PALETTE_SUB, SusuPalLen/2);
+	swiCopy(SusuTiles, gfx_main, SusuTilesLen/2);
+	swiCopy(SusuTiles, gfx_sub, SusuTilesLen/2);
+
 }
 
-void displayPlayer(){
+void mapSprite(int x, int y, int SpriteL){
+	oamSetXY(&oamMain,0,x,y);
+	oamSetXY(&oamSub,0,x-192,y);
+
+
+}
+
+void displaySusu(pSusu mySusu){
+	//mapSprite((int)mySusu->x,(int)mySusu->y,64);
+	oamSet(&oamMain, 	// oam handler
+    		0,				// Number of sprite
+    		(int)mySusu->x,(int)mySusu->y,			// Coordinates
+    		0,				// Priority
+    		0,				// Palette to use
+    		SpriteSize_64x64,			// Sprite size
+    		SpriteColorFormat_256Color,	// Color format
+    		gfx_main,			// Loaded graphic to display
+    		-1,				// Affine rotation to use (-1 none)
+    		false,			// Double size if rotating
+    		false,			// Hide this sprite
+    		false, false,	// Horizontal or vertical flip
+    		false			// Mosaic
+    		);
+	oamSet(&oamSub, 	// oam handler
+	    		0,				// Number of sprite
+	    		(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+	    		0,				// Priority
+	    		0,				// Palette to use
+	    		SpriteSize_64x64,			// Sprite size
+	    		SpriteColorFormat_256Color,	// Color format
+	    		gfx_sub,			// Loaded graphic to display
+	    		-1,				// Affine rotation to use (-1 none)
+	    		false,			// Double size if rotating
+	    		false,			// Hide this sprite
+	    		false, false,	// Horizontal or vertical flip
+	    		false			// Mosaic
+	    		);
+	oamUpdate(&oamMain);
+	oamUpdate(&oamSub);
+
+	swiWaitForVBlank();
+}
+
+
+void displayItems(){
 
 
 	//Position
 
 
     	//Read held keys
-    	scanKeys();
-    	keys = keysHeld();
 
-    	//Modify position of the sprite accordingly
-    	if((keys & KEY_RIGHT) && (x < (SCREEN_WIDTH - SPRITE_WIDTH))) x+=2;
-    	if((keys & KEY_DOWN) && (y < (SCREEN_HEIGHT - SPRITE_HEIGHT))) y+=2;
-    	if((keys & KEY_LEFT) && (x  > 0)) x-=2;
-    	if((keys & KEY_UP) && (y  > 0)) y-=2;
-
+/*
     	oamSet(&oamMain, 	// oam handler
     		0,				// Number of sprite
     		x, y,			// Coordinates
@@ -54,48 +96,14 @@ void displayPlayer(){
     		false, false,	// Horizontal or vertical flip
     		false			// Mosaic
     		);
+*/
 
 
-    	swiWaitForVBlank();
     	//Update the sprites
-		oamUpdate(&oamMain);
 
 
 
 }
 
 
-
-void configureStar(){
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
-
-		oamInit(&oamMain, SpriteMapping_1D_32,false);
-
-		gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-
-		swiCopy(StarPal, SPRITE_PALETTE, StarPalLen/2);
-		swiCopy(StarTiles, gfx, StarTilesLen/2);
-	}
-
-void configureClover(){
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
-
-	oamInit(&oamMain, SpriteMapping_1D_32,false);
-
-	gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-
-	swiCopy(CloverPal, SPRITE_PALETTE, CloverPalLen/2);
-	swiCopy(CloverTiles, gfx, CloverTilesLen/2);
-}
-
-void configureMushroom(){
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
-
-	oamInit(&oamMain, SpriteMapping_1D_32,false);
-
-	gfx = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-
-	swiCopy(MushroomPal, SPRITE_PALETTE, MushroomPalLen/2);
-	swiCopy(MushroomTiles, gfx, MushroomTilesLen/2);
-}
 

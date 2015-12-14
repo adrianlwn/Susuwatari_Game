@@ -8,17 +8,20 @@
 #ifndef GRAPHICS_SPRITE_H_
 #define GRAPHICS_SPRITE_H_
 #include <nds.h>
+#include "Graphics_Susu.h"
 
-#include "Susu.h"
 #include "Star.h"
 #include "Clover.h"
 #include "Mushroom.h"
+#include "Susu.h"
 
-void configurePlayer();
-void displayPlayer();
-void configureStar();
-void configureClover();
-void configureMushroom();
+
+void configureSprite();
+void mapSprite(int x, int y, int SpriteL);
+void displayItem();
+void displaySusu(pSusu mySusu);
+
+
 
 
 

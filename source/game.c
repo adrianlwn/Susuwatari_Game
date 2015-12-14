@@ -6,3 +6,17 @@
  */
 #include "game.h"
 
+pSusu theSusu;
+
+
+void initGame(){
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
+
+}
+void playGame(){
+
+	SusuMove(theSusu);
+	SusuUpdate(theSusu);
+
+}

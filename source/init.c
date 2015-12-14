@@ -15,6 +15,6 @@ void init_NDS(){
 	loadGraphics_Main();
 	loadGraphics_Sub();
 
-	configurePlayer();
+	configureSprite();
 
 }
