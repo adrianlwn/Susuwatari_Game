@@ -10,7 +10,7 @@
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
 	mySusu->size=5;
-	mySusu->v=0;
+	mySusu->v= 1;
 	mySusu->v_angle=150;
 	mySusu->x = 100;
 	mySusu->y = 200;
@@ -29,7 +29,7 @@ void setSusuPosition(pSusu mySusu,double x, double y){
 
 }
 void setSusuAngle(pSusu mySusu,double angle){
-	mySusu->angle = angle;
+	mySusu->angle = angle*32768/360;
 }
 void setSusuBigger(pSusu mySusu){
 
@@ -44,7 +44,10 @@ void setSusuSmaller(pSusu mySusu){
 	}
 }
 
-void SusuRotate(pSusu mySusu){
+void SusuRotate(pSusu mySusu,int ON){
+	if (ON == false){
+		mySusu->v_angle = 0;
+	}
 	mySusu->angle += mySusu->v_angle;
 	oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
 	oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
@@ -56,6 +59,8 @@ void SusuMoveTest(pSusu mySusu){
  	scanKeys();
 
     	keys = keysHeld();
+
+
 
     	//Modify position of the sprite accordingly
     	if(keys & KEY_RIGHT) mySusu->x +=2;
@@ -106,4 +111,18 @@ void SusuUpdate(pSusu mySusu){
 	swiWaitForVBlank();
 }
 
+void SusuMoveTest2(pSusu mySusu){
+	int keys;
+	 	scanKeys();
+
+	    	keys = keysHeld();
+	if(keys & KEY_RIGHT) mySusu->angle+= 150;
+	if(keys & KEY_LEFT) mySusu->angle-= 150;
+
+	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
+	mySusu->y += mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
+
+
+
+}
 

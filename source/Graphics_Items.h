@@ -32,7 +32,8 @@ typedef struct myItem {
 	int oamIndex; //numero of sprite;
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
 
-} Susu, *pSusu;
+} Item, *pItem;
 
+void initItem(pItem myItem);
 
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */

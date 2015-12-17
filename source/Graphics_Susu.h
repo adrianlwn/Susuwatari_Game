@@ -8,6 +8,7 @@
 #ifndef SOURCE_GRAPHICS_SUSU_H_
 #define SOURCE_GRAPHICS_SUSU_H_
 
+#include <math.h>
 #include <nds.h>
 #include "Susu.h"
 
@@ -37,8 +38,12 @@ void setSusuAngle(pSusu mySusu, double angle);
 void setSusuBigger(pSusu mySusu);
 void setSusuSmaller(pSusu mySusu);
 
-void SusuRotate(pSusu mySusu);
+void SusuRotate(pSusu mySusu,int ON);
+
+
 void SusuMoveTest(pSusu mySusu);
+void SusuMoveTest2(pSusu mySusu);
+
 
 void SusuUpdate(pSusu mySusu);
 #endif /* SOURCE_GRAPHICS_SUSU_H_ */

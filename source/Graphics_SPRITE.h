@@ -8,12 +8,9 @@
 #ifndef GRAPHICS_SPRITE_H_
 #define GRAPHICS_SPRITE_H_
 #include <nds.h>
-#include "Graphics_Susu.h"
 
-#include "Star.h"
-#include "Clover.h"
-#include "Mushroom.h"
-#include "Susu.h"
+
+
 
 
 void configureSprite();
