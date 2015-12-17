@@ -9,6 +9,7 @@
 #define SOURCE_GRAPHICS_SUSU_H_
 
 #include <nds.h>
+#include "Susu.h"
 
 
 typedef struct mySusu {
@@ -23,6 +24,11 @@ typedef struct mySusu {
 	double v; // vitesse
 	double v_angle ; // vitesse de rotation angulaire
 
+	// Gestion mémoire :
+
+	int oamIndex; //numero of sprite;
+	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
+
 } Susu, *pSusu;
 
 void initSusu(pSusu mySusu);
@@ -32,7 +38,7 @@ void setSusuBigger(pSusu mySusu);
 void setSusuSmaller(pSusu mySusu);
 
 void SusuRotate(pSusu mySusu);
-void SusuMove(pSusu mySusu);
+void SusuMoveTest(pSusu mySusu);
 
 void SusuUpdate(pSusu mySusu);
 #endif /* SOURCE_GRAPHICS_SUSU_H_ */

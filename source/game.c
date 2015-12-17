@@ -14,9 +14,11 @@ void initGame(){
 	initSusu(theSusu);
 
 }
+
 void playGame(){
 
-	SusuMove(theSusu);
+	SusuMoveTest(theSusu);
+	SusuRotate(theSusu);
 	SusuUpdate(theSusu);
 
 }

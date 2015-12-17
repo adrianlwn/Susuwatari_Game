@@ -17,9 +17,8 @@
 
 
 void configureSprite();
-void mapSprite(int x, int y, int SpriteL);
-void displayItem();
-void displaySusu(pSusu mySusu);
+
+
 
 
 
