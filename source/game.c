@@ -12,14 +12,14 @@ pSusu theSusu;
 void initGame(){
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-	setSusuAngle(theSusu,45);
+	setSusuAngle(theSusu,360);
 
 }
 
 void playGame(){
 
 	SusuMoveTest2(theSusu);
-	SusuRotate(theSusu,false);
+	//SusuRotate(theSusu,false);
 	SusuUpdate(theSusu);
 
 }

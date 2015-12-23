@@ -49,8 +49,7 @@ void SusuRotate(pSusu mySusu,int ON){
 		mySusu->v_angle = 0;
 	}
 	mySusu->angle += mySusu->v_angle;
-	oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
-	oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
+
 
 }
 
@@ -70,9 +69,9 @@ void SusuMoveTest(pSusu mySusu){
 }
 
 void SusuUpdate(pSusu mySusu){
-	//mapSprite((int)mySusu->x,(int)mySusu->y,64);
 
-	if ( (mySusu->y >= 0 ) && ( mySusu->y <= 192)){
+
+	if ( (mySusu->y >= 0-64 ) && ( mySusu->y <= 192)){
 		oamSet(&oamMain, 	// oam handler
 				0,				// Number of sprite
 				(int)mySusu->x,(int)mySusu->y,			// Coordinates
@@ -87,10 +86,28 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
-
-
-		oamUpdate(&oamMain);
+		oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
 	}
+	else {
+		oamSet(&oamMain, 	// oam handler
+						0,				// Number of sprite
+						(int)mySusu->x,(int)mySusu->y,			// Coordinates
+						0,				// Priority
+						0,				// Palette to use
+						SpriteSize_64x64,			// Sprite size
+						SpriteColorFormat_256Color,	// Color format
+						mySusu->gfx_main,			// Loaded graphic to display
+						0,				// Affine rotation to use (-1 none)
+						false,			// Double size if rotating
+						true,			// Hide this sprite
+						false, false,	// Horizontal or vertical flip
+						false			// Mosaic
+				);
+		//oamSetHidden(&oamMain,0,true);
+	}
+
+
+
 	if( (mySusu->y >= 192-64 ) && ( mySusu->y <= 2*192 )){
 		oamSet(&oamSub, 	// oam handler
 				0,				// Number of sprite
@@ -106,8 +123,31 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
-		oamUpdate(&oamSub);
+		oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
 	}
+	else {
+		oamSet(&oamSub, 	// oam handler
+						0,				// Number of sprite
+						(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+						0,				// Priority
+						0,				// Palette to use
+						SpriteSize_64x64,			// Sprite size
+						SpriteColorFormat_256Color,	// Color format
+						mySusu->gfx_sub,			// Loaded graphic to display
+						0,				// Affine rotation to use (-1 none)
+						false,			// Double size if rotating
+						true,			// Hide this sprite
+						false, false,	// Horizontal or vertical flip
+						false			// Mosaic
+				);
+		}
+
+	// Update the angle of the Susu
+
+
+	oamUpdate(&oamMain);
+	oamUpdate(&oamSub);
+
 	swiWaitForVBlank();
 }
 
@@ -116,11 +156,11 @@ void SusuMoveTest2(pSusu mySusu){
 	 	scanKeys();
 
 	    	keys = keysHeld();
-	if(keys & KEY_RIGHT) mySusu->angle+= 150;
-	if(keys & KEY_LEFT) mySusu->angle-= 150;
+	if(keys & KEY_RIGHT) mySusu->angle-= 150;
+	if(keys & KEY_LEFT) mySusu->angle+= 150;
 
 	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
-	mySusu->y += mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
+	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
 
 
 
