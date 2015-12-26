@@ -14,7 +14,7 @@
 
 // ECRIRE LES HEADERS ICI
 
-void configureGraphis_Main();
+void configureGraphics_Main();
 void configureGraphics_Sub();
 
 void loadGraphics_Main();
