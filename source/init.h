@@ -8,8 +8,10 @@
 #ifndef INIT_H_
 #define INIT_H_
 
+
 #include "Graphics_BG.h"
 #include "Graphics_SPRITE.h"
+
 // file to call all the initializers of the needed functions.
 void init_NDS();
 
