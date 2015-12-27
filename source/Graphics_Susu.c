@@ -19,12 +19,12 @@ void initSusu(pSusu mySusu){
 	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
 	mySusu->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
-
+	// VRAM F pour la palette du Susu ( palette 0 pour le Main)
 	vramSetBankF(VRAM_F_LCD);
 			swiCopy(SusuPal,  &VRAM_F_EXT_SPR_PALETTE[0], SusuPalLen/2);
 			// set vram to ex palette
 	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
-
+	// VRAM I pour la palette du Susu ( palette 0 pour le Sub)
 	vramSetBankI(VRAM_I_LCD);
 	swiCopy(SusuPal,  &VRAM_I_EXT_SPR_PALETTE[0], SusuPalLen/2);
 	// set vram to ex palette

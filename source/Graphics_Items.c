@@ -26,12 +26,13 @@ void initItem(pItem myItem){
 	myItem->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 
-
+	// VRAM F pour la palette des Items ( palette 1 pour le Main)
 	vramSetBankF(VRAM_F_LCD);
 		swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[1], StarPalLen/2);
 		// set vram to ex palette
 			vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
+			// VRAM I pour la palette des Item ( palette 1 pour le Sub)
 			vramSetBankI(VRAM_I_LCD);
 					swiCopy(StarPal,  &VRAM_I_EXT_SPR_PALETTE[1], StarPalLen/2);
 					// set vram to ex palette
