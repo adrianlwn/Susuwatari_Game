@@ -11,6 +11,7 @@
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
 	mySusu->size=5;
+	mySusu->rayon = 32;
 	mySusu->v= 1;
 	mySusu->v_angle=150;
 	mySusu->x = 0;
@@ -82,14 +83,17 @@ void SusuMoveTest(pSusu mySusu){
 }
 
 void SusuUpdate(pSusu mySusu){
+	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
+	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
+	int halfwidth = 32;
 
 // Dans l'écran MAIN  //
 
 	//on affiche le Susu si :
-	if ( (mySusu->y >= 0-64 ) && ( mySusu->y <= 192)){
+	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
 				0,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y,			// Coordinates
+				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -107,7 +111,7 @@ void SusuUpdate(pSusu mySusu){
 	else {
 		oamSet(&oamMain, 	// oam handler
 						0,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y,			// Coordinates
+						(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
@@ -143,10 +147,10 @@ void SusuUpdate(pSusu mySusu){
 // Dans l'écran SUB //
 
 	//On affiche le  Susu si :
-	if( (mySusu->y >= 192-64 ) && ( mySusu->y <= 2*192 )){
+	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
 				0,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -165,7 +169,7 @@ void SusuUpdate(pSusu mySusu){
 	else {
 		oamSet(&oamSub, 	// oam handler
 						0,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+						(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size

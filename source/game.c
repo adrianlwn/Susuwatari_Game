@@ -17,7 +17,7 @@ void initGame(){
 
 	theStar = malloc(sizeof(Item));
 	initItem(theStar);
-	 displayItem(theStar);
+	displayItem(theStar);
 
 }
 

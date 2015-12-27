@@ -12,7 +12,9 @@
 
 
  typedef double mapObstacle[256][2*192] ;
+void initMapObstacle();
 
-void bounceSusu(pSusu mySusu);
+void BounceUpdate(pSusu mySusu);
+void BounceSusu(pSusu mySusu, double bounce_angle);
 
 #endif /* SUSUWATARI_SUSUGAMEPLAY_H_ */
