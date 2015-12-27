@@ -14,11 +14,13 @@
 
 
 void configureSprite(){
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE;
 	VRAM_D_CR = VRAM_ENABLE | VRAM_D_SUB_SPRITE;
 
-	oamInit(&oamMain, SpriteMapping_1D_64,false);
-	oamInit(&oamSub, SpriteMapping_1D_64,false);
+	oamInit(&oamMain, SpriteMapping_1D_128,false);
+
+	oamInit(&oamSub, SpriteMapping_1D_128,false);
+
 
 
 

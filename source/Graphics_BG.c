@@ -6,6 +6,9 @@
  */
 #include "Graphics_BG.h"
 
+#include "BG_main.h"
+#include  "BG_sub.h"
+
 void configureGraphics_Main(){
 	//Enable a proper RAM memory bank for the main engine
 	VRAM_A_CR = VRAM_ENABLE //Enable

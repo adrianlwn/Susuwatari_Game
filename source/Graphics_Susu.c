@@ -6,6 +6,7 @@
  */
 
 #include "Graphics_Susu.h"
+#include "Susu.h"
 
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
@@ -17,7 +18,7 @@ void initSusu(pSusu mySusu){
 	mySusu->oamIndex = 0;
 	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
 	mySusu->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
-		swiCopy(SusuPal, SPRITE_PALETTE, SusuPalLen/2);
+		swiCopy( SusuPal, SPRITE_PALETTE, SusuPalLen/2);
 		swiCopy(SusuPal, SPRITE_PALETTE_SUB, SusuPalLen/2);
 		swiCopy(SusuTiles, mySusu->gfx_main, SusuTilesLen/2);
 		swiCopy(SusuTiles, mySusu->gfx_sub, SusuTilesLen/2);

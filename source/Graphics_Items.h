@@ -45,4 +45,7 @@ void initItem(pItem myItem);
 //---- Changer la position du Susu
 void setItemPosition(pItem myItem,double x, double y);
 
+void displayItem(pItem myItem);
+
+
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */
