@@ -16,10 +16,20 @@ void initSusu(pSusu mySusu){
 	mySusu->x = 100;
 	mySusu->y = 200;
 	mySusu->oamIndex = 0;
+	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
 	mySusu->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
-		swiCopy( SusuPal, SPRITE_PALETTE, SusuPalLen/2);
-		swiCopy(SusuPal, SPRITE_PALETTE_SUB, SusuPalLen/2);
+
+	vramSetBankF(VRAM_F_LCD);
+			swiCopy(SusuPal,  &VRAM_F_EXT_SPR_PALETTE[0], SusuPalLen/2);
+			// set vram to ex palette
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(SusuPal,  &VRAM_I_EXT_SPR_PALETTE[0], SusuPalLen/2);
+	// set vram to ex palette
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
 		swiCopy(SusuTiles, mySusu->gfx_main, SusuTilesLen/2);
 		swiCopy(SusuTiles, mySusu->gfx_sub, SusuTilesLen/2);
 
@@ -108,6 +118,9 @@ void SusuUpdate(pSusu mySusu){
 						false			// Mosaic
 				);
 		//oamSetHidden(&oamMain,0,true);
+
+
+
 	}
 
 

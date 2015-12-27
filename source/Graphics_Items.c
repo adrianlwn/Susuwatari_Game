@@ -25,8 +25,18 @@ void initItem(pItem myItem){
 	myItem->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
 	myItem->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
 
-		swiCopy(StarPal, SPRITE_PALETTE, StarPalLen/2);
-		swiCopy(StarPal, SPRITE_PALETTE_SUB, StarPalLen/2);
+
+
+	vramSetBankF(VRAM_F_LCD);
+		swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[1], StarPalLen/2);
+		// set vram to ex palette
+			vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+
+			vramSetBankI(VRAM_I_LCD);
+					swiCopy(StarPal,  &VRAM_I_EXT_SPR_PALETTE[1], StarPalLen/2);
+					// set vram to ex palette
+						vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
 		swiCopy(StarTiles, myItem->gfx_main, StarTilesLen/2);
 		swiCopy(StarTiles, myItem->gfx_sub , StarTilesLen/2);
 
@@ -38,7 +48,7 @@ void displayItem(pItem myItem)
 						1,				// Number of sprite
 						(int)myItem->x, (int)myItem->y,			// Coordinates
 						0,				// Priority
-						0,				// Palette to use
+						1,				// Palette to use
 						SpriteSize_16x16,			// Sprite size
 						SpriteColorFormat_256Color,	// Color format
 						myItem->gfx_main,			// Loaded graphic to display
