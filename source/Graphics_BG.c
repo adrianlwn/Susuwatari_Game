@@ -6,7 +6,10 @@
  */
 #include "Graphics_BG.h"
 
-void configureGraphis_Main(){
+#include "BG_main.h"
+#include  "BG_sub.h"
+
+void configureGraphics_Main(){
 	//Enable a proper RAM memory bank for the main engine
 	VRAM_A_CR = VRAM_ENABLE //Enable
 			| VRAM_A_MAIN_BG; //Bank for the main engine
@@ -40,7 +43,7 @@ void loadGraphics_Sub(){
 	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
 	dmaCopy(BG_subTiles ,BG_TILE_RAM_SUB(1) , BG_subTilesLen );
 	dmaCopy(BG_subMap,BG_MAP_RAM_SUB(0),BG_subMapLen);
-		dmaCopy(BG_subPal,BG_PALETTE_SUB,BG_subPalLen);
+	dmaCopy(BG_subPal,BG_PALETTE_SUB,BG_subPalLen);
 
 
 }

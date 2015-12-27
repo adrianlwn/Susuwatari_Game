@@ -6,6 +6,7 @@
  */
 
 #include "Graphics_Susu.h"
+#include "Susu.h"
 
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
@@ -15,10 +16,20 @@ void initSusu(pSusu mySusu){
 	mySusu->x = 100;
 	mySusu->y = 200;
 	mySusu->oamIndex = 0;
+	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
 	mySusu->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
-		swiCopy(SusuPal, SPRITE_PALETTE, SusuPalLen/2);
-		swiCopy(SusuPal, SPRITE_PALETTE_SUB, SusuPalLen/2);
+	// VRAM F pour la palette du Susu ( palette 0 pour le Main)
+	vramSetBankF(VRAM_F_LCD);
+			swiCopy(SusuPal,  &VRAM_F_EXT_SPR_PALETTE[0], SusuPalLen/2);
+			// set vram to ex palette
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// VRAM I pour la palette du Susu ( palette 0 pour le Sub)
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(SusuPal,  &VRAM_I_EXT_SPR_PALETTE[0], SusuPalLen/2);
+	// set vram to ex palette
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
 		swiCopy(SusuTiles, mySusu->gfx_main, SusuTilesLen/2);
 		swiCopy(SusuTiles, mySusu->gfx_sub, SusuTilesLen/2);
 
@@ -70,7 +81,9 @@ void SusuMoveTest(pSusu mySusu){
 
 void SusuUpdate(pSusu mySusu){
 
+// Dans l'écran MAIN  //
 
+	//on affiche le Susu si :
 	if ( (mySusu->y >= 0-64 ) && ( mySusu->y <= 192)){
 		oamSet(&oamMain, 	// oam handler
 				0,				// Number of sprite
@@ -82,12 +95,13 @@ void SusuUpdate(pSusu mySusu){
 				mySusu->gfx_main,			// Loaded graphic to display
 				0,				// Affine rotation to use (-1 none)
 				false,			// Double size if rotating
-				false,			// Hide this sprite
+				false,			// Hide this sprite     /!\ Susu affiché  !!!
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
 		oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
 	}
+	//sinon on le cache :
 	else {
 		oamSet(&oamMain, 	// oam handler
 						0,				// Number of sprite
@@ -99,15 +113,34 @@ void SusuUpdate(pSusu mySusu){
 						mySusu->gfx_main,			// Loaded graphic to display
 						0,				// Affine rotation to use (-1 none)
 						false,			// Double size if rotating
-						true,			// Hide this sprite
+						true,			// Hide this sprite    /!\ Susu caché !!!
 						false, false,	// Horizontal or vertical flip
 						false			// Mosaic
 				);
 		//oamSetHidden(&oamMain,0,true);
+
+
+
 	}
 
 
+	/*//----Rebond
+     // si le Susu atteint un bord de l'écran MAIN:
+	if(mySusu->y==0 || mySusu->x==0 || mySusu ->x==256)
+	{
+		int v_init;
+	    v_init = mySusu->v; // sauvegarde la vitesse avec laquelle le Susu arrive sur le bord
 
+		mySusu-> v=0;  // Le Susu s'arrête;
+		oamRotateScale(&oamMain,0,mySusu->angle +90 ,1 <<8, 1 <<8);//le Susu tourne de 90°;
+	    mySusu->v=v_init; //le Susu repart avec sa vitesse avant de toucher le bord;
+
+	}*/
+
+
+// Dans l'écran SUB //
+
+	//On affiche le  Susu si :
 	if( (mySusu->y >= 192-64 ) && ( mySusu->y <= 2*192 )){
 		oamSet(&oamSub, 	// oam handler
 				0,				// Number of sprite
@@ -125,6 +158,8 @@ void SusuUpdate(pSusu mySusu){
 		);
 		oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
 	}
+
+	//Sinon on cache le Susu:
 	else {
 		oamSet(&oamSub, 	// oam handler
 						0,				// Number of sprite
@@ -142,8 +177,23 @@ void SusuUpdate(pSusu mySusu){
 				);
 		}
 
-	// Update the angle of the Susu
 
+
+	/*//----Rebond
+     // si le Susu atteint un bord de l'écran SUB:
+	if( mySusu ->y==2*192 || mySusu->x==0 || mySusu ->x==256)
+	{
+		int v_init;
+	    v_init = mySusu->v; // sauvegarde la vitesse avec laquelle le Susu arrive sur le bord
+
+		mySusu-> v=0;  // Le Susu s'arrête;
+		oamRotateScale(&oamSub,0,mySusu->angle ,1 <<8, 1 <<8);//le Susu tourne de 90°;//le Susu tourne de 90°;
+	    mySusu->v=v_init; //le Susu avec sa vitesse avant de toucher le bord;
+
+	}*/
+
+
+	// Update the angle of the Susu
 
 	oamUpdate(&oamMain);
 	oamUpdate(&oamSub);
@@ -163,6 +213,5 @@ void SusuMoveTest2(pSusu mySusu){
 	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
 
 
-
-}
+};
 

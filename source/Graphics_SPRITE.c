@@ -14,11 +14,18 @@
 
 
 void configureSprite(){
-	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE_0x06400000;
+	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE;
 	VRAM_D_CR = VRAM_ENABLE | VRAM_D_SUB_SPRITE;
 
-	oamInit(&oamMain, SpriteMapping_1D_64,false);
-	oamInit(&oamSub, SpriteMapping_1D_64,false);
+	// initialisation des deux ecrans pour les sprites. On a activé le extended palette.
+	oamInit(&oamMain, SpriteMapping_1D_128,true);
+	oamInit(&oamSub, SpriteMapping_1D_128,true);
+
+
+	vramSetBankF(VRAM_F_LCD);
+
+	// set vram to ex palette
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
 
 

@@ -9,6 +9,7 @@
 #define GAME_H_
 #include <nds.h>
 #include "Graphics_Susu.h"
+#include "Graphics_Items.h"
 void initGame();
 void playGame();
 
