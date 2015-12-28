@@ -6,6 +6,8 @@
  */
 
 #include "Graphics_Susu.h"
+#include "Graphics_Items.h"
+#include "Graphics_SPRITE.h"
 #include "Susu.h"
 
 void initSusu(pSusu mySusu){
@@ -19,21 +21,9 @@ void initSusu(pSusu mySusu){
 	mySusu->y = 200;
 	mySusu->oamIndex = 0;
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
-	mySusu->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
-	// VRAM F pour la palette du Susu ( palette 0 pour le Main)
-	vramSetBankF(VRAM_F_LCD);
-			swiCopy(SusuPal,  &VRAM_F_EXT_SPR_PALETTE[0], SusuPalLen/2);
-			// set vram to ex palette
-	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
-	// VRAM I pour la palette du Susu ( palette 0 pour le Sub)
-	vramSetBankI(VRAM_I_LCD);
-	swiCopy(SusuPal,  &VRAM_I_EXT_SPR_PALETTE[0], SusuPalLen/2);
-	// set vram to ex palette
-	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+	mySusu->gfx_main = gfx_susu;
+	mySusu->gfx_sub = gfx_sub_susu;
 
-		swiCopy(SusuTiles, mySusu->gfx_main, SusuTilesLen/2);
-		swiCopy(SusuTiles, mySusu->gfx_sub, SusuTilesLen/2);
 
 }
 void setSusuPosition(pSusu mySusu,double x, double y){
@@ -109,8 +99,13 @@ void SusuUpdate(pSusu mySusu){
 	//on affiche le Susu si :
 	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
+<<<<<<< HEAD
 				0,				// Number of sprite
 				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
+=======
+				mySusu->oamIndex,				// Number of sprite
+				(int)mySusu->x,(int)mySusu->y,			// Coordinates
+>>>>>>> master
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -127,8 +122,13 @@ void SusuUpdate(pSusu mySusu){
 	//sinon on le cache :
 	else {
 		oamSet(&oamMain, 	// oam handler
+<<<<<<< HEAD
 						0,				// Number of sprite
 						(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
+=======
+						mySusu->oamIndex,				// Number of sprite
+						(int)mySusu->x,(int)mySusu->y,			// Coordinates
+>>>>>>> master
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
@@ -147,18 +147,6 @@ void SusuUpdate(pSusu mySusu){
 	}
 
 
-	/*//----Rebond
-     // si le Susu atteint un bord de l'écran MAIN:
-	if(mySusu->y==0 || mySusu->x==0 || mySusu ->x==256)
-	{
-		int v_init;
-	    v_init = mySusu->v; // sauvegarde la vitesse avec laquelle le Susu arrive sur le bord
-
-		mySusu-> v=0;  // Le Susu s'arrête;
-		oamRotateScale(&oamMain,0,mySusu->angle +90 ,1 <<8, 1 <<8);//le Susu tourne de 90°;
-	    mySusu->v=v_init; //le Susu repart avec sa vitesse avant de toucher le bord;
-
-	}*/
 
 
 // Dans l'écran SUB //
@@ -166,8 +154,13 @@ void SusuUpdate(pSusu mySusu){
 	//On affiche le  Susu si :
 	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
+<<<<<<< HEAD
 				0,				// Number of sprite
 				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+=======
+				mySusu->oamIndex,				// Number of sprite
+				(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+>>>>>>> master
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -185,8 +178,13 @@ void SusuUpdate(pSusu mySusu){
 	//Sinon on cache le Susu:
 	else {
 		oamSet(&oamSub, 	// oam handler
+<<<<<<< HEAD
 						0,				// Number of sprite
 						(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+=======
+				         mySusu->oamIndex,				// Number of sprite
+						(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+>>>>>>> master
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
@@ -202,18 +200,6 @@ void SusuUpdate(pSusu mySusu){
 
 
 
-	/*//----Rebond
-     // si le Susu atteint un bord de l'écran SUB:
-	if( mySusu ->y==2*192 || mySusu->x==0 || mySusu ->x==256)
-	{
-		int v_init;
-	    v_init = mySusu->v; // sauvegarde la vitesse avec laquelle le Susu arrive sur le bord
-
-		mySusu-> v=0;  // Le Susu s'arrête;
-		oamRotateScale(&oamSub,0,mySusu->angle ,1 <<8, 1 <<8);//le Susu tourne de 90°;//le Susu tourne de 90°;
-	    mySusu->v=v_init; //le Susu avec sa vitesse avant de toucher le bord;
-
-	}*/
 
 
 	// Update the angle of the Susu
