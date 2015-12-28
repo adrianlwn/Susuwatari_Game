@@ -16,13 +16,13 @@ void initMapObstacle(mapObstacle myMapObstacle){
 	// dans les angles on met des angles 45° et 135°.
 
 	for (i=0 ; i <256 ; i++){
-		myMapObstacle[i][0] = 0;
+		myMapObstacle[i][0] = deg2oamAngle(180);
 		myMapObstacle[i][2*192-1] = 0;
 	}
 
 	for(j = 0 ; j < 2*192 ; j ++ ){
-		myMapObstacle[0][j] = 90*32768.0/360.0;
-		myMapObstacle[256-1][j] = 	90*32768.0/360.0;
+		myMapObstacle[0][j] = deg2oamAngle(270);
+		myMapObstacle[256-1][j] = 	deg2oamAngle(90);
 	}
 	/*
 	myMapObstacle[0][0] = 45*32768/360;
@@ -53,7 +53,8 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 
 }
 void BounceSusu(pSusu mySusu, double bounce_angle){
-		mySusu->angle = mySusu->angle + deg2oamAngle(bounce_angle);
+		int cut_bounce_angle = (int)bounce_angle % 90;
+		setSusuAngle(mySusu,  oamAngle2deg( mySusu->angle )+ cut_bounce_angle  );
 		//mySusu->angle = deg2oamAngle(180);
 		//mySusu->new_angle = deg2oamAngle(180);
 
