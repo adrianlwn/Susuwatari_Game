@@ -6,168 +6,64 @@
  */
 
 #include "Graphics_Items.h"
-#include "Graphics_SPRITE.h"
 #include <nds.h>
 #include "Star.h"
 #include "Mushroom.h"
 #include  "Clover.h"
-#include <stdlib.h>
-#include <time.h>
 
 
 
-void initItems(pItem myItem){
+void initItem(pItem myItem){
+	myItem->itemType= STAR;
+	//myItem->angle=0;
+	//myItem->size=5;
+	myItem->v= 0;
+	//myItem->v_angle =150;
+	myItem->x = 200;
+	myItem->y = 100;
+	myItem->oamIndex = 1;
+	myItem->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
+	myItem->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
 
-	int i;
-	for(i=0; i<15;i++)
-	{
-	myItem[i].v= 0;
-	myItem[i].oamIndex = i+1;
 
-	if(myItem[i].itemType==MUSHROOM) {myItem[i].gfx_main=gfx_mushroom;}
-	if(myItem[i].itemType==STAR) {myItem[i].gfx_main=gfx_star;}
-    if(myItem[i].itemType==CLOVER) {myItem[i].gfx_main=gfx_clover;}
+	// VRAM F pour la palette des Items ( palette 1 pour le Main)
+	vramSetBankF(VRAM_F_LCD);
+		swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[1], StarPalLen/2);
+		// set vram to ex palette
+			vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
+			// VRAM I pour la palette des Item ( palette 1 pour le Sub)
+			vramSetBankI(VRAM_I_LCD);
+					swiCopy(StarPal,  &VRAM_I_EXT_SPR_PALETTE[1], StarPalLen/2);
+					// set vram to ex palette
+						vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+		swiCopy(StarTiles, myItem->gfx_main, StarTilesLen/2);
+		swiCopy(StarTiles, myItem->gfx_sub , StarTilesLen/2);
 
 }
-}
 
-void displayItems(pItem myItem)
+void displayItem(pItem myItem)
 {
-	int i;
-	for(i=0; i<15;i++)
-	{
-
-		   if(myItem[i].itemType==MUSHROOM)
-		 	   {
-		 		oamSet( &oamMain, 	// oam handler
-		 				       myItem[i].oamIndex,				// Number of sprite
-		 						(int)myItem[i].x, (int) myItem[i].y,			// Coordinates
-		 						0,				// Priority
-		 						3,				// Palette to use
-		 						SpriteSize_32x32,			// Sprite size
-		 						SpriteColorFormat_256Color,	// Color format
-								gfx_mushroom,			// Loaded graphic to display
-		 						-1,				// Affine rotation to use (-1 none)
-		 						false,			// Double size if rotating
-		 						false,			// Hide this sprite
-		 						false, false,	// Horizontal or vertical flip
-		 						false			// Mosaic
-		 				);
-		 	   }
-
-	   if(myItem[i].itemType==STAR)
-	   {
 		oamSet(&oamMain, 	// oam handler
-				        myItem[i].oamIndex,				// Number of sprite
-						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
+						1,				// Number of sprite
+						(int)myItem->x, (int)myItem->y,			// Coordinates
 						0,				// Priority
 						1,				// Palette to use
-						SpriteSize_32x32,			// Sprite size
+						SpriteSize_16x16,			// Sprite size
 						SpriteColorFormat_256Color,	// Color format
-						gfx_star,			// Loaded graphic to display
+						myItem->gfx_main,			// Loaded graphic to display
 						-1,				// Affine rotation to use (-1 none)
 						false,			// Double size if rotating
 						false,			// Hide this sprite
 						false, false,	// Horizontal or vertical flip
 						false			// Mosaic
 				);
-	   }
-
-	   if(myItem[i].itemType==CLOVER)
-	 	   {
-	 		oamSet(&oamMain, 	// oam handler
-	 				        myItem[i].oamIndex,				// Number of sprite
-	 						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
-	 						0,				// Priority
-	 						2,				// Palette to use
-	 						SpriteSize_32x32,			// Sprite size
-	 						SpriteColorFormat_256Color,	// Color format
-						    gfx_clover,			// Loaded graphic to display
-	 						-1,				// Affine rotation to use (-1 none)
-	 						false,			// Double size if rotating
-	 						false,			// Hide this sprite
-	 						false, false,	// Horizontal or vertical flip
-	 						false			// Mosaic
-	 				);
-	 	   }
-
-
-	}
-
 }
 
 
 
-void setItemsPosition(pItem myItem){
-
-//1ere ligne
-myItem[0].x=0;
-myItem[0].y=160;
-
-myItem[1].x=115;
-myItem[1].y=160;
-
-myItem[2].x=220;
-myItem[2].y=160;
-
-//2e ligne
-
-myItem[3].x=60;
-myItem[3].y=80;
-
-myItem[4].x=170;
-myItem[4].y=80;
-
-myItem[5].x=0;
-myItem[5].y=80;
-
-myItem[6].x=220;
-myItem[6].y=80;
-
-myItem[10].x=115;
-myItem[10].y=80;
-
-
-//3e ligne
-
-myItem[11].x=0;
-myItem[11].y=0;
-
-myItem[12].x=115;
-myItem[12].y=0;
-
-myItem[13].x=220;
-myItem[13].y=0;
-
-//entre deux lignes
-
-myItem[7].x=60;
-myItem[7].y=120;
-
-myItem[8].x=115;
-myItem[8].y=120;
-
-myItem[9].x=115;
-myItem[9].y=40;
-
+void setItemPosition(pItem myItem,double x, double y){
+	myItem->x = x;
+	myItem->y = y;
 }
-
-void chooseItems (pItem myItem){
-
-	int i;
-	for (i=0 ; i<=5 ; i=i+1)
-	{myItem[i].itemType=MUSHROOM;}
-
-	for (i=5 ; i<10 ; i++)
-	{myItem[i].itemType=CLOVER;}
-
-	for (i=10 ; i<15 ; i++)
-	{myItem[i].itemType=STAR;}
-}
-
-
-
-
-
-
