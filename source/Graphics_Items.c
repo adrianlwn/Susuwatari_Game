@@ -6,64 +6,130 @@
  */
 
 #include "Graphics_Items.h"
+#include "Graphics_SPRITE.h"
 #include <nds.h>
 #include "Star.h"
 #include "Mushroom.h"
 #include  "Clover.h"
+#include <stdlib.h>
+#include <time.h>
 
 
 
-void initItem(pItem myItem){
-	myItem->itemType= STAR;
-	//myItem->angle=0;
-	//myItem->size=5;
-	myItem->v= 0;
-	//myItem->v_angle =150;
-	myItem->x = 200;
-	myItem->y = 100;
-	myItem->oamIndex = 1;
-	myItem->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_16x16, SpriteColorFormat_256Color);
-	myItem->gfx_sub = oamAllocateGfx( &oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
 
 
-	// VRAM F pour la palette des Items ( palette 1 pour le Main)
-	vramSetBankF(VRAM_F_LCD);
-		swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[1], StarPalLen/2);
-		// set vram to ex palette
-			vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
-			// VRAM I pour la palette des Item ( palette 1 pour le Sub)
-			vramSetBankI(VRAM_I_LCD);
-					swiCopy(StarPal,  &VRAM_I_EXT_SPR_PALETTE[1], StarPalLen/2);
-					// set vram to ex palette
-						vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+void initItems(pItem myItem){
 
-		swiCopy(StarTiles, myItem->gfx_main, StarTilesLen/2);
-		swiCopy(StarTiles, myItem->gfx_sub , StarTilesLen/2);
+	int i;
+	for(i=0; i<15;i++)
+	{
+	myItem[i].v= 0;
+	myItem[i].oamIndex = i+1;
+
+	if(myItem[i].itemType==MUSHROOM) {myItem[i].gfx_main=gfx_mushroom;}
+	if(myItem[i].itemType==STAR) {myItem[i].gfx_main=gfx_star;}
+    if(myItem[i].itemType==CLOVER) {myItem[i].gfx_main=gfx_clover;}
+
 
 }
+}
 
-void displayItem(pItem myItem)
+void displayItems(pItem myItem)
 {
+	int i;
+	for(i=0; i<15;i++)
+	{
+
+		   if(myItem[i].itemType==MUSHROOM)
+		 	   {
+		 		oamSet(&oamMain, 	// oam handler
+		 				       myItem[i].oamIndex,				// Number of sprite
+		 						(int)myItem[i].x, (int) myItem[i].y,			// Coordinates
+		 						0,				// Priority
+		 						3,				// Palette to use
+		 						SpriteSize_32x32,			// Sprite size
+		 						SpriteColorFormat_256Color,	// Color format
+								gfx_mushroom,			// Loaded graphic to display
+		 						-1,				// Affine rotation to use (-1 none)
+		 						false,			// Double size if rotating
+		 						false,			// Hide this sprite
+		 						false, false,	// Horizontal or vertical flip
+		 						false			// Mosaic
+		 				);
+		 	   }
+
+	   if(myItem[i].itemType==STAR)
+	   {
 		oamSet(&oamMain, 	// oam handler
-						1,				// Number of sprite
-						(int)myItem->x, (int)myItem->y,			// Coordinates
+				        myItem[i].oamIndex,				// Number of sprite
+						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
 						0,				// Priority
 						1,				// Palette to use
-						SpriteSize_16x16,			// Sprite size
+						SpriteSize_32x32,			// Sprite size
 						SpriteColorFormat_256Color,	// Color format
-						myItem->gfx_main,			// Loaded graphic to display
+						gfx_star,			// Loaded graphic to display
 						-1,				// Affine rotation to use (-1 none)
 						false,			// Double size if rotating
 						false,			// Hide this sprite
 						false, false,	// Horizontal or vertical flip
 						false			// Mosaic
 				);
+	   }
+
+	   if(myItem[i].itemType==CLOVER)
+	 	   {
+	 		oamSet(&oamMain, 	// oam handler
+	 				        myItem[i].oamIndex,				// Number of sprite
+	 						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
+	 						0,				// Priority
+	 						2,				// Palette to use
+	 						SpriteSize_32x32,			// Sprite size
+	 						SpriteColorFormat_256Color,	// Color format
+						gfx_clover,			// Loaded graphic to display
+	 						-1,				// Affine rotation to use (-1 none)
+	 						false,			// Double size if rotating
+	 						false,			// Hide this sprite
+	 						false, false,	// Horizontal or vertical flip
+	 						false			// Mosaic
+	 				);
+	 	   }
+
+
+	}
+
+
+
+
+
 }
 
 
 
-void setItemPosition(pItem myItem,double x, double y){
-	myItem->x = x;
-	myItem->y = y;
+void setItemsPosition(pItem myItem){
+
+	int j;
+
+for(j=0;j<5;j++)
+{
+myItem[j].x=j*32;
+myItem[j].y=0;}
+
+for(j=5;j<10;j++)
+{
+ myItem[j].x=(j-5)*32;
+myItem[j].y=32;}
+
+for(j=10;j<15;j++)
+{
+	myItem[j].x=(j-10)*32;
+myItem[j].y=2*32;}
+
+
 }
+
+
+
+
+
+
