@@ -35,11 +35,23 @@ void setSusuPosition(pSusu mySusu,double x, double y){
 double deg2oamAngle(double angle){
 	return angle*32768/360;
 }
+double oamAngle2deg(double angle){
+	return 360*angle/32768;
+}
+
 
 void setSusuAngle(pSusu mySusu,double angle){
+	if (angle < 0){
+		angle+=360;
+	}
+	if (angle >=360){
+		angle -= 360;
+	}
 	mySusu->angle = deg2oamAngle(angle);
 	mySusu->new_angle = mySusu->angle;
 }
+
+
 
 void setSusuBigger(pSusu mySusu){
 

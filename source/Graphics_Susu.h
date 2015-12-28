@@ -37,6 +37,7 @@ typedef struct Susu_struct {
 } Susu, *pSusu;
 
 double deg2oamAngle(double angle);
+double oamAngle2deg(double angle);
 
 
 //---- Initialisation des propriétés du Susu,  placement tile et palette du Susu dans la mémoire (swicopy)
