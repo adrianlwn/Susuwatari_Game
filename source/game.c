@@ -8,13 +8,12 @@
 #include <stdio.h>
 
 pSusu theSusu;
-<<<<<<< HEAD
-pItem theStar;
-mapObstacle theMapObstacle;
-=======
-
 pItem Items[15];
->>>>>>> master
+
+mapObstacle theMapObstacle;
+
+
+
 
 
 void initGame(){
@@ -24,13 +23,8 @@ void initGame(){
 	setSusuAngle(theSusu,45);
 
 
-<<<<<<< HEAD
-	theStar = malloc(sizeof(Item));
-	initItem(theStar);
-	displayItem(theStar);
-
 	initMapObstacle( theMapObstacle);
-=======
+
 	Items[0]= malloc(sizeof(Item));
 
 	chooseItems (Items[0]);
@@ -38,7 +32,7 @@ void initGame(){
 	setItemsPosition( Items[0]);
 	displayItems(Items[0]);
 
->>>>>>> master
+
 
 }
 
@@ -51,9 +45,4 @@ void playGame(){
 	BounceUpdate(theSusu, theMapObstacle);
 	SusuUpdate(theSusu);
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 }

@@ -99,13 +99,10 @@ void SusuUpdate(pSusu mySusu){
 	//on affiche le Susu si :
 	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
-<<<<<<< HEAD
-				0,				// Number of sprite
+
+mySusu->oamIndex,			// Number of sprite
 				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
-=======
-				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y,			// Coordinates
->>>>>>> master
+
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -122,13 +119,10 @@ void SusuUpdate(pSusu mySusu){
 	//sinon on le cache :
 	else {
 		oamSet(&oamMain, 	// oam handler
-<<<<<<< HEAD
-						0,				// Number of sprite
+
+						mySusu->oamIndex,		// Number of sprite
 						(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
-=======
-						mySusu->oamIndex,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y,			// Coordinates
->>>>>>> master
+
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
@@ -154,13 +148,10 @@ void SusuUpdate(pSusu mySusu){
 	//On affiche le  Susu si :
 	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
-<<<<<<< HEAD
-				0,				// Number of sprite
+
+mySusu->oamIndex,		// Number of sprite
 				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
-=======
-				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
->>>>>>> master
+
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -178,13 +169,10 @@ void SusuUpdate(pSusu mySusu){
 	//Sinon on cache le Susu:
 	else {
 		oamSet(&oamSub, 	// oam handler
-<<<<<<< HEAD
-						0,				// Number of sprite
+
+mySusu->oamIndex,				// Number of sprite
 						(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
-=======
-				         mySusu->oamIndex,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
->>>>>>> master
+
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
