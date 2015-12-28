@@ -8,15 +8,22 @@
 #include <stdio.h>
 
 pSusu theSusu;
-
 pItem Items[15];
+
+mapObstacle theMapObstacle;
+
+
+
 
 
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-	setSusuAngle(theSusu,360);
+	setSusuAngle(theSusu,45);
+
+
+	initMapObstacle( theMapObstacle);
 
 	Items[0]= malloc(sizeof(Item));
 
@@ -26,6 +33,7 @@ void initGame(){
 	displayItems(Items[0]);
 
 
+
 }
 
 void playGame(){
@@ -33,8 +41,8 @@ void playGame(){
 
 	SusuMoveTest2(theSusu);
 	//SusuRotate(theSusu,false);
+
+	BounceUpdate(theSusu, theMapObstacle);
 	SusuUpdate(theSusu);
-
-
 
 }

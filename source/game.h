@@ -10,6 +10,7 @@
 #include <nds.h>
 #include "Graphics_Susu.h"
 #include "Graphics_Items.h"
+#include "SusuBounce.h"
 void initGame();
 void playGame();
 

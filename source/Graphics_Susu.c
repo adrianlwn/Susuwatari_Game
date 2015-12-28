@@ -12,7 +12,9 @@
 
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
+	mySusu->new_angle = mySusu->angle;
 	mySusu->size=5;
+	mySusu->rayon = 32;
 	mySusu->v= 1;
 	mySusu->v_angle=150;
 	mySusu->x = 100;
@@ -29,9 +31,16 @@ void setSusuPosition(pSusu mySusu,double x, double y){
 	mySusu->y = y;
 
 }
-void setSusuAngle(pSusu mySusu,double angle){
-	mySusu->angle = angle*32768/360;
+
+double deg2oamAngle(double angle){
+	return angle*32768/360;
 }
+
+void setSusuAngle(pSusu mySusu,double angle){
+	mySusu->angle = deg2oamAngle(angle);
+	mySusu->new_angle = mySusu->angle;
+}
+
 void setSusuBigger(pSusu mySusu){
 
 	if (mySusu->size < 10) {
@@ -51,7 +60,18 @@ void SusuRotate(pSusu mySusu,int ON){
 	}
 	mySusu->angle += mySusu->v_angle;
 
+}
 
+void SusuRotateToNewAngle(pSusu mySusu){
+	int delta = mySusu->angle - mySusu->new_angle;
+	int etha = 100; //
+	if(delta > etha){
+		mySusu->angle += 100;
+	} else if (delta < - etha){
+		mySusu->angle -= 100;
+	} else {
+		mySusu->angle = mySusu->new_angle;
+	}
 }
 
 void SusuMoveTest(pSusu mySusu){
@@ -70,14 +90,19 @@ void SusuMoveTest(pSusu mySusu){
 }
 
 void SusuUpdate(pSusu mySusu){
+	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
+	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
+	int halfwidth = 32;
 
 // Dans l'écran MAIN  //
 
 	//on affiche le Susu si :
-	if ( (mySusu->y >= 0-64 ) && ( mySusu->y <= 192)){
+	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
-				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y,			// Coordinates
+
+mySusu->oamIndex,			// Number of sprite
+				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
+
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -94,8 +119,10 @@ void SusuUpdate(pSusu mySusu){
 	//sinon on le cache :
 	else {
 		oamSet(&oamMain, 	// oam handler
-						mySusu->oamIndex,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y,			// Coordinates
+
+						mySusu->oamIndex,		// Number of sprite
+						(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
+
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
@@ -119,10 +146,12 @@ void SusuUpdate(pSusu mySusu){
 // Dans l'écran SUB //
 
 	//On affiche le  Susu si :
-	if( (mySusu->y >= 192-64 ) && ( mySusu->y <= 2*192 )){
+	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
-				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+
+mySusu->oamIndex,		// Number of sprite
+				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+
 				0,				// Priority
 				0,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -140,8 +169,10 @@ void SusuUpdate(pSusu mySusu){
 	//Sinon on cache le Susu:
 	else {
 		oamSet(&oamSub, 	// oam handler
-				         mySusu->oamIndex,				// Number of sprite
-						(int)mySusu->x,(int)mySusu->y-192,			// Coordinates
+
+mySusu->oamIndex,				// Number of sprite
+						(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+
 						0,				// Priority
 						0,				// Palette to use
 						SpriteSize_64x64,			// Sprite size
