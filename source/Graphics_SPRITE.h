@@ -9,9 +9,11 @@
 #define GRAPHICS_SPRITE_H_
 #include <nds.h>
 
-
-
-
+    	u16 * gfx_susu;
+    	u16 * gfx_sub_susu;
+	u16 * gfx_star;
+	u16 * gfx_clover;
+	u16 * gfx_mushroom;
 
 void configureSprite();
 
