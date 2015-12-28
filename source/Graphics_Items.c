@@ -16,9 +16,6 @@
 
 
 
-
-
-
 void initItems(pItem myItem){
 
 	int i;
@@ -43,7 +40,7 @@ void displayItems(pItem myItem)
 
 		   if(myItem[i].itemType==MUSHROOM)
 		 	   {
-		 		oamSet(&oamMain, 	// oam handler
+		 		oamSet( &oamMain, 	// oam handler
 		 				       myItem[i].oamIndex,				// Number of sprite
 		 						(int)myItem[i].x, (int) myItem[i].y,			// Coordinates
 		 						0,				// Priority
@@ -86,7 +83,7 @@ void displayItems(pItem myItem)
 	 						2,				// Palette to use
 	 						SpriteSize_32x32,			// Sprite size
 	 						SpriteColorFormat_256Color,	// Color format
-						gfx_clover,			// Loaded graphic to display
+						    gfx_clover,			// Loaded graphic to display
 	 						-1,				// Affine rotation to use (-1 none)
 	 						false,			// Double size if rotating
 	 						false,			// Hide this sprite
@@ -98,34 +95,75 @@ void displayItems(pItem myItem)
 
 	}
 
-
-
-
-
 }
 
 
 
 void setItemsPosition(pItem myItem){
 
-	int j;
+//1ere ligne
+myItem[0].x=0;
+myItem[0].y=160;
 
-for(j=0;j<5;j++)
-{
-myItem[j].x=j*32;
-myItem[j].y=0;}
+myItem[1].x=115;
+myItem[1].y=160;
 
-for(j=5;j<10;j++)
-{
- myItem[j].x=(j-5)*32;
-myItem[j].y=32;}
+myItem[2].x=220;
+myItem[2].y=160;
 
-for(j=10;j<15;j++)
-{
-	myItem[j].x=(j-10)*32;
-myItem[j].y=2*32;}
+//2e ligne
+
+myItem[3].x=60;
+myItem[3].y=80;
+
+myItem[4].x=170;
+myItem[4].y=80;
+
+myItem[5].x=0;
+myItem[5].y=80;
+
+myItem[6].x=220;
+myItem[6].y=80;
+
+myItem[10].x=115;
+myItem[10].y=80;
 
 
+//3e ligne
+
+myItem[11].x=0;
+myItem[11].y=0;
+
+myItem[12].x=115;
+myItem[12].y=0;
+
+myItem[13].x=220;
+myItem[13].y=0;
+
+//entre deux lignes
+
+myItem[7].x=60;
+myItem[7].y=120;
+
+myItem[8].x=115;
+myItem[8].y=120;
+
+myItem[9].x=115;
+myItem[9].y=40;
+
+}
+
+void chooseItems (pItem myItem){
+
+	int i;
+	for (i=0 ; i<=5 ; i=i+1)
+	{myItem[i].itemType=MUSHROOM;}
+
+	for (i=5 ; i<10 ; i++)
+	{myItem[i].itemType=CLOVER;}
+
+	for (i=10 ; i<15 ; i++)
+	{myItem[i].itemType=STAR;}
 }
 
 

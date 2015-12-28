@@ -51,5 +51,7 @@ void setItemsPosition(pItem myItem);
 
 void displayItems(pItem myItem);
 
+void chooseItems (pItem myItem);
+
 
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */
