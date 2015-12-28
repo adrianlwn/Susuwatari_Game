@@ -10,9 +10,6 @@
 
 #include <nds.h>
 #include"Graphics_Susu.h"
-#include "Star.h"
-#include "Mushroom.h"
-#include  "Clover.h"
 
 // ----Item_struc: structure d'un Star avec toutes ses propriétés
 //----typedef: 'Item_struct' devient un type nommé 'Item'
@@ -39,19 +36,16 @@ typedef struct Item_struct {
 	int oamIndex; //numero of sprite;
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
 
-
 } Item, *pItem;
 
 
 //---- Initialisation des propriétés de l'item,  placement tile et palette de l'item dans la mémoire (swicopy)
-void initItems(pItem myItem);
+void initItem(pItem myItem);
 
-//---- Changer la position des Items
-void setItemsPosition(pItem myItem);
+//---- Changer la position du Susu
+void setItemPosition(pItem myItem,double x, double y);
 
-void displayItems(pItem myItem);
-
-void chooseItems (pItem myItem);
+void displayItem(pItem myItem);
 
 
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */
