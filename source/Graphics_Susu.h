@@ -20,7 +20,7 @@ typedef struct Susu_struct {
 	// Statique :
 
 	double x,y ; // positions dans la matrice de pixel 256x(192*2)
-	double angle;
+	double angle , new_angle; // angle actuel d'affichage, et angle a atteindre en cas de rebond.
 	int size ; // Taille relative du susu : 5 -> taille normale, [0,10]-> ensemble des tailles
 	int rayon; // rayon du susu changeant selon le paramettre "size"
 
@@ -36,6 +36,7 @@ typedef struct Susu_struct {
 
 } Susu, *pSusu;
 
+double deg2oamAngle(double angle);
 
 
 //---- Initialisation des propriétés du Susu,  placement tile et palette du Susu dans la mémoire (swicopy)
@@ -56,6 +57,8 @@ void setSusuSmaller(pSusu mySusu);
 //---- Rotation du Susu ON /OFF
 void SusuRotate(pSusu mySusu,int ON);
 
+//----  Rotation du Susu jusqu'à atteindre la valeur de new_angle (Rotation assez lente pour effet realiste)
+void SusuRotateToNewAngle(pSusu mySusu);
 
 void SusuMoveTest(pSusu mySusu);
 void SusuMoveTest2(pSusu mySusu);

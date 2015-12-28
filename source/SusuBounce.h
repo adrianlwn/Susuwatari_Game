@@ -11,10 +11,10 @@
 #include "Graphics_Susu.h"
 
 
- typedef double mapObstacle[256][2*192] ;
-void initMapObstacle();
+ typedef double mapObstacle[256][384] ;
+void initMapObstacle(mapObstacle myMapObstacle);
 
-void BounceUpdate(pSusu mySusu);
+void BounceUpdate(pSusu mySusu,mapObstacle myMapObstacle);
 void BounceSusu(pSusu mySusu, double bounce_angle);
 
 #endif /* SUSUWATARI_SUSUGAMEPLAY_H_ */

@@ -10,12 +10,13 @@
 
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
+	mySusu->new_angle = mySusu->angle;
 	mySusu->size=5;
 	mySusu->rayon = 32;
 	mySusu->v= 1;
 	mySusu->v_angle=150;
-	mySusu->x = 0;
-	mySusu->y = 0;
+	mySusu->x = 100;
+	mySusu->y = 200;
 	mySusu->oamIndex = 0;
 	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->gfx_main = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
@@ -40,9 +41,17 @@ void setSusuPosition(pSusu mySusu,double x, double y){
 	mySusu->y = y;
 
 }
-void setSusuAngle(pSusu mySusu,double angle){
-	mySusu->angle = angle*32768/360;
+
+double deg2oamAngle(double angle){
+	return angle*32768/360;
 }
+
+void setSusuAngle(pSusu mySusu,double angle){
+	mySusu->angle = deg2oamAngle(angle);
+	mySusu->new_angle = mySusu->angle;
+}
+
+
 
 
 void setSusuBigger(pSusu mySusu){
@@ -64,7 +73,18 @@ void SusuRotate(pSusu mySusu,int ON){
 	}
 	mySusu->angle += mySusu->v_angle;
 
+}
 
+void SusuRotateToNewAngle(pSusu mySusu){
+	int delta = mySusu->angle - mySusu->new_angle;
+	int etha = 100; //
+	if(delta > etha){
+		mySusu->angle += 100;
+	} else if (delta < - etha){
+		mySusu->angle -= 100;
+	} else {
+		mySusu->angle = mySusu->new_angle;
+	}
 }
 
 void SusuMoveTest(pSusu mySusu){
