@@ -50,13 +50,7 @@ void setSusuAngle(pSusu mySusu,double angle){
 	mySusu->angle = deg2oamAngle(angle);
 	mySusu->new_angle = mySusu->angle;
 }
-<<<<<<< HEAD
 
-
-
-
-=======
->>>>>>> master
 void setSusuBigger(pSusu mySusu){
 
 	if (mySusu->size < 10) {
