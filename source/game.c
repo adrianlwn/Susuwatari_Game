@@ -13,9 +13,6 @@ pItem Items[15];
 mapObstacle theMapObstacle;
 
 
-
-
-
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
@@ -32,12 +29,9 @@ void initGame(){
 	setItemsPosition( Items[0]);
 	displayItems(Items[0]);
 
-
-
 }
 
 void playGame(){
-
 
 	SusuMoveTest2(theSusu);
 	//SusuRotate(theSusu,false);
