@@ -12,10 +12,10 @@
 
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
-	mySusu->new_angle = mySusu->angle;
+	mySusu->orientation = 0;
 	mySusu->size=5;
 	mySusu->rayon = 32;
-	mySusu->v= 1;
+	mySusu->v= 3;
 	mySusu->v_angle=150;
 	mySusu->x = 100;
 	mySusu->y = 200;
@@ -41,16 +41,14 @@ double oamAngle2deg(double angle){
 
 
 void setSusuAngle(pSusu mySusu,double angle){
-	if (angle < 0){
-		angle+=360;
-	}
-	if (angle >=360){
-		angle -= 360;
-	}
-	mySusu->angle = deg2oamAngle(angle);
-	mySusu->new_angle = mySusu->angle;
+
+	mySusu->angle = deg2oamAngle(((int)angle)%360);
+	//mySusu->orientation = mySusu->angle;
 }
 
+void setSusuOrientation(pSusu mySusu, double angle){
+	mySusu->orientation = deg2oamAngle(((int)angle));
+}
 
 
 void setSusuBigger(pSusu mySusu){
@@ -75,15 +73,28 @@ void SusuRotate(pSusu mySusu,int ON){
 }
 
 void SusuRotateToNewAngle(pSusu mySusu){
-	int delta = mySusu->angle - mySusu->new_angle;
-	int etha = 100; //
-	if(delta > etha){
-		mySusu->angle += 100;
-	} else if (delta < - etha){
-		mySusu->angle -= 100;
+	int delta = (int)(mySusu->angle - mySusu->orientation) % 32768 ;
+	/*if (delta >= 32768/2 ){
+		delta -= 32768;
+	}*/
+	int etha = 50;
+	if(delta > etha  ){
+		if(delta > 32768/2){
+			mySusu->orientation -= 200;
+		}else {
+			mySusu->orientation += 200;
+		}
+
+	} else if (delta < - etha ){
+		if(delta < -32768/2){
+					mySusu->orientation += 200;
+				}else {
+					mySusu->orientation -= 200;
+				}
 	} else {
-		mySusu->angle = mySusu->new_angle;
+		mySusu->orientation = mySusu->angle;
 	}
+	mySusu->orientation = (int)mySusu->orientation;
 }
 
 void SusuMoveTest(pSusu mySusu){
@@ -126,7 +137,7 @@ mySusu->oamIndex,			// Number of sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
-		oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
+		oamRotateScale(&oamMain,0,mySusu->orientation,1 <<8, 1 <<8);
 	}
 	//sinon on le cache :
 	else {
@@ -175,7 +186,7 @@ mySusu->oamIndex,		// Number of sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
-		oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
+		oamRotateScale(&oamSub,0,mySusu->orientation,1 <<8, 1 <<8);
 	}
 
 	//Sinon on cache le Susu:
@@ -217,7 +228,7 @@ void SusuMoveTest2(pSusu mySusu){
 	    	keys = keysHeld();
 	if(keys & KEY_RIGHT) mySusu->angle-= 150;
 	if(keys & KEY_LEFT) mySusu->angle+= 150;
-
+	mySusu->angle =(int)mySusu->angle  %32768;
 	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
 	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
 
