@@ -17,6 +17,8 @@
 void configureGraphics_Main();
 void configureGraphics_Sub();
 
+void loadGraphics_Menu();
+
 void loadGraphics_Main();
 void loadGraphics_Sub();
 

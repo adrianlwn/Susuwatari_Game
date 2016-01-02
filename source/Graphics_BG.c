@@ -39,6 +39,8 @@ void loadGraphics_Main(){
 	dmaCopy(BG_mainPal,BG_PALETTE,BG_mainPalLen);
 
 }
+
+
 void loadGraphics_Sub(){
 	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
 	dmaCopy(BG_subTiles ,BG_TILE_RAM_SUB(1) , BG_subTilesLen );
@@ -47,3 +49,18 @@ void loadGraphics_Sub(){
 
 
 }
+
+void loadGraphics_Menu(){
+
+	BGCTRL[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(BG_mainTiles,BG_TILE_RAM(1),BG_mainTilesLen);
+	dmaCopy(BG_mainMap,BG_MAP_RAM(0),BG_mainMapLen);
+	dmaCopy(BG_mainPal,BG_PALETTE,BG_mainPalLen);
+
+	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(BG_subTiles ,BG_TILE_RAM_SUB(1) , BG_subTilesLen );
+	dmaCopy(BG_subMap,BG_MAP_RAM_SUB(0),BG_subMapLen);
+	dmaCopy(BG_subPal,BG_PALETTE_SUB,BG_subPalLen);
+
+}
+

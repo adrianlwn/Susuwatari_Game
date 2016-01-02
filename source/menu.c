@@ -6,3 +6,7 @@
  */
 #include "menu.h"
 
+
+void initMenu(){
+
+}

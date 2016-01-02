@@ -9,5 +9,8 @@
 #define MENU_H_
 #include <nds.h>
 
+void initMenu();
+void playMenu();
+
 
 #endif /* MENU_H_ */
