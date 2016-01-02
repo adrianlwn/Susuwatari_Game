@@ -80,6 +80,7 @@ void SusuRotate(pSusu mySusu,int ON){
 
 	}
 	mySusu->angle += mySusu->v_angle;
+	mySusu->orientation = mySusu->angle;
 
 }
 
