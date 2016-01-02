@@ -20,10 +20,10 @@
 
 #include "Graphics_Items.h"
 
-    u16 *gfx_susu_main[5],*gfx_susu_sub[5]; //
-	u16 * gfx_star;
-	u16 * gfx_clover;
-	u16 * gfx_mushroom;
+u16 *gfx_susu_main[5],*gfx_susu_sub[5]; //
+u16 * gfx_star;
+u16 * gfx_clover;
+u16 * gfx_mushroom;
 
 void configureSprite();
 
