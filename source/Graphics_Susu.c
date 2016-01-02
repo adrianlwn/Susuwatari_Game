@@ -122,6 +122,7 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+		mySusu->angle = (int)mySusu->angle % 32768;
 		oamRotateScale(&oamMain,0,mySusu->angle,1 <<8, 1 <<8);
 	}
 	//sinon on le cache :
@@ -165,6 +166,7 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+		mySusu->angle = (int)mySusu->angle % 32768;
 		oamRotateScale(&oamSub,0,mySusu->angle,1 <<8, 1 <<8);
 	}
 

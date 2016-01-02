@@ -17,7 +17,7 @@ void initMapObstacle(mapObstacle myMapObstacle){
 
 	for (i=0 ; i <256 ; i++){
 		myMapObstacle[i][0] = deg2oamAngle(180);
-		myMapObstacle[i][2*192-1] = 0;
+		myMapObstacle[i][2*192-1] = deg2oamAngle(180);
 	}
 
 	for(j = 0 ; j < 2*192 ; j ++ ){
@@ -39,9 +39,9 @@ void initMapObstacle(mapObstacle myMapObstacle){
 void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On va etablir les conditions du rebond
 	int alpha, x_c, y_c;
-	for(alpha = 0 ; alpha <= 100 ; alpha ++ ){
-		x_c = mySusu->rayon*cos(2*M_PI * ((double)alpha )/ 100);
-		y_c = - mySusu->rayon*sin(2*M_PI * ((double)alpha )/ 100 );
+	for(alpha = 0 ; alpha <=150 ; alpha ++ ){
+		x_c = mySusu->rayon*cos(2*M_PI * ((double)alpha )/ 150);
+		y_c = - mySusu->rayon*sin(2*M_PI * ((double)alpha )/ 150 );
 
 		if ( myMapObstacle[(int)(mySusu->x+ x_c)][ (int)(mySusu->y + y_c)] != -1 ){
 			BounceSusu(mySusu,myMapObstacle[(int)x_c][(int)y_c]);
@@ -54,7 +54,7 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 }
 void BounceSusu(pSusu mySusu, double bounce_angle){
 		int cut_bounce_angle = (int)bounce_angle % 90;
-		setSusuAngle(mySusu,  oamAngle2deg( mySusu->angle )+ cut_bounce_angle  );
+		setSusuAngle(mySusu,  ((int)oamAngle2deg( mySusu->angle )+ cut_bounce_angle )%360 );
 		//mySusu->angle = deg2oamAngle(180);
 		//mySusu->new_angle = deg2oamAngle(180);
 
