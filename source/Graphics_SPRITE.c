@@ -5,12 +5,8 @@
  *      Author: adrian
  */
 #include "Graphics_SPRITE.h"
-#include "Graphics_Items.h"
+
 #include <nds.h>
-#include "Star.h"
-#include "Mushroom.h"
-#include  "Clover.h"
-#include  "Susu24px.h"
 
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
@@ -29,48 +25,83 @@ void configureSprite(){
 
 	// TILES et PALETTE Susu //
 
-	gfx_susu = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
-	gfx_sub_susu= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_main[0] = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_sub[0]= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	gfx_susu_main[1] = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_sub[1]= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	gfx_susu_main[2] = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_sub[2]= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	gfx_susu_main[3] = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_sub[3]= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	gfx_susu_main[4] = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	gfx_susu_sub[4]= oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
 
 
-	// VRAM F pour la palette du Susu ( palette 0 pour le Main)
+	// VRAM F pour la palette du Susu ( palette 0,1,2,3,4 pour le Main)
 	vramSetBankF(VRAM_F_LCD);
-			swiCopy(SusuPal,  &VRAM_F_EXT_SPR_PALETTE[0], SusuPalLen/2);
-			// set vram to ex palette
+	swiCopy(Susu24pxPal,  &VRAM_F_EXT_SPR_PALETTE[0], Susu24pxPalLen/2);
+	swiCopy(Susu34pxPal,  &VRAM_F_EXT_SPR_PALETTE[1], Susu34pxPalLen/2);
+	swiCopy(Susu44pxPal,  &VRAM_F_EXT_SPR_PALETTE[2], Susu44pxPalLen/2);
+	swiCopy(Susu54pxPal,  &VRAM_F_EXT_SPR_PALETTE[3], Susu54pxPalLen/2);
+	swiCopy(Susu64pxPal,  &VRAM_F_EXT_SPR_PALETTE[4], Susu64pxPalLen/2);
+	// set vram to ex palette
 	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
-	// VRAM I pour la palette du Susu ( palette 0 pour le Sub)
+
+	// VRAM I pour la palette du Susu ( palette 0,1,2,3,4 pour le Sub)
 	vramSetBankI(VRAM_I_LCD);
-	swiCopy(SusuPal,  &VRAM_I_EXT_SPR_PALETTE[0], SusuPalLen/2);
+	swiCopy(Susu24pxPal,  &VRAM_I_EXT_SPR_PALETTE[0], Susu24pxPalLen/2);
+	swiCopy(Susu34pxPal,  &VRAM_I_EXT_SPR_PALETTE[1], Susu34pxPalLen/2);
+	swiCopy(Susu44pxPal,  &VRAM_I_EXT_SPR_PALETTE[2], Susu44pxPalLen/2);
+	swiCopy(Susu54pxPal,  &VRAM_I_EXT_SPR_PALETTE[3], Susu54pxPalLen/2);
+	swiCopy(Susu64pxPal,  &VRAM_I_EXT_SPR_PALETTE[4], Susu64pxPalLen/2);
 	// set vram to ex palette
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 
-		swiCopy(SusuTiles,gfx_susu , SusuTilesLen/2);
-		swiCopy(SusuTiles, gfx_sub_susu, SusuTilesLen/2);
+	swiCopy(Susu24pxTiles,gfx_susu_main[0] , Susu24pxTilesLen/2);
+	swiCopy(Susu24pxTiles, gfx_susu_sub[0], Susu24pxTilesLen/2);
+
+	swiCopy(Susu34pxTiles,gfx_susu_main[1] , Susu34pxTilesLen/2);
+	swiCopy(Susu34pxTiles, gfx_susu_sub[1], Susu34pxTilesLen/2);
+
+	swiCopy(Susu44pxTiles,gfx_susu_main[2] , Susu44pxTilesLen/2);
+	swiCopy(Susu44pxTiles, gfx_susu_sub[2], Susu44pxTilesLen/2);
+
+	swiCopy(Susu54pxTiles,gfx_susu_main[3] , Susu54pxTilesLen/2);
+	swiCopy(Susu54pxTiles, gfx_susu_sub[3], Susu54pxTilesLen/2);
+
+	swiCopy(Susu64pxTiles,gfx_susu_main[4] , Susu64pxTilesLen/2);
+	swiCopy(Susu64pxTiles, gfx_susu_sub[4], Susu64pxTilesLen/2);
 
 
 
-		// TILES et PALETTE Items //
+
+	// TILES et PALETTE Items //
 
 	gfx_clover = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_mushroom= oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_star = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 
-	// VRAM F pour la palette des Items ( palette 1 pour le Main)
+	// VRAM F pour la palette des Items ( palette 5,6,7)
 	vramSetBankF(VRAM_F_LCD);
 
-
-	swiCopy(CloverPal,  &VRAM_F_EXT_SPR_PALETTE[2], CloverPalLen/2);
-	swiCopy(CloverTiles, gfx_clover, CloverTilesLen/2);
-
-
-	swiCopy(MushroomPal,  &VRAM_F_EXT_SPR_PALETTE[3], MushroomPalLen/2);
-	swiCopy(MushroomTiles, gfx_mushroom, MushroomTilesLen/2);
-
-	swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[1], StarPalLen/2);
+	swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[5], StarPalLen/2);
 	swiCopy(StarTiles, gfx_star, StarTilesLen/2);
 
 
+	swiCopy(CloverPal,  &VRAM_F_EXT_SPR_PALETTE[6], CloverPalLen/2);
+	swiCopy(CloverTiles, gfx_clover, CloverTilesLen/2);
+
+
+	swiCopy(MushroomPal,  &VRAM_F_EXT_SPR_PALETTE[7], MushroomPalLen/2);
+	swiCopy(MushroomTiles, gfx_mushroom, MushroomTilesLen/2);
+
+
+
 	// set vram to ex palette
-   vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
 }

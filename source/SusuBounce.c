@@ -29,7 +29,7 @@ void initMapObstacle(mapObstacle myMapObstacle){
 	myMapObstacle[256-1][0] = 135*32768/360;
 	myMapObstacle[0][192*2-1] = 135*32768/360;
 	myMapObstacle[256-1][192*2-1] = 45*32768/360;
-*/
+	 */
 	// Maintenant on peut tracer d'autres formes sur lesquelles le Susu peut rebondir.
 	// ...
 	// ...
@@ -72,7 +72,7 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 			BounceSusu(mySusu,myMapObstacle[(int)x_c][(int)y_c]);
 		}
 	}
-*/
+	 */
 	// Condition de rotation au ralentis pour atteindre la valeur limite.
 	SusuRotateToNewAngle(mySusu);
 
@@ -84,8 +84,8 @@ void BounceSusu(pSusu mySusu, double bounce_angle){
 	setSusuAngle(mySusu, - angle_previous + 2* bounce_angle);
 
 
-		//mySusu->angle = deg2oamAngle(180);
-		//mySusu->new_angle = deg2oamAngle(180);
+	//mySusu->angle = deg2oamAngle(180);
+	//mySusu->new_angle = deg2oamAngle(180);
 
 }
 
