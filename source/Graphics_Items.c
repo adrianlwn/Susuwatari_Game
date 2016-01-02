@@ -22,7 +22,7 @@ void initItems(pItem myItem){
 	for(i=0; i<15;i++)
 	{
 	myItem[i].v= 0;
-	myItem[i].oamIndex = i+1; // Index OAM est incrémenté de 5 car on reserve la place pour les 5 susus de taille différentes
+	myItem[i].oamIndex = i+5; // Index OAM est incrémenté de 5 car on reserve la place pour les 5 susus de taille différentes
 
 	if(myItem[i].itemType==MUSHROOM) {myItem[i].gfx_main=gfx_mushroom;}
 	if(myItem[i].itemType==STAR) {myItem[i].gfx_main=gfx_star;}
@@ -44,7 +44,7 @@ void displayItems(pItem myItem)
 		 				       myItem[i].oamIndex,				// Number of sprite
 		 						(int)myItem[i].x, (int) myItem[i].y,			// Coordinates
 		 						0,				// Priority
-		 						3,				// Palette to use
+		 						2+5,				// Palette to use
 		 						SpriteSize_32x32,			// Sprite size
 		 						SpriteColorFormat_256Color,	// Color format
 								gfx_mushroom,			// Loaded graphic to display
@@ -62,7 +62,7 @@ void displayItems(pItem myItem)
 				        myItem[i].oamIndex,				// Number of sprite
 						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
 						0,				// Priority
-						1,				// Palette to use
+						0+5,				// Palette to use
 						SpriteSize_32x32,			// Sprite size
 						SpriteColorFormat_256Color,	// Color format
 						gfx_star,			// Loaded graphic to display
@@ -80,7 +80,7 @@ void displayItems(pItem myItem)
 	 				        myItem[i].oamIndex,				// Number of sprite
 	 						(int)myItem[i].x, (int)myItem[i].y,			// Coordinates
 	 						0,				// Priority
-	 						2,				// Palette to use
+	 						1+5,				// Palette to use
 	 						SpriteSize_32x32,			// Sprite size
 	 						SpriteColorFormat_256Color,	// Color format
 						    gfx_clover,			// Loaded graphic to display

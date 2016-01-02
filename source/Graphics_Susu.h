@@ -22,7 +22,7 @@ typedef struct Susu_struct {
 	double x,y ; // positions dans la matrice de pixel 256x(192*2)
 	double angle , orientation; // angle actuel de deplacement, et angle d'affichage du Susu.
 	int size ; // Taille relative du susu : 5 tailles différentes   [0,4]-> ensemble des tailles
-	int diametre ; // rayon du susu changeant selon le paramettre "size"
+	int rayon ; // rayon du susu changeant selon le paramettre "size"
 	int liste_diametre[5];// liste des rayons selon les différentes tailles.
 
 

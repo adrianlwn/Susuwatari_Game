@@ -14,7 +14,7 @@ pItem Items[15];
 
 mapObstacle theMapObstacle;
 
-
+int wow_counter;
 
 
 
@@ -34,17 +34,24 @@ void initGame(){
 	setItemsPosition( Items[0]);
 	displayItems(Items[0]);
 
+	wow_counter = 0;
 
 
 }
 
 void playGame(){
 
-
+	wow_counter ++;
 	SusuMoveTest2(theSusu);
 	//SusuRotate(theSusu,false);
 
 	BounceUpdate(theSusu, theMapObstacle);
 	SusuUpdate(theSusu);
+
+	if (wow_counter == 200 ){
+		wow_counter = 0;
+		setSusuBigger(theSusu);
+	}
+
 
 }

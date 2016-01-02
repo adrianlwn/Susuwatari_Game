@@ -11,21 +11,30 @@
 #include "Susu.h"
 
 void initSusu(pSusu mySusu){
+	// Allocate la memoire oam pour la taille du sprite.
+	mySusu->size=0;
+	mySusu->oamIndex = mySusu->size;
+
+	mySusu->gfx_main = gfx_susu_main[mySusu->size];
+	mySusu->gfx_sub = gfx_susu_sub[mySusu->size];
+	// Liste des différents diametres.
+	mySusu->liste_diametre[0] = 24; // pixels de large
+	mySusu->liste_diametre[1] = 34; // pixels de large
+	mySusu->liste_diametre[2] = 44; // pixels de large
+	mySusu->liste_diametre[3] = 54; // pixels de large
+	mySusu->liste_diametre[4] = 64; // pixels de large
+
+	mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
+
 	mySusu->angle=0;
 	mySusu->orientation = 0;
-	mySusu->size=4;
-
-	mySusu->diametre = mySusu->liste_diametre[mySusu->size] ;
 
 	mySusu->v= 2;
 	mySusu->v_angle=150;
 	mySusu->x = 100;
 	mySusu->y = 200;
-	mySusu->oamIndex = 4;
-	// Allocate la memoire oam pour la taille du sprite.
 
-	mySusu->gfx_main = gfx_susu_main[4];
-	mySusu->gfx_sub = gfx_susu_sub[4];
+
 
 
 }
@@ -44,9 +53,7 @@ double oamAngle2deg(double angle){
 
 
 void setSusuAngle(pSusu mySusu,double angle){
-
 	mySusu->angle = deg2oamAngle(((int)angle)%360);
-	//mySusu->orientation = mySusu->angle;
 }
 
 void setSusuOrientation(pSusu mySusu, double angle){
@@ -56,14 +63,32 @@ void setSusuOrientation(pSusu mySusu, double angle){
 
 void setSusuBigger(pSusu mySusu){
 
-	if (mySusu->size < 10) {
+	if (mySusu->size < 4) {
+
 		mySusu->size++;
+		mySusu->oamIndex = mySusu->size;
+
+		mySusu->gfx_main = gfx_susu_main[mySusu->size];
+		mySusu->gfx_sub = gfx_susu_sub[mySusu->size];
+
+		mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
+
+
 	}
+
 
 }
 void setSusuSmaller(pSusu mySusu){
 	if (mySusu->size  < 0) {
+
 		mySusu->size--;
+		mySusu->oamIndex = mySusu->size;
+
+		mySusu->gfx_main = gfx_susu_main[mySusu->size];
+		mySusu->gfx_sub = gfx_susu_sub[mySusu->size];
+
+		mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
+
 	}
 }
 
@@ -118,7 +143,8 @@ void SusuMoveTest(pSusu mySusu){
 void SusuUpdate(pSusu mySusu){
 	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
 	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
-	int halfwidth = mySusu->diametre/2;
+	int halfwidth = 32;
+	int j;
 
 	// Dans l'écran MAIN  //
 
@@ -143,6 +169,8 @@ void SusuUpdate(pSusu mySusu){
 		// Update the angle of the Susu
 
 		oamRotateScale(&oamMain,0,mySusu->orientation,1 <<8, 1 <<8);
+
+
 	}
 	//sinon on le cache :
 	else {
@@ -192,7 +220,7 @@ void SusuUpdate(pSusu mySusu){
 		);
 		// Update the angle of the Susu
 		oamRotateScale(&oamSub,0,mySusu->orientation,1 <<8, 1 <<8);
-	}
+			}
 
 	//Sinon on cache le Susu:
 	else {
@@ -213,6 +241,20 @@ void SusuUpdate(pSusu mySusu){
 				false			// Mosaic
 		);
 	}
+	// On cache tous les Susus qui ne sont pas actifs :
+	for (j = 0; j <5 ; j++){
+					if (mySusu->oamIndex != j){
+						oamSetAffineIndex(&oamMain,j,-1,false);
+						oamSetAffineIndex(&oamSub,j,-1,false);
+						oamSetHidden(&oamMain,j,true);
+
+						oamSetHidden(&oamSub,j,true);
+
+					}
+			}
+
+
+
 
 	oamUpdate(&oamMain);
 	oamUpdate(&oamSub);
