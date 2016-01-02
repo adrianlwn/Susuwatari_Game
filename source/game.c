@@ -6,6 +6,7 @@
  */
 #include "game.h"
 #include <stdio.h>
+#include "Graphics_Susu.h"
 
 pSusu theSusu;
 pItem Items[15];
@@ -13,14 +14,11 @@ pItem Items[15];
 mapObstacle theMapObstacle;
 
 
-
-
-
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-	setSusuAngle(theSusu,45);
+	//setSusuAngle(theSusu,45);
 
 
 	initMapObstacle( theMapObstacle);
@@ -32,15 +30,14 @@ void initGame(){
 	setItemsPosition( Items[0]);
 	displayItems(Items[0]);
 
-
-
 }
 
 void playGame(){
 
 
-	SusuMoveTest2(theSusu);
-	//SusuRotate(theSusu,false);
+	SusuMove(theSusu);
+	//SusuMoveTest2(theSusu);
+
 
 	BounceUpdate(theSusu, theMapObstacle);
 	SusuUpdate(theSusu);
