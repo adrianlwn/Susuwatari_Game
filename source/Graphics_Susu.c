@@ -10,6 +10,8 @@
 #include "Graphics_SPRITE.h"
 #include "Susu.h"
 
+int result_touch;
+
 void initSusu(pSusu mySusu){
 
 	mySusu->angle=0;
@@ -247,7 +249,6 @@ void SusuMove(pSusu mySusu){
 
 
 int held, up;
-int result;
 
 
 scanKeys();
@@ -259,8 +260,8 @@ if(held & KEY_TOUCH)
 {
 		touchPosition pos;
 		touchRead(&pos);
-		result=InSusuSurface( mySusu, pos.px,  pos.py);
-		 if(result==1)
+		result_touch=InSusuSurface( mySusu, pos.px,  pos.py);
+		 if(result_touch==1)
 		   {mySusu->v=0;
 
 		   SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
@@ -269,11 +270,12 @@ if(held & KEY_TOUCH)
  }
 
 
-if(up & KEY_TOUCH)
+if((up & KEY_TOUCH) && result_touch)
 {
 
 mySusu->v=0.4 +mySusu->v_angle/500;
 mySusu->v_angle=0;
+result_touch =0;
 
 
 }
