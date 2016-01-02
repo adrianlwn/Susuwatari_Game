@@ -18,11 +18,12 @@ void initSusu(pSusu mySusu){
 	mySusu->size=5;
 	mySusu->rayon = 32;
 
-	mySusu->v= 1;
+	mySusu->v= 0;
 	mySusu->v_angle=150;
+	mySusu->a_angle=2;
 
 	mySusu->x = 100;
-	mySusu->y = 200;
+	mySusu->y = 250;
 
 	mySusu->oamIndex = 0;
 
@@ -72,8 +73,13 @@ void setSusuSmaller(pSusu mySusu){
 }
 
 void SusuRotate(pSusu mySusu,int ON){
+
 	if (ON == false){
+
 		mySusu->v_angle = 0;
+	}
+	else{mySusu->v_angle+=mySusu->a_angle;
+
 	}
 	mySusu->angle += mySusu->v_angle;
 
@@ -190,7 +196,34 @@ mySusu->oamIndex,				// Number of sprite
 	swiWaitForVBlank();
 }
 
-void SusuMoveTest(pSusu mySusu){
+//----Vérifie si (px,py) se trouve sur le Susu
+int InSusuSurface(pSusu mySusu, u16 px, u16 py){
+
+
+
+	double a,b;
+	int r;
+	int result;
+
+	a= mySusu->x;
+	b= mySusu->y;
+	r= mySusu->rayon;
+
+	py=py+192;
+
+	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
+	{result=1;
+	return result;}
+
+	else { result=0;
+	return result;}
+}
+
+
+
+
+
+void SusuMove(pSusu mySusu){
 /* Tant que le stylet touche le susu ( à l'intérieur du cercle de rayon ___
  * et de centre les coordonees du susu ) le susu tourne sur lui meme.
  * sa vitesse augmente.
@@ -198,9 +231,44 @@ void SusuMoveTest(pSusu mySusu){
  *  cette vitesse  dans la direction dans laquelle il regarde quand  on le lâche */
 
 
+int held, up;
+int result;
+
+
+scanKeys();
+
+held=keysHeld();
+up=keysUp();
+
+if(held & KEY_TOUCH)
+{
+		touchPosition pos;
+		touchRead(&pos);
+		result=InSusuSurface( mySusu, pos.px,  pos.py);
+		 if(result==1)
+		   {mySusu->v=0;
+
+		   SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
+		   }
+		 //SusuUpdate(mySusu);
+ }
+
+
+if(up & KEY_TOUCH)
+{
+
+mySusu->v=0.4 +mySusu->v_angle/500;
+mySusu->v_angle=0;
 
 
 }
+
+mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
+mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
+
+}
+
+
 
 void SusuMoveTest2(pSusu mySusu){
 	int keys;
