@@ -270,7 +270,6 @@ int InSusuSurface(pSusu mySusu, u16 px, u16 py){
 	b= mySusu->y;
 	r= mySusu->rayon;
 
-	py=py+192;
 
 	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
 	{result=1;
@@ -304,13 +303,13 @@ void SusuMove(pSusu mySusu){
 	{
 		touchPosition pos;
 		touchRead(&pos);
-		result_touch=InSusuSurface( mySusu, pos.px,  pos.py);
+		result_touch=InSusuSurface( mySusu, pos.px,  pos.py + 192);
 		if(result_touch==1)
 		{mySusu->v=0;
 
 		SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
 		}
-		//SusuUpdate(mySusu);
+
 	}
 
 
