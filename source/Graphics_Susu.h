@@ -30,6 +30,7 @@ typedef struct Susu_struct {
 
 	double v; // vitesse
 	double v_angle ; // vitesse de rotation angulaire
+	double a_angle; //accélération angulaire
 
 	// Gestion mémoire :
 
@@ -68,10 +69,12 @@ void SusuRotate(pSusu mySusu,int ON);
 //----  Rotation du Susu jusqu'à atteindre la valeur de new_angle (Rotation assez lente pour effet realiste)
 void SusuRotateToNewAngle(pSusu mySusu);
 
-void SusuMoveTest(pSusu mySusu);
+void SusuMove(pSusu mySusu);
 void SusuMoveTest2(pSusu mySusu);
 
 //----Continué du Susu écran MAIN-SUB
 void SusuUpdate(pSusu mySusu);
+
+int InSusuSurface(pSusu mySusu, u16 px, u16 py);
 
 #endif /* SOURCE_GRAPHICS_SUSU_H_ */

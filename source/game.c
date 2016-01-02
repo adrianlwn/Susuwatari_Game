@@ -6,6 +6,7 @@
  */
 #include "game.h"
 #include <stdio.h>
+#include "Graphics_Susu.h"
 
 pSusu theSusu;
 
@@ -14,15 +15,18 @@ pItem Items[15];
 
 mapObstacle theMapObstacle;
 
+<<<<<<< HEAD
 int wow_counter;
 
 
+=======
+>>>>>>> master
 
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-	setSusuAngle(theSusu,45);
+	//setSusuAngle(theSusu,45);
 
 
 	initMapObstacle( theMapObstacle);
@@ -34,16 +38,26 @@ void initGame(){
 	setItemsPosition( Items[0]);
 	displayItems(Items[0]);
 
+<<<<<<< HEAD
 	wow_counter = 0;
 
 
+=======
+>>>>>>> master
 }
 
 void playGame(){
 
+<<<<<<< HEAD
 	wow_counter ++;
 	SusuMoveTest2(theSusu);
 	//SusuRotate(theSusu,false);
+=======
+
+	SusuMove(theSusu);
+	//SusuMoveTest2(theSusu);
+
+>>>>>>> master
 
 	BounceUpdate(theSusu, theMapObstacle);
 	SusuUpdate(theSusu);

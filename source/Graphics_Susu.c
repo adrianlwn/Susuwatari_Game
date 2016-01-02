@@ -10,7 +10,10 @@
 #include "Graphics_SPRITE.h"
 #include "Susu.h"
 
+int result_touch;
+
 void initSusu(pSusu mySusu){
+<<<<<<< HEAD
 	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->size=0;
 	mySusu->oamIndex = mySusu->size;
@@ -25,28 +28,51 @@ void initSusu(pSusu mySusu){
 	mySusu->liste_diametre[4] = 64; // pixels de large
 
 	mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
+=======
+>>>>>>> master
 
 	mySusu->angle=0;
+
 	mySusu->orientation = 0;
+<<<<<<< HEAD
 
 	mySusu->v= 2;
+=======
+	mySusu->size=5;
+	mySusu->rayon = 32;
+	mySusu->v= 0;
+
+>>>>>>> master
 	mySusu->v_angle=150;
+	mySusu->a_angle=2;
+
 	mySusu->x = 100;
+<<<<<<< HEAD
 	mySusu->y = 200;
 
 
 
 
+=======
+	mySusu->y = 250;
+
+	mySusu->oamIndex = 0;
+
+	// Allocate la memoire oam pour la taille du sprite.
+	mySusu->gfx_main = gfx_susu;
+	mySusu->gfx_sub = gfx_sub_susu;
+>>>>>>> master
 }
+
 void setSusuPosition(pSusu mySusu,double x, double y){
 	mySusu->x = x;
 	mySusu->y = y;
-
 }
 
 double deg2oamAngle(double angle){
 	return angle*32768/360;
 }
+
 double oamAngle2deg(double angle){
 	return 360*angle/32768;
 }
@@ -93,10 +119,16 @@ void setSusuSmaller(pSusu mySusu){
 }
 
 void SusuRotate(pSusu mySusu,int ON){
+
 	if (ON == false){
+
 		mySusu->v_angle = 0;
 	}
+	else{mySusu->v_angle+=mySusu->a_angle;
+
+	}
 	mySusu->angle += mySusu->v_angle;
+	mySusu->orientation = mySusu->angle;
 
 }
 
@@ -125,6 +157,7 @@ void SusuRotateToNewAngle(pSusu mySusu){
 	mySusu->orientation = (int)mySusu->orientation;
 }
 
+<<<<<<< HEAD
 void SusuMoveTest(pSusu mySusu){
 	int keys;
 	scanKeys();
@@ -139,9 +172,11 @@ void SusuMoveTest(pSusu mySusu){
 	if(keys & KEY_LEFT) mySusu->x -=2;
 	if(keys & KEY_UP)  mySusu->y -=2;
 }
+=======
+>>>>>>> master
 
 void SusuUpdate(pSusu mySusu){
-	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
+	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert à décaller la position du Susu
 	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
 	int halfwidth = 32;
 	int j;
@@ -149,10 +184,16 @@ void SusuUpdate(pSusu mySusu){
 	// Dans l'écran MAIN  //
 
 	//on affiche le Susu si :
+<<<<<<< HEAD
 	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
 
 				mySusu->oamIndex,			// Number of sprite
+=======
+	             if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
+		        oamSet(&oamMain, 	// oam handler
+                 mySusu->oamIndex,			// Number of sprite
+>>>>>>> master
 				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
 
 				0,				// Priority
@@ -166,7 +207,10 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+<<<<<<< HEAD
 		// Update the angle of the Susu
+=======
+>>>>>>> master
 
 		oamRotateScale(&oamMain,0,mySusu->orientation,1 <<8, 1 <<8);
 
@@ -179,6 +223,7 @@ void SusuUpdate(pSusu mySusu){
 				mySusu->oamIndex,		// Number of sprite
 				(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
 
+<<<<<<< HEAD
 				0,				// Priority
 				mySusu->oamIndex,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
@@ -199,12 +244,33 @@ void SusuUpdate(pSusu mySusu){
 
 
 	// Dans l'écran SUB //
+=======
+						0,				// Priority
+						0,				// Palette to use
+						SpriteSize_64x64,			// Sprite size
+						SpriteColorFormat_256Color,	// Color format
+						mySusu->gfx_main,			// Loaded graphic to display
+						0,				// Affine rotation to use (-1 none)
+						false,			// Double size if rotating
+						true,			// Hide this sprite    /!\ Susu caché !!!
+						false, false,	// Horizontal or vertical flip
+						false			// Mosaic
+				);
+		//oamSetHidden(&oamMain,0,true);
+	}
+
+// Dans l'écran SUB //
+>>>>>>> master
 
 	//On affiche le  Susu si :
 	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
-		oamSet(&oamSub, 	// oam handler
+		      oamSet(&oamSub, 	// oam handler
 
+<<<<<<< HEAD
 				mySusu->oamIndex,		// Number of sprite
+=======
+                 mySusu->oamIndex,		// Number of sprite
+>>>>>>> master
 				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 
 				0,				// Priority
@@ -218,9 +284,16 @@ void SusuUpdate(pSusu mySusu){
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+<<<<<<< HEAD
 		// Update the angle of the Susu
 		oamRotateScale(&oamSub,0,mySusu->orientation,1 <<8, 1 <<8);
 			}
+=======
+
+		oamRotateScale(&oamSub,0,mySusu->orientation,1 <<8, 1 <<8);
+
+	}
+>>>>>>> master
 
 	//Sinon on cache le Susu:
 	else {
@@ -248,6 +321,7 @@ void SusuUpdate(pSusu mySusu){
 						oamSetAffineIndex(&oamSub,j,-1,false);
 						oamSetHidden(&oamMain,j,true);
 
+<<<<<<< HEAD
 						oamSetHidden(&oamSub,j,true);
 
 					}
@@ -255,12 +329,89 @@ void SusuUpdate(pSusu mySusu){
 
 
 
+=======
+	// Update the angle of the Susu
+>>>>>>> master
 
 	oamUpdate(&oamMain);
 	oamUpdate(&oamSub);
 
 	swiWaitForVBlank();
 }
+
+//----Vérifie si (px,py) se trouve sur le Susu
+int InSusuSurface(pSusu mySusu, u16 px, u16 py){
+
+
+
+	double a,b;
+	int r;
+	int result;
+
+	a= mySusu->x;
+	b= mySusu->y;
+	r= mySusu->rayon;
+
+	py=py+192;
+
+	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
+	{result=1;
+	return result;}
+
+	else { result=0;
+	return result;}
+}
+
+
+
+
+
+void SusuMove(pSusu mySusu){
+/* Tant que le stylet touche le susu ( à l'intérieur du cercle de rayon ___
+ * et de centre les coordonees du susu ) le susu tourne sur lui meme.
+ * sa vitesse augmente.
+ * quand le stylet ne touche plus le susu, la vitesse n'augmente plus , et le susu part avec
+ *  cette vitesse  dans la direction dans laquelle il regarde quand  on le lâche */
+
+
+int held, up;
+
+
+scanKeys();
+
+held=keysHeld();
+up=keysUp();
+
+if(held & KEY_TOUCH)
+{
+		touchPosition pos;
+		touchRead(&pos);
+		result_touch=InSusuSurface( mySusu, pos.px,  pos.py);
+		 if(result_touch==1)
+		   {mySusu->v=0;
+
+		   SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
+		   }
+		 //SusuUpdate(mySusu);
+ }
+
+
+if((up & KEY_TOUCH) && result_touch)
+{
+
+mySusu->v=0.4 +mySusu->v_angle/500;
+mySusu->v_angle=0;
+result_touch =0;
+
+
+}
+
+mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
+mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
+
+}
+
+
 
 void SusuMoveTest2(pSusu mySusu){
 	int keys;
@@ -272,7 +423,5 @@ void SusuMoveTest2(pSusu mySusu){
 	mySusu->angle =(int)mySusu->angle  %32768;
 	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
 	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
-
-
 };
 

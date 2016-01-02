@@ -7,7 +7,14 @@
 #include "Graphics_SPRITE.h"
 
 #include <nds.h>
+<<<<<<< HEAD
 
+=======
+#include "Star.h"
+#include "Mushroom.h"
+#include  "Clover.h"
+#include  "Susu24px.h"
+>>>>>>> master
 
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
