@@ -11,30 +11,36 @@
 #include "Susu.h"
 
 void initSusu(pSusu mySusu){
+
 	mySusu->angle=0;
 	mySusu->new_angle = mySusu->angle;
+
 	mySusu->size=5;
 	mySusu->rayon = 32;
-	mySusu->v= 1;
+
+	mySusu->v= 0;
 	mySusu->v_angle=150;
+	mySusu->a_angle=2;
+
 	mySusu->x = 100;
-	mySusu->y = 200;
+	mySusu->y = 250;
+
 	mySusu->oamIndex = 0;
+
 	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->gfx_main = gfx_susu;
 	mySusu->gfx_sub = gfx_sub_susu;
-
-
 }
+
 void setSusuPosition(pSusu mySusu,double x, double y){
 	mySusu->x = x;
 	mySusu->y = y;
-
 }
 
 double deg2oamAngle(double angle){
 	return angle*32768/360;
 }
+
 double oamAngle2deg(double angle){
 	return 360*angle/32768;
 }
@@ -67,8 +73,13 @@ void setSusuSmaller(pSusu mySusu){
 }
 
 void SusuRotate(pSusu mySusu,int ON){
+
 	if (ON == false){
+
 		mySusu->v_angle = 0;
+	}
+	else{mySusu->v_angle+=mySusu->a_angle;
+
 	}
 	mySusu->angle += mySusu->v_angle;
 
@@ -86,33 +97,18 @@ void SusuRotateToNewAngle(pSusu mySusu){
 	}
 }
 
-void SusuMoveTest(pSusu mySusu){
-	int keys;
- 	scanKeys();
-
-    	keys = keysHeld();
-
-
-
-    	//Modify position of the sprite accordingly
-    	if(keys & KEY_RIGHT) mySusu->x +=2;
-    	if(keys & KEY_DOWN)  mySusu->y +=2;
-    	if(keys & KEY_LEFT) mySusu->x -=2;
-    	if(keys & KEY_UP)  mySusu->y -=2;
-}
 
 void SusuUpdate(pSusu mySusu){
-	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
+	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert à décaller la position du Susu
 	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
 	int halfwidth = 32;
 
 // Dans l'écran MAIN  //
 
 	//on affiche le Susu si :
-	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
-		oamSet(&oamMain, 	// oam handler
-
-mySusu->oamIndex,			// Number of sprite
+	             if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
+		        oamSet(&oamMain, 	// oam handler
+                 mySusu->oamIndex,			// Number of sprite
 				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
 
 				0,				// Priority
@@ -147,21 +143,15 @@ mySusu->oamIndex,			// Number of sprite
 						false			// Mosaic
 				);
 		//oamSetHidden(&oamMain,0,true);
-
-
-
 	}
-
-
-
 
 // Dans l'écran SUB //
 
 	//On affiche le  Susu si :
 	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
-		oamSet(&oamSub, 	// oam handler
+		      oamSet(&oamSub, 	// oam handler
 
-mySusu->oamIndex,		// Number of sprite
+                 mySusu->oamIndex,		// Number of sprite
 				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 
 				0,				// Priority
@@ -198,10 +188,6 @@ mySusu->oamIndex,				// Number of sprite
 				);
 		}
 
-
-
-
-
 	// Update the angle of the Susu
 
 	oamUpdate(&oamMain);
@@ -209,6 +195,80 @@ mySusu->oamIndex,				// Number of sprite
 
 	swiWaitForVBlank();
 }
+
+//----Vérifie si (px,py) se trouve sur le Susu
+int InSusuSurface(pSusu mySusu, u16 px, u16 py){
+
+
+
+	double a,b;
+	int r;
+	int result;
+
+	a= mySusu->x;
+	b= mySusu->y;
+	r= mySusu->rayon;
+
+	py=py+192;
+
+	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
+	{result=1;
+	return result;}
+
+	else { result=0;
+	return result;}
+}
+
+
+
+
+
+void SusuMove(pSusu mySusu){
+/* Tant que le stylet touche le susu ( à l'intérieur du cercle de rayon ___
+ * et de centre les coordonees du susu ) le susu tourne sur lui meme.
+ * sa vitesse augmente.
+ * quand le stylet ne touche plus le susu, la vitesse n'augmente plus , et le susu part avec
+ *  cette vitesse  dans la direction dans laquelle il regarde quand  on le lâche */
+
+
+int held, up;
+int result;
+
+
+scanKeys();
+
+held=keysHeld();
+up=keysUp();
+
+if(held & KEY_TOUCH)
+{
+		touchPosition pos;
+		touchRead(&pos);
+		result=InSusuSurface( mySusu, pos.px,  pos.py);
+		 if(result==1)
+		   {mySusu->v=0;
+
+		   SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
+		   }
+		 //SusuUpdate(mySusu);
+ }
+
+
+if(up & KEY_TOUCH)
+{
+
+mySusu->v=0.4 +mySusu->v_angle/500;
+mySusu->v_angle=0;
+
+
+}
+
+mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
+mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
+
+}
+
+
 
 void SusuMoveTest2(pSusu mySusu){
 	int keys;
@@ -220,7 +280,5 @@ void SusuMoveTest2(pSusu mySusu){
 
 	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
 	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
-
-
 };
 
