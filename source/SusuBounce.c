@@ -42,21 +42,21 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On etablit la conditions du rebond :
 
 	// mur gauche :
-	if(mySusu->x <= 0 + mySusu->rayon){
+	if(mySusu->x <= 0 + mySusu->diametre){
 		BounceSusu(mySusu, 90);
 	}
 	// mur droite :
-	if (mySusu->x >= 256 - mySusu->rayon) {
+	if (mySusu->x >= 256 - mySusu->diametre) {
 		BounceSusu(mySusu, 90);
 		//setSusuAngle(mySusu, ( 2*(int)mySusu->angle + 90)   );
 
 	}
 	// mur haut :
-	if (mySusu->y <= 0 + mySusu->rayon) {
+	if (mySusu->y <= 0 + mySusu->diametre) {
 		BounceSusu(mySusu,0);
 	}
 	// mur bas :
-	if ( mySusu->y >= 192*2 - mySusu->rayon){
+	if ( mySusu->y >= 192*2 - mySusu->diametre){
 		BounceSusu(mySusu, 0);
 	}
 
@@ -65,8 +65,8 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On va etablir les conditions du rebond
 	int alpha, x_c, y_c;
 	for(alpha = 0 ; alpha <= 100 ; alpha ++ ){
-		x_c = mySusu->rayon*cos(2*M_PI * ((double)alpha )/ 100);
-		y_c = - mySusu->rayon*sin(2*M_PI * ((double)alpha )/ 100 );
+		x_c = mySusu->diametre*cos(2*M_PI * ((double)alpha )/ 100);
+		y_c = - mySusu->diametre*sin(2*M_PI * ((double)alpha )/ 100 );
 
 		if ( myMapObstacle[(int)(mySusu->x+ x_c)][ (int)(mySusu->y + y_c)] != -1 ){
 			BounceSusu(mySusu,myMapObstacle[(int)x_c][(int)y_c]);

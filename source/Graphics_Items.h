@@ -29,11 +29,9 @@ typedef struct Item_struct {
 
 	double x,y ; // positions dans la matrice de pixel 256x(192*2)
 	double angle;
-	int size ; // Taille relative du susu : 5 -> taille normale, [0,10]-> ensemble des tailles
 
 	// Dynamique:
 	double v; // vitesse
-	//double v_angle ; // vitesse de rotation angulaire
 
 	// Gestion mémoire :
 	int oamIndex; //numero of sprite;

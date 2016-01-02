@@ -13,16 +13,19 @@
 void initSusu(pSusu mySusu){
 	mySusu->angle=0;
 	mySusu->orientation = 0;
-	mySusu->size=5;
-	mySusu->rayon = 32;
-	mySusu->v= 3;
+	mySusu->size=4;
+
+	mySusu->diametre = mySusu->liste_diametre[mySusu->size] ;
+
+	mySusu->v= 2;
 	mySusu->v_angle=150;
 	mySusu->x = 100;
 	mySusu->y = 200;
-	mySusu->oamIndex = 0;
+	mySusu->oamIndex = 4;
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->gfx_main = gfx_susu;
-	mySusu->gfx_sub = gfx_sub_susu;
+
+	mySusu->gfx_main = gfx_susu_main[4];
+	mySusu->gfx_sub = gfx_susu_sub[4];
 
 
 }
@@ -87,10 +90,10 @@ void SusuRotateToNewAngle(pSusu mySusu){
 
 	} else if (delta < - etha ){
 		if(delta < -32768/2){
-					mySusu->orientation += 200;
-				}else {
-					mySusu->orientation -= 200;
-				}
+			mySusu->orientation += 200;
+		}else {
+			mySusu->orientation -= 200;
+		}
 	} else {
 		mySusu->orientation = mySusu->angle;
 	}
@@ -99,35 +102,35 @@ void SusuRotateToNewAngle(pSusu mySusu){
 
 void SusuMoveTest(pSusu mySusu){
 	int keys;
- 	scanKeys();
+	scanKeys();
 
-    	keys = keysHeld();
+	keys = keysHeld();
 
 
 
-    	//Modify position of the sprite accordingly
-    	if(keys & KEY_RIGHT) mySusu->x +=2;
-    	if(keys & KEY_DOWN)  mySusu->y +=2;
-    	if(keys & KEY_LEFT) mySusu->x -=2;
-    	if(keys & KEY_UP)  mySusu->y -=2;
+	//Modify position of the sprite accordingly
+	if(keys & KEY_RIGHT) mySusu->x +=2;
+	if(keys & KEY_DOWN)  mySusu->y +=2;
+	if(keys & KEY_LEFT) mySusu->x -=2;
+	if(keys & KEY_UP)  mySusu->y -=2;
 }
 
 void SusuUpdate(pSusu mySusu){
 	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert a decaller la position du Susu
 	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
-	int halfwidth = 32;
+	int halfwidth = mySusu->diametre/2;
 
-// Dans l'écran MAIN  //
+	// Dans l'écran MAIN  //
 
 	//on affiche le Susu si :
 	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
 
-mySusu->oamIndex,			// Number of sprite
+				mySusu->oamIndex,			// Number of sprite
 				(int)mySusu->x - halfwidth ,(int)mySusu->y - halfwidth,			// Coordinates
 
 				0,				// Priority
-				0,				// Palette to use
+				mySusu->oamIndex,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				mySusu->gfx_main,			// Loaded graphic to display
@@ -137,27 +140,28 @@ mySusu->oamIndex,			// Number of sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+		// Update the angle of the Susu
+
 		oamRotateScale(&oamMain,0,mySusu->orientation,1 <<8, 1 <<8);
 	}
 	//sinon on le cache :
 	else {
 		oamSet(&oamMain, 	// oam handler
 
-						mySusu->oamIndex,		// Number of sprite
-						(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
+				mySusu->oamIndex,		// Number of sprite
+				(int)mySusu->x - halfwidth,(int)mySusu->y - halfwidth,			// Coordinates
 
-						0,				// Priority
-						0,				// Palette to use
-						SpriteSize_64x64,			// Sprite size
-						SpriteColorFormat_256Color,	// Color format
-						mySusu->gfx_main,			// Loaded graphic to display
-						0,				// Affine rotation to use (-1 none)
-						false,			// Double size if rotating
-						true,			// Hide this sprite    /!\ Susu caché !!!
-						false, false,	// Horizontal or vertical flip
-						false			// Mosaic
-				);
-		//oamSetHidden(&oamMain,0,true);
+				0,				// Priority
+				mySusu->oamIndex,				// Palette to use
+				SpriteSize_64x64,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				mySusu->gfx_main,			// Loaded graphic to display
+				0,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				true,			// Hide this sprite    /!\ Susu caché !!!
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
 
 
 
@@ -166,17 +170,17 @@ mySusu->oamIndex,			// Number of sprite
 
 
 
-// Dans l'écran SUB //
+	// Dans l'écran SUB //
 
 	//On affiche le  Susu si :
 	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
 
-mySusu->oamIndex,		// Number of sprite
+				mySusu->oamIndex,		// Number of sprite
 				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 
 				0,				// Priority
-				0,				// Palette to use
+				mySusu->oamIndex,				// Palette to use
 				SpriteSize_64x64,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				mySusu->gfx_sub,			// Loaded graphic to display
@@ -186,6 +190,7 @@ mySusu->oamIndex,		// Number of sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+		// Update the angle of the Susu
 		oamRotateScale(&oamSub,0,mySusu->orientation,1 <<8, 1 <<8);
 	}
 
@@ -193,27 +198,21 @@ mySusu->oamIndex,		// Number of sprite
 	else {
 		oamSet(&oamSub, 	// oam handler
 
-mySusu->oamIndex,				// Number of sprite
-						(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+				mySusu->oamIndex,				// Number of sprite
+				(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
 
-						0,				// Priority
-						0,				// Palette to use
-						SpriteSize_64x64,			// Sprite size
-						SpriteColorFormat_256Color,	// Color format
-						mySusu->gfx_sub,			// Loaded graphic to display
-						0,				// Affine rotation to use (-1 none)
-						false,			// Double size if rotating
-						true,			// Hide this sprite
-						false, false,	// Horizontal or vertical flip
-						false			// Mosaic
-				);
-		}
-
-
-
-
-
-	// Update the angle of the Susu
+				0,				// Priority
+				mySusu->oamIndex,				// Palette to use
+				SpriteSize_64x64,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				mySusu->gfx_sub,			// Loaded graphic to display
+				0,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				true,			// Hide this sprite
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
+	}
 
 	oamUpdate(&oamMain);
 	oamUpdate(&oamSub);
@@ -223,9 +222,9 @@ mySusu->oamIndex,				// Number of sprite
 
 void SusuMoveTest2(pSusu mySusu){
 	int keys;
-	 	scanKeys();
+	scanKeys();
 
-	    	keys = keysHeld();
+	keys = keysHeld();
 	if(keys & KEY_RIGHT) mySusu->angle-= 150;
 	if(keys & KEY_LEFT) mySusu->angle+= 150;
 	mySusu->angle =(int)mySusu->angle  %32768;

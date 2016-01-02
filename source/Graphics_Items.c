@@ -22,7 +22,7 @@ void initItems(pItem myItem){
 	for(i=0; i<15;i++)
 	{
 	myItem[i].v= 0;
-	myItem[i].oamIndex = i+1;
+	myItem[i].oamIndex = i+1; // Index OAM est incrémenté de 5 car on reserve la place pour les 5 susus de taille différentes
 
 	if(myItem[i].itemType==MUSHROOM) {myItem[i].gfx_main=gfx_mushroom;}
 	if(myItem[i].itemType==STAR) {myItem[i].gfx_main=gfx_star;}

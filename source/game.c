@@ -8,6 +8,8 @@
 #include <stdio.h>
 
 pSusu theSusu;
+
+pSusu listSusu[5];
 pItem Items[15];
 
 mapObstacle theMapObstacle;
