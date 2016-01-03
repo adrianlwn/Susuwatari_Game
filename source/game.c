@@ -7,6 +7,7 @@
 #include "game.h"
 #include <stdio.h>
 #include "Graphics_Susu.h"
+#include "Graphics_BG.h"
 
 pSusu theSusu;
 
@@ -17,6 +18,10 @@ mapObstacle theMapObstacle;
 int wow_counter,counter;
 
 void initGame(){
+	// LOAD GAME GRAPHICS
+	loadGraphics_Main();
+	loadGraphics_Sub();
+
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
@@ -51,12 +56,12 @@ void playGame(){
 
 	if (wow_counter == 200 || wow_counter == 400 || wow_counter == 600 || wow_counter == 800){
 
-			setSusuBigger(theSusu);
-		}
+		setSusuBigger(theSusu);
+	}
 	if (wow_counter == 1000 || wow_counter == 1200 || wow_counter == 1400 || wow_counter == 1600){
 
-				setSusuSmaller(theSusu);
-			}
+		setSusuSmaller(theSusu);
+	}
 
 
 

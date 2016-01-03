@@ -12,8 +12,6 @@ void init_NDS(){
 	configureGraphics_Main();
 	configureGraphics_Sub();
 
-	loadGraphics_Main();
-	loadGraphics_Sub();
 
 	configureSprite();
 
