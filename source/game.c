@@ -53,13 +53,13 @@ void playGame(){
 		if(Touched->itemType==STAR)
 			{ thePlayer->score++;
 			itemDisappear(Touched);
-			// StarScore(thePlayer);}
+			 StarScore(thePlayer);}
 
 		if(Touched->itemType==CLOVER)
 				{ setSusuBigger(theSusu);
 				itemDisappear(Touched);
 				  thePlayer->life++;
-				 // LifeScore(thePlayer);}
+				  LifeScore(thePlayer);}
 	}
 
 	SusuUpdate(theSusu);
@@ -76,7 +76,7 @@ for(i=0; i< sizeof(Items) ; i++)
 {
 	if( InSusuSurface(mySusu, Items[i]->x , Items[i]->y))
 	{
-	*Touched=*Items[i];
+	Touched=Items[i];
 	return 1;
 	}
  }
@@ -139,12 +139,12 @@ void StarScore(pPlayer myPlayer)
 	{
 		 oamSet( &oamSub, 	// oam handler
 				 				        i+1,				// Number of sprite
-				 						256-i*32- halfwidth , 192- halfwidth ,			// Coordinates
+				 						256-i*32- halfwidth , 2*192- halfwidth ,			// Coordinates
 				 						0,				// Priority
-				 						5,				// Palette to use
+				 						0+5,				// Palette to use
 				 						SpriteSize_32x32,			// Sprite size
 				 						SpriteColorFormat_256Color,	// Color format
-										gfx_star_sub,			// Loaded graphic to display
+										gfx_star,			// Loaded graphic to display
 				 						-1,				// Affine rotation to use (-1 none)
 				 						false,			// Double size if rotating
 				 						false,			// Hide this sprite
@@ -163,12 +163,12 @@ void LifeScore(pPlayer myPlayer)
 	{
 		 oamSet( &oamSub, 	// oam handler
 				 				        i+1+5,				// Number of sprite
-				 						0+i*32- halfwidth , 192- halfwidth ,			// Coordinates
+				 						0+i*32- halfwidth , 2*192- halfwidth ,			// Coordinates
 				 						0,				// Priority
-				 						6,				// Palette to use
+				 						1+5,				// Palette to use
 				 						SpriteSize_32x32,			// Sprite size
 				 						SpriteColorFormat_256Color,	// Color format
-										gfx_clover_sub,			// Loaded graphic to display
+										gfx_clover,			// Loaded graphic to display
 				 						-1,				// Affine rotation to use (-1 none)
 				 						false,			// Double size if rotating
 				 						false,			// Hide this sprite
