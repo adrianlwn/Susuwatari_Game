@@ -15,7 +15,7 @@ int result_touch;
 void initSusu(pSusu mySusu){
 
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->size=0;
+	mySusu->size=2;
 	mySusu->oamIndex = mySusu->size;
 
 	mySusu->gfx_main = gfx_susu_main[mySusu->size];

@@ -15,7 +15,6 @@
 #include "Graphics_SPRITE.h"
 
 
-
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
@@ -24,12 +23,12 @@ void initGame(){
 
 	initMapObstacle( theMapObstacle);
 
-	Items[0]= malloc(sizeof(Item));
+	//Items= malloc(15*sizeof(Item));
 
 
-	chooseItems (Items[0]);
-	initItems(Items[0]);
-	setItemsPosition( Items[0]);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
 	initPlayer(thePlayer);
@@ -41,17 +40,17 @@ void initGame(){
 
 void playGame(){
 
-
+	int indexTouched = 5;
 
 	SusuMove(theSusu);
 	BounceUpdate(theSusu, theMapObstacle);
-	int result=collision(theSusu, Items[0]);
+	indexTouched=collision();
 
-	if(result ==1 && Items[indexTouched]->hidden == 0)
+	if(indexTouched != -1 && Items[indexTouched]->hidden == 0)
 	{
 
 
-		if( Items[indexTouched]->itemType==MUSHROOM)
+		if( Items[indexTouched]->itemType == MUSHROOM)
 		{setSusuSmaller(theSusu);
 		itemDisappear(indexTouched);
 		thePlayer->life--;
@@ -60,14 +59,14 @@ void playGame(){
 		}
 
 
-		else if( Items[indexTouched]->itemType==STAR)
+		else if( Items[indexTouched]->itemType == STAR)
 		{ thePlayer->score++;
 		itemDisappear(indexTouched);
 		//StarScore(thePlayer);
 		}
 
 
-		else if( Items[indexTouched]->itemType==CLOVER)
+		else if( Items[indexTouched]->itemType == CLOVER)
 		{ setSusuBigger(theSusu);
 		itemDisappear(indexTouched);
 		thePlayer->life++;
@@ -79,7 +78,7 @@ void playGame(){
 
 	}
 
-	displayItems(Items[0]);
+	displayItems(Items);
 	SusuUpdate(theSusu);
 
 
@@ -87,18 +86,16 @@ void playGame(){
 
 
 
-int collision( pSusu mySusu, pItem myItem){
+int collision(){
 	int i;
-
-	for(i=0; i< 15 ; i++)
-	{
-		if( InSusuSurface(mySusu, (u16)myItem[i].x ,(u16)myItem[i].y)==1)
+	int indexTouched = -1;
+	for(i=0; i< 15 ; i++){
+		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1)
 		{
 			indexTouched=i;
-			return 1;
 		}
 	}
-	return 0;
+	return indexTouched;
 }
 
 
@@ -107,11 +104,7 @@ int collision( pSusu mySusu, pItem myItem){
 
 void itemDisappear(int indexTouched)
 {
-
-
-		Items[indexTouched]->hidden=1;
-
-
+	Items[indexTouched]->hidden=1;
 }
 
 void StarScore(pPlayer myPlayer)

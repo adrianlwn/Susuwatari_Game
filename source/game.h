@@ -19,10 +19,11 @@ typedef struct Player_struct {
 }Player, *pPlayer;
 
 pSusu theSusu;
-pSusu listSusu[5];
+
 
 pItem Items[15];
-int indexTouched;
+
+
 
 pPlayer thePlayer;
 
@@ -31,8 +32,8 @@ int wow_counter,counter;
 
 void initGame();
 void playGame();
-int collision( pSusu mySusu, pItem myItems);
-void itemDisappear(int indexTouched );
+int collision();
+void itemDisappear(int indexTouched);
 void initPlayer(pPlayer myPlayer);
 void LifeScore(pPlayer myPlayer);
 void StarScore(pPlayer myPlayer);
