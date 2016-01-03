@@ -260,9 +260,11 @@ void SusuUpdate(pSusu mySusu){
 //----Vérifie si (px,py) se trouve sur le Susu
 int InSusuSurface(pSusu mySusu, u16 px, u16 py){
 
+
+
 	double a,b;
 	int r;
-
+	int result;
 
 	a= mySusu->x;
 	b= mySusu->y;
@@ -270,11 +272,11 @@ int InSusuSurface(pSusu mySusu, u16 px, u16 py){
 
 
 	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
-	{
-	return 1;}
+	{result=1;
+	return result;}
 
-	else {
-	return 0;}
+	else { result=0;
+	return result;}
 }
 
 

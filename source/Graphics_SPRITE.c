@@ -7,15 +7,6 @@
 #include "Graphics_SPRITE.h"
 
 #include <nds.h>
-#include "Star.h"
-#include "Mushroom.h"
-#include  "Clover.h"
-
-#include "Susu24px.h"
-#include "Susu34px.h"
-#include "Susu44px.h"
-#include "Susu54px.h"
-#include "Susu64px.h"
 
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
@@ -94,11 +85,7 @@ void configureSprite(){
 	gfx_mushroom= oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_star = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 
-	gfx_clover_sub = oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);
-	gfx_mushroom_sub= oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);
-	gfx_star_sub = oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);
-
-	// VRAM F pour la palette des Items ( palette 5,6,7) dans le main
+	// VRAM F pour la palette des Items ( palette 5,6,7)
 	vramSetBankF(VRAM_F_LCD);
 
 	swiCopy(StarPal,  &VRAM_F_EXT_SPR_PALETTE[5], StarPalLen/2);
@@ -112,24 +99,9 @@ void configureSprite(){
 	swiCopy(MushroomPal,  &VRAM_F_EXT_SPR_PALETTE[7], MushroomPalLen/2);
 	swiCopy(MushroomTiles, gfx_mushroom, MushroomTilesLen/2);
 
+
+
 	// set vram to ex palette
 	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
 
-
-	// VRAM I pour la palette des Items ( palette 5,6,7) dans le sub
-	vramSetBankI(VRAM_I_LCD);
-
-	swiCopy(StarPal,  &VRAM_I_EXT_SPR_PALETTE[5], StarPalLen/2);
-	swiCopy(StarTiles, gfx_star_sub, StarTilesLen/2);
-
-
-	swiCopy(CloverPal,  &VRAM_I_EXT_SPR_PALETTE[6], CloverPalLen/2);
-	swiCopy(CloverTiles, gfx_clover_sub, CloverTilesLen/2);
-
-
-	swiCopy(MushroomPal,  &VRAM_I_EXT_SPR_PALETTE[7], MushroomPalLen/2);
-	swiCopy(MushroomTiles, gfx_mushroom_sub, MushroomTilesLen/2);
-
-	// set vram to ex palette
-	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 }

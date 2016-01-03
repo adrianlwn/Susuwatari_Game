@@ -37,8 +37,6 @@ typedef struct Item_struct {
 	int oamIndex; //numero of sprite;
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
 
-	int hidden; // variable bool caché=1/affiché =0;
-
 
 } Item, *pItem;
 
