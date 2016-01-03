@@ -22,8 +22,10 @@ void initGame(){
 
 
 	initMapObstacle( theMapObstacle);
-
-	//Items= malloc(15*sizeof(Item));
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
 	chooseItems (Items);
@@ -52,7 +54,7 @@ void playGame(){
 
 		if( Items[indexTouched]->itemType == MUSHROOM)
 		{setSusuSmaller(theSusu);
-		itemDisappear(indexTouched);
+		//itemDisappear(indexTouched);
 		thePlayer->life--;
 		//LifeScore(thePlayer);
 
@@ -72,9 +74,6 @@ void playGame(){
 		thePlayer->life++;
 		//LifeScore(thePlayer);
 		}
-
-
-
 
 	}
 
