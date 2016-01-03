@@ -22,7 +22,7 @@ pSusu theSusu;
 pSusu listSusu[5];
 
 pItem Items[15];
-pItem Touched;
+int indexTouched;
 
 pPlayer thePlayer;
 
@@ -31,7 +31,10 @@ int wow_counter,counter;
 
 void initGame();
 void playGame();
-int collision( pSusu mySusu, pItem Items[], pItem Touched);
-void itemDisappear(pItem Item );
+int collision( pSusu mySusu, pItem myItems);
+void itemDisappear(int indexTouched );
+void initPlayer(pPlayer myPlayer);
+void LifeScore(pPlayer myPlayer);
+void StarScore(pPlayer myPlayer);
 
 #endif /* GAME_H_ */

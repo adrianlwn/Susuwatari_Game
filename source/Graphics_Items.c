@@ -24,6 +24,8 @@ void initItems(pItem myItem){
 	myItem[i].v= 0;
 	myItem[i].oamIndex = i+5; // Index OAM est incrémenté de 5 car on reserve la place pour les 5 susus de taille différentes
 
+	myItem[i].hidden =0;
+
 	if(myItem[i].itemType==MUSHROOM) {myItem[i].gfx_main=gfx_mushroom;}
 	if(myItem[i].itemType==STAR) {myItem[i].gfx_main=gfx_star;}
     if(myItem[i].itemType==CLOVER) {myItem[i].gfx_main=gfx_clover;}
@@ -56,7 +58,7 @@ void displayItems(pItem myItem)
 								gfx_mushroom,			// Loaded graphic to display
 		 						-1,				// Affine rotation to use (-1 none)
 		 						false,			// Double size if rotating
-		 						false,			// Hide this sprite
+		 						myItem[i].hidden,			// Hide this sprite
 		 						false, false,	// Horizontal or vertical flip
 		 						false			// Mosaic
 		 				);
@@ -74,7 +76,7 @@ void displayItems(pItem myItem)
 						gfx_star,			// Loaded graphic to display
 						-1,				// Affine rotation to use (-1 none)
 						false,			// Double size if rotating
-						false,			// Hide this sprite
+						myItem[i].hidden,			// Hide this sprite
 						false, false,	// Horizontal or vertical flip
 						false			// Mosaic
 				);
@@ -92,7 +94,7 @@ void displayItems(pItem myItem)
 						    gfx_clover,			// Loaded graphic to display
 	 						-1,				// Affine rotation to use (-1 none)
 	 						false,			// Double size if rotating
-	 						false,			// Hide this sprite
+							myItem[i].hidden,				// Hide this sprite
 	 						false, false,	// Horizontal or vertical flip
 	 						false			// Mosaic
 	 				);
@@ -165,7 +167,7 @@ myItem[9].y=50;
 void chooseItems (pItem myItem){
 
 	int i;
-	for (i=0 ; i<=5 ; i=i+1)
+	for (i=0 ; i<5 ; i++)
 	{myItem[i].itemType=MUSHROOM;}
 
 	for (i=5 ; i<10 ; i++)
