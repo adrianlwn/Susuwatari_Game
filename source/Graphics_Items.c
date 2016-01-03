@@ -37,9 +37,9 @@ void displayItems(pItem myItem)
 
 	// C'est la moité de la longueur du coté du sprite Item. Dans la suite cela sert à décaller la position de l'Item
 	// de facon à ce que la coordonnée de l'Item corresponde au centre de celui-ci.
-	int halfwidth = 16
+	int halfwidth = 16;
 
-			;
+
 	int i;
 	for(i=0; i<15;i++)
 	{
@@ -56,7 +56,7 @@ void displayItems(pItem myItem)
 								gfx_mushroom,			// Loaded graphic to display
 		 						-1,				// Affine rotation to use (-1 none)
 		 						false,			// Double size if rotating
-		 						false,			// Hide this sprite
+		 						myItem[i].hidden,			// Hide this sprite
 		 						false, false,	// Horizontal or vertical flip
 		 						false			// Mosaic
 		 				);
@@ -74,7 +74,7 @@ void displayItems(pItem myItem)
 						gfx_star,			// Loaded graphic to display
 						-1,				// Affine rotation to use (-1 none)
 						false,			// Double size if rotating
-						false,			// Hide this sprite
+						myItem[i].hidden,		// Hide this sprite
 						false, false,	// Horizontal or vertical flip
 						false			// Mosaic
 				);
@@ -92,7 +92,7 @@ void displayItems(pItem myItem)
 						    gfx_clover,			// Loaded graphic to display
 	 						-1,				// Affine rotation to use (-1 none)
 	 						false,			// Double size if rotating
-	 						false,			// Hide this sprite
+							myItem[i].hidden,		// Hide this sprite
 	 						false, false,	// Horizontal or vertical flip
 	 						false			// Mosaic
 	 				);

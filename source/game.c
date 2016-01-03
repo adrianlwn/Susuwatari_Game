@@ -15,6 +15,14 @@
 #include "Graphics_SPRITE.h"
 
 
+void initPlayer(pPlayer myPlayer)
+{
+
+	myPlayer->life=5;
+	myPlayer->score=0;
+	//LifeScore( myPlayer);
+	//StarScore( myPlayer);
+}
 
 void initGame(){
 
@@ -25,6 +33,7 @@ void initGame(){
 	initMapObstacle( theMapObstacle);
 
 	Items[0]= malloc(sizeof(Item));
+	Touched= malloc(sizeof(Item));
 
 	chooseItems (Items[0]);
 	initItems(Items[0]);
@@ -40,27 +49,34 @@ void initGame(){
 
 void playGame(){
 
-
+	int* indexTouched;
 	SusuMove(theSusu);
 	BounceUpdate(theSusu, theMapObstacle);
 
-	if(collision(theSusu, Items, Touched)==1)
+	if(collision(theSusu, Items[0], Touched, indexTouched)==1)
 	{
 		if(Touched->itemType==MUSHROOM)
 		{ setSusuSmaller(theSusu);
-		  thePlayer->life--;}
+		  //thePlayer->life--;
+		}
 
 		if(Touched->itemType==STAR)
-			{ thePlayer->score++;
+			{ //thePlayer->score++;
 			itemDisappear(Touched);
-			 StarScore(thePlayer);}
+			 //StarScore(thePlayer);
+			}
 
 		if(Touched->itemType==CLOVER)
 				{ setSusuBigger(theSusu);
 				itemDisappear(Touched);
-				  thePlayer->life++;
-				  LifeScore(thePlayer);}
+				 // thePlayer->life++;
+				  //LifeScore(thePlayer);
+				}
+		//Items[*indexTouched]->hidden=1;
 	}
+
+	//Items[*indexTouched]->hidden=1;
+	//displayItems(Items[0]);
 
 	SusuUpdate(theSusu);
 
@@ -69,14 +85,15 @@ void playGame(){
 
 
 
-int collision( pSusu mySusu, pItem Items[], pItem Touched){
+int collision( pSusu mySusu, pItem myItem, pItem Touched,int* indexTouched){
 	int i;
 
 for(i=0; i< sizeof(Items) ; i++)
 {
-	if( InSusuSurface(mySusu, Items[i]->x , Items[i]->y))
+	if( InSusuSurface(mySusu, myItem[i].x , myItem[i].y))
 	{
-	Touched=Items[i];
+	*Touched=myItem[i];
+	*indexTouched=i;
 	return 1;
 	}
  }
@@ -89,6 +106,8 @@ return 0;
 
 void itemDisappear(pItem Item )
 {
+
+
 	int halfwidth=16;
 
 	 if(Item->itemType==STAR)
@@ -128,6 +147,7 @@ void itemDisappear(pItem Item )
 									);
 	 }
 
+
 }
 
 void StarScore(pPlayer myPlayer)
@@ -137,20 +157,20 @@ void StarScore(pPlayer myPlayer)
 
 	for(i=0; i< myPlayer->score; i++)
 	{
-		 oamSet( &oamSub, 	// oam handler
-				 				        i+1,				// Number of sprite
-				 						256-i*32- halfwidth , 2*192- halfwidth ,			// Coordinates
-				 						0,				// Priority
-				 						0+5,				// Palette to use
-				 						SpriteSize_32x32,			// Sprite size
-				 						SpriteColorFormat_256Color,	// Color format
-										gfx_star,			// Loaded graphic to display
-				 						-1,				// Affine rotation to use (-1 none)
-				 						false,			// Double size if rotating
-				 						false,			// Hide this sprite
-				 						false, false,	// Horizontal or vertical flip
-				 						false			// Mosaic
-										);
+		oamSet( &oamSub, 	// oam handler
+					i+5,				// Number of sprite
+					256-32-i*32- halfwidth ,192-32- halfwidth ,			// Coordinates
+					0,				// Priority
+					5,				// Palette to use
+					SpriteSize_32x32,			// Sprite size
+					SpriteColorFormat_256Color,	// Color format
+					gfx_star_sub,			// Loaded graphic to display
+					-1,				// Affine rotation to use (-1 none)
+					false,			// Double size if rotating
+					false,			// Hide this sprite
+					false, false,	// Horizontal or vertical flip
+					false			// Mosaic
+			);
 	}
 }
 
@@ -161,33 +181,26 @@ void LifeScore(pPlayer myPlayer)
 
 	for(i=0; i< myPlayer->life; i++)
 	{
-		 oamSet( &oamSub, 	// oam handler
-				 				        i+1+5,				// Number of sprite
-				 						0+i*32- halfwidth , 2*192- halfwidth ,			// Coordinates
-				 						0,				// Priority
-				 						1+5,				// Palette to use
-				 						SpriteSize_32x32,			// Sprite size
-				 						SpriteColorFormat_256Color,	// Color format
-										gfx_clover,			// Loaded graphic to display
-				 						-1,				// Affine rotation to use (-1 none)
-				 						false,			// Double size if rotating
-				 						false,			// Hide this sprite
-				 						false, false,	// Horizontal or vertical flip
-				 						false			// Mosaic
-										);
+		oamSet( &oamSub, 	// oam handler
+						i+5+5,				// Number of sprite
+						0+i*32- halfwidth , 192-32- halfwidth ,			// Coordinates
+						0,				// Priority
+						6,				// Palette to use
+						SpriteSize_32x32,			// Sprite size
+						SpriteColorFormat_256Color,	// Color format
+						gfx_clover_sub,			// Loaded graphic to display
+						-1,				// Affine rotation to use (-1 none)
+						false,			// Double size if rotating
+						false,			// Hide this sprite
+						false, false,	// Horizontal or vertical flip
+						false			// Mosaic
+						);
 	}
 }
 
 
-void initPlayer(pPlayer myPlayer){
-
-	myPlayer->life=5;
-	myPlayer->score=0;
-	LifeScore( myPlayer);
-	StarScore( myPlayer);
 
 
-}
 
 
 
