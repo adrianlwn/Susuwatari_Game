@@ -9,7 +9,6 @@
 
 state state_G = INIT;
 
-
 int run(){
 
 	while(1){
@@ -22,19 +21,14 @@ int run(){
 			break;
 
 		case INIT_MENU :
-			initMenu();
 			//interruptions_managment();
-			irqInit();
-			irqSet (IRQ_KEYS, &ISR_Keys_MENU);
-			irqEnable(IRQ_KEYS);
-			irqEnable(IRQ_VBLANK);
-
+			initMenu();
 			next_state();
 			break;
 
 		case MENU:
 			playMenu();
-
+			handlingKey();
 			break;
 
 		case INIT_GAME :
@@ -52,6 +46,7 @@ int run(){
 		default :
 			break;
 		}
+		swiWaitForVBlank();
 
 	}
 }
@@ -60,33 +55,13 @@ void next_state(){
 	state_G ++;
 }
 
-void ISR_Keys_MENU(){
-	u16 keys = ~(REG_KEYINPUT);
+void handlingMenuKey(){
+	scanKeys();
 
+	u16 keys = keysDown();
 	if (keys & KEY_START){
-
-		irqDisable(IRQ_KEYS);
-		next_state();
-	}
-}
-
-
-void interruptions_managment (){
-	switch (state_G) {
-	case INIT_MENU :
-		irqInit();
-		irqSet (IRQ_KEYS, &ISR_Keys_MENU);
-		irqEnable(IRQ_KEYS);
-		irqEnable(IRQ_VBLANK);
 		next_state();
 
-		break;
-	case PLAY_GAME :
-
-		break;
-	default :
-		break;
 	}
 }
-
 

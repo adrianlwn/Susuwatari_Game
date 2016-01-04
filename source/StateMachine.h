@@ -7,7 +7,7 @@
 
 #ifndef SOURCE_STATEMACHINE_H_
 #define SOURCE_STATEMACHINE_H_
-
+#include <nds.h>
 #include "init.h"
 #include "Graphics_SPRITE.h"
 #include "game.h"
@@ -24,15 +24,11 @@ typedef enum {
 
 
 int run();
+int level_list[8];
 void next_state();
-// --- INTERUPTIONS
-void interruptions_managment();
-// Timer interruptions handler
-void ISR_Timer0();
-// Key interuptions handler
 
-void ISR_Keys_MENU();
-void ISR_KEYS_GAME();
+void handlingMenuKey();
+
 
 
 #endif /* SOURCE_STATEMACHINE_H_ */

@@ -254,7 +254,6 @@ void SusuUpdate(pSusu mySusu){
 	oamUpdate(&oamMain);
 	oamUpdate(&oamSub);
 
-	swiWaitForVBlank();
 }
 
 //----Vérifie si (px,py) se trouve sur le Susu
