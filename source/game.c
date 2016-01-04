@@ -59,9 +59,9 @@ void playGame(){
 		{
 			setSusuSmaller(theSusu);
 
-		//itemDisappear(indexTouched);
-		thePlayer->life--;
-		//LifeScore(thePlayer);
+			itemDisappear(indexTouched);
+			thePlayer->life--;
+			//LifeScore(thePlayer);
 
 		}
 
