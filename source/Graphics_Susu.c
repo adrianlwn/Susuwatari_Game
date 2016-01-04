@@ -10,12 +10,10 @@
 #include "Graphics_SPRITE.h"
 #include "Susu.h"
 
-int result_touch;
-
 void initSusu(pSusu mySusu){
 
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->size=0;
+	mySusu->size=4;
 	mySusu->oamIndex = mySusu->size;
 
 	mySusu->gfx_main = gfx_susu_main[mySusu->size];
@@ -33,12 +31,14 @@ void initSusu(pSusu mySusu){
 	mySusu->angle=0;
 	mySusu->orientation = 0;
 
-	mySusu->v= 0;
+
 	mySusu->v_angle=150;
 	mySusu->a_angle=2;
 
 	mySusu->x = 100;
 	mySusu->y = 250;
+	mySusu->v= 0;
+	mySusu->a = -0.005;
 
 
 }
@@ -96,6 +96,7 @@ void setSusuSmaller(pSusu mySusu){
 
 	}
 }
+
 
 void SusuRotate(pSusu mySusu,int ON){
 
@@ -260,28 +261,25 @@ void SusuUpdate(pSusu mySusu){
 //----Vérifie si (px,py) se trouve sur le Susu
 int InSusuSurface(pSusu mySusu, u16 px, u16 py){
 
-
-
 	double a,b;
 	int r;
-	int result;
+
 
 	a= mySusu->x;
 	b= mySusu->y;
 	r= mySusu->rayon;
 
-	py=py+192;
 
 	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
-	{result=1;
-	return result;}
+	{
+		return 1;}
 
-	else { result=0;
-	return result;}
+	else {
+		return 0;}
 }
 
-
-
+// Initialisation de l'etat du touch screen.
+TouchState myTouchState = NOT_TOUCHED;
 
 
 void SusuMove(pSusu mySusu){
@@ -291,55 +289,56 @@ void SusuMove(pSusu mySusu){
 	 * quand le stylet ne touche plus le susu, la vitesse n'augmente plus , et le susu part avec
 	 *  cette vitesse  dans la direction dans laquelle il regarde quand  on le lâche */
 
+	int touch_inside =0 ;
+	int held =0, up=0 , down =0;
 
-	int held, up;
-
-
+	// On scanne la position du Susu et on enregistre l'etat du touch screen
 	scanKeys();
-
+	touchPosition pos;
+	touchRead(&pos);
 	held=keysHeld();
+	down = keysDown();
 	up=keysUp();
 
-	if(held & KEY_TOUCH)
-	{
-		touchPosition pos;
-		touchRead(&pos);
-		result_touch=InSusuSurface( mySusu, pos.px,  pos.py);
-		if(result_touch==1)
-		{mySusu->v=0;
+	// On verifie si la position du touch screen est dans la surface du Susu
+	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py + 192);
+
+	//Petite machine d'etat fini régissant le comportement en fonction de la position et de l'etat actuel.
+	switch (myTouchState) {
+	case NOT_TOUCHED: // Cas ou le Susu n'est pas touché
+		//mySusu->v = abs(mySusu->v + mySusu->a);
+		if(touch_inside == 1 && (down & KEY_TOUCH)){
+			myTouchState = TOUCHING;
+		}
+
+		break;
+	case TOUCHING : // Action a entreprendre au moment ou le Susu est touché.
+		mySusu->v=0;
+		mySusu->v_angle = 30;
+		myTouchState = TOUCHED;
+		break;
+
+	case TOUCHED : // Cas ou le Susu est touché.
 
 		SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
+		if ((touch_inside == 0 && (held & KEY_TOUCH) ) || (up & KEY_TOUCH) ){
+			myTouchState = RELEASING;
 		}
-		//SusuUpdate(mySusu);
-	}
+		break;
 
-
-	if((up & KEY_TOUCH) && result_touch)
-	{
-
-		mySusu->v=0.4 +mySusu->v_angle/500;
+	case RELEASING : // Actions à entreprendre au moment ou le Susu est laché, ou quand le stylet sort de celui-ci
+		mySusu->v=1 +mySusu->v_angle/300;
 		mySusu->v_angle=0;
-		result_touch =0;
+		myTouchState = NOT_TOUCHED;
+		break;
 
-
+	default:
+		myTouchState = NOT_TOUCHED;
+		break;
 	}
 
 	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
 	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
 
 }
-
-
-
-void SusuMoveTest2(pSusu mySusu){
-	int keys;
-	scanKeys();
-
-	keys = keysHeld();
-	if(keys & KEY_RIGHT) mySusu->angle-= 150;
-	if(keys & KEY_LEFT) mySusu->angle+= 150;
-	mySusu->angle =(int)mySusu->angle  %32768;
-	mySusu->x += mySusu->v*cos(2*M_PI*mySusu->angle/32768)  ;
-	mySusu->y -= mySusu->v*sin(2*M_PI*mySusu->angle/32768)  ;
-};
 

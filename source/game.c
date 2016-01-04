@@ -6,59 +6,174 @@
  */
 #include "game.h"
 #include <stdio.h>
+#include <nds.h>
 #include "Graphics_Susu.h"
+#include "Graphics_Items.h"
+#include "Star.h"
+#include "Mushroom.h"
+#include  "Clover.h"
+#include "Graphics_SPRITE.h"
 
-pSusu theSusu;
-
-pSusu listSusu[5];
-pItem Items[15];
-
-mapObstacle theMapObstacle;
-int wow_counter,counter;
 
 void initGame(){
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-	//setSusuAngle(theSusu,45);
 
 
 	initMapObstacle( theMapObstacle);
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
-	Items[0]= malloc(sizeof(Item));
 
-	chooseItems (Items[0]);
-	initItems(Items[0]);
-	setItemsPosition( Items[0]);
-	displayItems(Items[0]);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
+
+
+	initPlayer(thePlayer);
 
 	counter = 0;
 
 
 }
 
+int previousIndexTouched, indexTouched;
+
 void playGame(){
 
 
-	wow_counter ++;
 	SusuMove(theSusu);
-	//SusuMoveTest2(theSusu);
-
-
 	BounceUpdate(theSusu, theMapObstacle);
+	previousIndexTouched = indexTouched;
+	indexTouched=collision();
+
+
+	if(indexTouched != -1 && Items[indexTouched]->hidden == 0 && previousIndexTouched != indexTouched)
+	{
+
+
+		if( Items[indexTouched]->itemType == MUSHROOM)
+		{
+			setSusuSmaller(theSusu);
+
+			itemDisappear(indexTouched);
+			thePlayer->life--;
+			//LifeScore(thePlayer);
+
+		}
+
+
+		else if( Items[indexTouched]->itemType == STAR)
+		{ thePlayer->score++;
+		itemDisappear(indexTouched);
+		//StarScore(thePlayer);
+
+
+		}
+
+
+		else if( Items[indexTouched]->itemType == CLOVER)
+		{ setSusuBigger(theSusu);
+		itemDisappear(indexTouched);
+		thePlayer->life++;
+		//LifeScore(thePlayer);
+
+
+		}
+
+	}
+
+	displayItems(Items);
 	SusuUpdate(theSusu);
 
 
-	if (wow_counter == 200 || wow_counter == 400 || wow_counter == 600 || wow_counter == 800){
+}
 
-			setSusuBigger(theSusu);
+
+
+int collision(){
+	int i;
+	int indexTouched = -1;
+	for(i=0; i< 15 ; i++){
+		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1)
+		{
+			indexTouched=i;
 		}
-	if (wow_counter == 1000 || wow_counter == 1200 || wow_counter == 1400 || wow_counter == 1600){
+	}
+	return indexTouched;
+}
 
-				setSusuSmaller(theSusu);
-			}
 
 
+
+
+void itemDisappear(int indexTouched)
+{
+	Items[indexTouched]->hidden=1;
+}
+
+void StarScore(pPlayer myPlayer)
+{
+	int i;
+	int halfwidth=16;
+
+	for(i=0; i< myPlayer->score; i++)
+	{
+		//tiles ?
+		oamSet( &oamSub, 	// oam handler
+				i+5,				// Number of sprite
+				256-32-i*32- halfwidth ,192-32- halfwidth ,			// Coordinates
+				0,				// Priority
+				5,				// Palette to use
+				SpriteSize_32x32,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				gfx_star_sub,			// Loaded graphic to display
+				-1,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				false,			// Hide this sprite
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
+	}
+}
+
+void LifeScore(pPlayer myPlayer)
+{
+	int i;
+	int halfwidth=16;
+
+	for(i=0; i< myPlayer->life; i++)
+	{
+		oamSet( &oamSub, 	// oam handler
+				i+5+5,				// Number of sprite
+				0+i*32- halfwidth , 192-32- halfwidth ,			// Coordinates
+				0,				// Priority
+				6,				// Palette to use
+				SpriteSize_32x32,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				gfx_clover_sub,			// Loaded graphic to display
+				-1,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				false,			// Hide this sprite
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
+	}
+}
+
+
+void initPlayer(pPlayer myPlayer){
+
+	myPlayer->life=5;
+	myPlayer->score=0;
+	LifeScore( myPlayer);
+	StarScore( myPlayer);
 
 
 }
+
+
+

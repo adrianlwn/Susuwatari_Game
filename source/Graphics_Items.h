@@ -38,18 +38,22 @@ typedef struct Item_struct {
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
 
 
+	int hidden; // variable bool caché=1/affiché =0;
+
+
+
 } Item, *pItem;
 
 
 //---- Initialisation des propriétés de l'item,  placement tile et palette de l'item dans la mémoire (swicopy)
-void initItems(pItem myItem);
+void initItems(pItem myItem[]);
 
 //---- Changer la position des Items
-void setItemsPosition(pItem myItem);
+void setItemsPosition(pItem myItem[]);
 
-void displayItems(pItem myItem);
+void displayItems(pItem myItem[]);
 
-void chooseItems (pItem myItem);
+void chooseItems (pItem myItem[]);
 
 
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */
