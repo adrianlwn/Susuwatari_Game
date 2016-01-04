@@ -29,6 +29,7 @@ typedef struct Susu_struct {
 	// Dynamique
 
 	double v; // vitesse
+	double a; // acceleration (ou deceleration)
 	double v_angle ; // vitesse de rotation angulaire
 	double a_angle; //accélération angulaire
 
@@ -39,6 +40,15 @@ typedef struct Susu_struct {
 
 
 } Susu, *pSusu;
+
+typedef enum TouchState {
+	NOT_TOUCHED,
+	TOUCHING,
+	TOUCHED,
+	RELEASING,
+
+
+} TouchState;
 
 double deg2oamAngle(double angle);
 double oamAngle2deg(double angle);

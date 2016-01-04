@@ -28,7 +28,7 @@ int run(){
 
 		case MENU:
 			playMenu();
-			handlingKey();
+			handlingMenuKey();
 			break;
 
 		case INIT_GAME :
