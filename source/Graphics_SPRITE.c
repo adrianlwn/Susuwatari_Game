@@ -17,18 +17,22 @@
 #include "Susu54px.h"
 #include "Susu64px.h"
 
+#include "MENU_CADRE.h"
+
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
 
-
-void configureSprite(){
-
+void initSprite(){
 	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE;
 	VRAM_D_CR = VRAM_ENABLE | VRAM_D_SUB_SPRITE;
 
 	// initialisation des deux ecrans pour les sprites. On a activé le extended palette.
 	oamInit(&oamMain, SpriteMapping_1D_128,true);
 	oamInit(&oamSub, SpriteMapping_1D_128,true);
+}
+void configureSprite(){
+
+
 
 
 
@@ -132,4 +136,25 @@ void configureSprite(){
 
 	// set vram to ex palette
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+
+
+
+
+
+
+}
+
+void configureSpriteMenu(){
+	// Configure Sprites of the Menu :
+
+	gfx_cadre_menu = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_CADREPal,  &VRAM_I_EXT_SPR_PALETTE[0], MENU_CADREPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_CADRETiles, gfx_cadre_menu, MENU_CADRETilesLen/2);
 }

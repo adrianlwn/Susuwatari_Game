@@ -12,7 +12,7 @@ void init_NDS(){
 	configureGraphics_Main();
 	configureGraphics_Sub();
 
+	initSprite();
 
-	configureSprite();
 
 }

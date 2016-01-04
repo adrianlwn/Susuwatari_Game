@@ -9,9 +9,15 @@
 #define MENU_H_
 #include <nds.h>
 #include "Graphics_BG.h"
+#include "Graphics_SPRITE.h"
+
+
+// Level Selected : from 1 to 8
+int levelSelected;
 
 void initMenu();
-int playMenu();
+void playMenu();
+void updateMenu();
 
 
 #endif /* MENU_H_ */

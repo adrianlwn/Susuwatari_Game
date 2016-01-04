@@ -23,6 +23,7 @@ int run(){
 		case INIT_MENU :
 			//interruptions_managment();
 			initMenu();
+			configureSpriteMenu();
 			next_state();
 			break;
 
@@ -32,6 +33,7 @@ int run(){
 			break;
 
 		case INIT_GAME :
+			configureSprite();
 			initGame();
 			next_state();
 			break;
@@ -60,8 +62,21 @@ void handlingMenuKey(){
 
 	u16 keys = keysDown();
 	if (keys & KEY_START){
+		oamAllocReset(&oamSub);
 		next_state();
 
 	}
+
+	if ((keys & KEY_RIGHT) && levelSelected <8){
+
+		levelSelected++;
+	}
+	if ((keys & KEY_LEFT) && levelSelected >1){
+		levelSelected--;
+
+		}
+
 }
+
+
 
