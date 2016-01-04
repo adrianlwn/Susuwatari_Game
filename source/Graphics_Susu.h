@@ -29,6 +29,7 @@ typedef struct Susu_struct {
 	// Dynamique
 
 	double v; // vitesse
+	double a; // acceleration (ou deceleration)
 	double v_angle ; // vitesse de rotation angulaire
 	double a_angle; //accélération angulaire
 

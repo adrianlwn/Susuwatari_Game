@@ -40,20 +40,26 @@ void initGame(){
 
 }
 
+int previousIndexTouched;
+
 void playGame(){
 
 	int indexTouched = 5;
 
 	SusuMove(theSusu);
 	BounceUpdate(theSusu, theMapObstacle);
+	previousIndexTouched = indexTouched;
 	indexTouched=collision();
 
-	if(indexTouched != -1 && Items[indexTouched]->hidden == 0)
+
+	if(indexTouched != -1 && Items[indexTouched]->hidden == 0 && previousIndexTouched != indexTouched)
 	{
 
 
 		if( Items[indexTouched]->itemType == MUSHROOM)
-		{setSusuSmaller(theSusu);
+		{
+			setSusuSmaller(theSusu);
+
 		//itemDisappear(indexTouched);
 		thePlayer->life--;
 		//LifeScore(thePlayer);
@@ -65,6 +71,8 @@ void playGame(){
 		{ thePlayer->score++;
 		itemDisappear(indexTouched);
 		//StarScore(thePlayer);
+
+
 		}
 
 
@@ -73,6 +81,8 @@ void playGame(){
 		itemDisappear(indexTouched);
 		thePlayer->life++;
 		//LifeScore(thePlayer);
+
+
 		}
 
 	}
