@@ -40,6 +40,15 @@ typedef struct Susu_struct {
 
 } Susu, *pSusu;
 
+typedef enum TouchState {
+	NOT_TOUCHED,
+	TOUCHING,
+	TOUCHED,
+	RELEASING,
+
+
+} TouchState;
+
 double deg2oamAngle(double angle);
 double oamAngle2deg(double angle);
 
