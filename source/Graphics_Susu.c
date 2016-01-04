@@ -287,42 +287,47 @@ void SusuMove(pSusu mySusu){
 	 *  cette vitesse  dans la direction dans laquelle il regarde quand  on le lâche */
 
 	int touch_inside =0 ;
-	int held, up , down;
+	int held =0, up=0 , down =0;
 
-
+	// On scanne la position du Susu et on enregistre l'etat du touch screen
 	scanKeys();
-
+	touchPosition pos;
+	touchRead(&pos);
 	held=keysHeld();
 	down = keysDown();
 	up=keysUp();
 
-	touchPosition pos;
-	touchRead(&pos);
+	// On verifie si la position du touch screen est dans la surface du Susu
 	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py + 192);
 
+	//Petite machine d'etat fini régissant le comportement en fonction de la position et de l'etat actuel.
 	switch (myTouchState) {
-	case NOT_TOUCHED:
+	case NOT_TOUCHED: // Cas ou le Susu n'est pas touché
 		if(touch_inside == 1 && (down & KEY_TOUCH)){
 			myTouchState = TOUCHING;
 		}
 
 		break;
-	case TOUCHING :
+	case TOUCHING : // Action a entreprendre au moment ou le Susu est touché.
 		mySusu->v=0;
+		mySusu->v_angle = 30;
 		myTouchState = TOUCHED;
 		break;
-	case TOUCHED :
+
+	case TOUCHED : // Cas ou le Susu est touché.
 
 		SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
 		if ((touch_inside == 0 && (held & KEY_TOUCH) ) || (up & KEY_TOUCH) ){
 			myTouchState = RELEASING;
 		}
 		break;
-	case RELEASING :
+
+	case RELEASING : // Actions à entreprendre au moment ou le Susu est laché, ou quand le stylet sort de celui-ci
 		mySusu->v=0.4 +mySusu->v_angle/500;
 		mySusu->v_angle=0;
 		myTouchState = NOT_TOUCHED;
 		break;
+
 	default:
 		myTouchState = NOT_TOUCHED;
 		break;
