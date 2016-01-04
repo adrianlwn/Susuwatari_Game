@@ -40,11 +40,10 @@ void initGame(){
 
 }
 
-int previousIndexTouched;
+int previousIndexTouched, indexTouched;
 
 void playGame(){
 
-	int indexTouched = 5;
 
 	SusuMove(theSusu);
 	BounceUpdate(theSusu, theMapObstacle);

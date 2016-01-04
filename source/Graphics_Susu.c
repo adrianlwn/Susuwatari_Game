@@ -13,7 +13,7 @@
 void initSusu(pSusu mySusu){
 
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->size=2;
+	mySusu->size=4;
 	mySusu->oamIndex = mySusu->size;
 
 	mySusu->gfx_main = gfx_susu_main[mySusu->size];
