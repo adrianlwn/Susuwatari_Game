@@ -13,7 +13,7 @@
 void initSusu(pSusu mySusu){
 
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->size=4;
+	mySusu->size=0;
 	mySusu->oamIndex = mySusu->size;
 
 	mySusu->gfx_main = gfx_susu_main[mySusu->size];
@@ -70,15 +70,28 @@ void setSusuBigger(pSusu mySusu){
 
 	if (mySusu->size < 4) {
 
-		mySusu->size++;
-		mySusu->oamIndex = mySusu->size;
+		mySusu->size++; // Augmenter la taille
+		mySusu->oamIndex = mySusu->size; // Changer l'index OAM
 
-		mySusu->gfx_main = gfx_susu_main[mySusu->size];
+		mySusu->gfx_main = gfx_susu_main[mySusu->size]; // On associe l'adresse memoire correspondante
 		mySusu->gfx_sub = gfx_susu_sub[mySusu->size];
 
-		mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
+		mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ; // Nouveau rayon
 
+		// Maintenant on déplace le Susu si il grandit trop pres du bord (en effet il est bloqué dans ce cas)
+		if (mySusu->x - mySusu->rayon < 0  ){
+			mySusu->x = mySusu->rayon;
+		}
+		if (mySusu->x + mySusu->rayon > 256  ){
+			mySusu->x = 256 - mySusu->rayon;
+		}
 
+		if (mySusu->y - mySusu->rayon < 0  ){
+			mySusu->y = mySusu->rayon;
+		}
+		if (mySusu->y + mySusu->rayon > 2*192  ){
+			mySusu->y = 2*192 - mySusu->rayon;
+		}
 	}
 
 

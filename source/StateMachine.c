@@ -75,6 +75,17 @@ void handlingMenuKey(){
 		levelSelected--;
 
 		}
+	if ((keys & KEY_UP) && levelSelected > 4){
+		levelSelected -= 4;
+	}
+
+	if ((keys & KEY_DOWN) && levelSelected < 5){
+			levelSelected += 4;
+		}
+	if (keys & KEY_A){
+		next_state();
+
+	}
 
 }
 
