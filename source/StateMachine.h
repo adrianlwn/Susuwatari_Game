@@ -13,7 +13,7 @@
 #include "game.h"
 #include "menu.h"
 
-typedef enum {
+typedef enum etat{
 		INIT,
 		INIT_MENU,
 		MENU,

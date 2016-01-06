@@ -30,6 +30,11 @@ u16 * gfx_clover_sub;
 u16 * gfx_mushroom_sub;
 
 u16* gfx_cadre_menu;
+u16* gfx_heart_menu;
+u16* gfx_heart_creux_menu;
+u16* gfx_lock_menu;
+
+
 void initSprite();
 void configureSprite();
 void configureSpriteMenu();

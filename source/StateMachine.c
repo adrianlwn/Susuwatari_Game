@@ -29,7 +29,6 @@ int run(){
 
 		case MENU:
 			playMenu();
-			handlingMenuKey();
 			break;
 
 		case INIT_GAME :
@@ -57,37 +56,6 @@ void next_state(){
 	state_G ++;
 }
 
-void handlingMenuKey(){
-	scanKeys();
-
-	u16 keys = keysDown();
-	if (keys & KEY_START){
-		oamAllocReset(&oamSub);
-		next_state();
-
-	}
-
-	if ((keys & KEY_RIGHT) && levelSelected <8){
-
-		levelSelected++;
-	}
-	if ((keys & KEY_LEFT) && levelSelected >1){
-		levelSelected--;
-
-		}
-	if ((keys & KEY_UP) && levelSelected > 4){
-		levelSelected -= 4;
-	}
-
-	if ((keys & KEY_DOWN) && levelSelected < 5){
-			levelSelected += 4;
-		}
-	if (keys & KEY_A){
-		next_state();
-
-	}
-
-}
 
 
 

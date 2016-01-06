@@ -18,6 +18,9 @@
 #include "Susu64px.h"
 
 #include "MENU_CADRE.h"
+#include "MENU_lock.h"
+#include "MENU_heart.h"
+#include "MENU_heart_creux.h"
 
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
@@ -147,6 +150,7 @@ void configureSprite(){
 
 void configureSpriteMenu(){
 	// Configure Sprites of the Menu :
+	// --------CADRE
 
 	gfx_cadre_menu = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
 
@@ -157,4 +161,43 @@ void configureSpriteMenu(){
 
 	// Tiles :
 	swiCopy(MENU_CADRETiles, gfx_cadre_menu, MENU_CADRETilesLen/2);
+
+
+	// ---------LOCK
+	gfx_lock_menu = oamAllocateGfx(&oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_lockPal,  &VRAM_I_EXT_SPR_PALETTE[1], MENU_lockPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_lockTiles, gfx_lock_menu, MENU_lockTilesLen/2);
+
+
+	// --------COEUR
+	gfx_heart_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_heartPal,  &VRAM_I_EXT_SPR_PALETTE[2], MENU_heartPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
+
+	// --------COEUR Creux
+	gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+		// Palette :
+		vramSetBankI(VRAM_I_LCD);
+		swiCopy(MENU_heart_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[3], MENU_heart_creuxPalLen/2);
+		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+		// Tiles :
+		swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_menu, MENU_heart_creuxTilesLen/2);
+
+
+
+
 }
