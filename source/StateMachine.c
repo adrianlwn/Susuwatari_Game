@@ -7,46 +7,55 @@
 
 #include "StateMachine.h"
 
-
-	typedef enum {
-		INIT,
-		MENU,
-		INIT_GAME,
-		PLAY_GAME,
-		END
-	} state ;
+state state_G = INIT;
 
 int run(){
-	state state_G = INIT;
-
 
 	while(1){
 
 		switch (state_G) {
+
 		case INIT :
 			init_NDS();
-
-			state_G = MENU;
+			next_state();
 			break;
+
+		case INIT_MENU :
+			//interruptions_managment();
+			initMenu();
+			configureSpriteMenu();
+			next_state();
+			break;
+
 		case MENU:
+			playMenu();
+			break;
 
-			state_G = INIT_GAME;
-			break;
 		case INIT_GAME :
+			configureSprite();
 			initGame();
-			state_G = PLAY_GAME;
+			next_state();
 			break;
+
 		case PLAY_GAME:
 			playGame();
-			//state_G = END;
-			break;
-		case END :
 
+			break;
+
+		case END :
 			break;
 		default :
 			break;
 		}
+		swiWaitForVBlank();
 
 	}
 }
+
+void next_state(){
+	state_G ++;
+}
+
+
+
 

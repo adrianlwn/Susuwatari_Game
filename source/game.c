@@ -8,14 +8,21 @@
 #include <stdio.h>
 #include <nds.h>
 #include "Graphics_Susu.h"
+#include "Graphics_BG.h"
 #include "Graphics_Items.h"
+
 #include "Star.h"
 #include "Mushroom.h"
 #include  "Clover.h"
 #include "Graphics_SPRITE.h"
 
 
+
 void initGame(){
+	// LOAD GAME GRAPHICS
+	loadGraphics_Main();
+	loadGraphics_Sub();
+
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
@@ -91,6 +98,7 @@ void playGame(){
 
 
 }
+
 
 
 

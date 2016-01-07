@@ -17,18 +17,25 @@
 #include "Susu54px.h"
 #include "Susu64px.h"
 
+#include "MENU_CADRE.h"
+#include "MENU_lock.h"
+#include "MENU_heart.h"
+#include "MENU_heart_creux.h"
+
 #define	SPRITE_WIDTH	64
 #define	SPRITE_HEIGHT	64
 
-
-void configureSprite(){
-
+void initSprite(){
 	VRAM_B_CR = VRAM_ENABLE | VRAM_B_MAIN_SPRITE;
 	VRAM_D_CR = VRAM_ENABLE | VRAM_D_SUB_SPRITE;
 
 	// initialisation des deux ecrans pour les sprites. On a activé le extended palette.
 	oamInit(&oamMain, SpriteMapping_1D_128,true);
 	oamInit(&oamSub, SpriteMapping_1D_128,true);
+}
+void configureSprite(){
+
+
 
 
 
@@ -132,4 +139,65 @@ void configureSprite(){
 
 	// set vram to ex palette
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+
+
+
+
+
+
+}
+
+void configureSpriteMenu(){
+	// Configure Sprites of the Menu :
+	// --------CADRE
+
+	gfx_cadre_menu = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_CADREPal,  &VRAM_I_EXT_SPR_PALETTE[0], MENU_CADREPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_CADRETiles, gfx_cadre_menu, MENU_CADRETilesLen/2);
+
+
+	// ---------LOCK
+	gfx_lock_menu = oamAllocateGfx(&oamSub, SpriteSize_16x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_lockPal,  &VRAM_I_EXT_SPR_PALETTE[1], MENU_lockPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_lockTiles, gfx_lock_menu, MENU_lockTilesLen/2);
+
+
+	// --------COEUR
+	gfx_heart_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_heartPal,  &VRAM_I_EXT_SPR_PALETTE[2], MENU_heartPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
+
+	// --------COEUR Creux
+	gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+		// Palette :
+		vramSetBankI(VRAM_I_LCD);
+		swiCopy(MENU_heart_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[3], MENU_heart_creuxPalLen/2);
+		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+		// Tiles :
+		swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_menu, MENU_heart_creuxTilesLen/2);
+
+
+
+
 }

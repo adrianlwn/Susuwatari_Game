@@ -8,6 +8,8 @@
 
 #include "BG_main.h"
 #include  "BG_sub.h"
+#include "MENU_main.h"
+#include "MENU_BG_sub.h"
 
 void configureGraphics_Main(){
 	//Enable a proper RAM memory bank for the main engine
@@ -39,6 +41,8 @@ void loadGraphics_Main(){
 	dmaCopy(BG_mainPal,BG_PALETTE,BG_mainPalLen);
 
 }
+
+
 void loadGraphics_Sub(){
 	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
 	dmaCopy(BG_subTiles ,BG_TILE_RAM_SUB(1) , BG_subTilesLen );
@@ -47,3 +51,18 @@ void loadGraphics_Sub(){
 
 
 }
+
+void loadGraphics_Menu(){
+
+	BGCTRL[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(MENU_mainTiles,BG_TILE_RAM(1),MENU_mainTilesLen);
+	dmaCopy(MENU_mainMap,BG_MAP_RAM(0),MENU_mainMapLen);
+	dmaCopy(MENU_mainPal,BG_PALETTE,MENU_mainPalLen);
+
+	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(MENU_BG_subTiles ,BG_TILE_RAM_SUB(1) , MENU_BG_subTilesLen );
+	dmaCopy(MENU_BG_subMap,BG_MAP_RAM_SUB(0),MENU_BG_subMapLen);
+	dmaCopy(MENU_BG_subPal,BG_PALETTE_SUB,MENU_BG_subPalLen);
+
+}
+
