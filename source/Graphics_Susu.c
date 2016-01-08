@@ -13,7 +13,7 @@
 void initSusu(pSusu mySusu){
 
 	// Allocate la memoire oam pour la taille du sprite.
-	mySusu->size=0;
+	mySusu->size=4;
 	mySusu->oamIndex = mySusu->size;
 
 	mySusu->gfx_main = gfx_susu_main[mySusu->size];
@@ -28,15 +28,15 @@ void initSusu(pSusu mySusu){
 	mySusu->rayon = mySusu->liste_diametre[mySusu->size] /2 ;
 
 
-	mySusu->angle=0;
-	mySusu->orientation = 0;
+	mySusu->angle= deg2oamAngle(90);
+	mySusu->orientation = mySusu->angle;
 
 
 	mySusu->v_angle=150;
 	mySusu->a_angle=2;
 
-	mySusu->x = 100;
-	mySusu->y = 250;
+	mySusu->x = 256/2;
+	mySusu->y = 192+192/2;
 	mySusu->v= 0;
 	mySusu->a = -0.005;
 

@@ -11,12 +11,18 @@
 #include "Star.h"
 #include "Mushroom.h"
 #include  "Clover.h"
+// For Level 1 :
+#include "Susu24px_1.h"
+#include "Susu34px_1.h"
+#include "Susu44px_1.h"
+#include "Susu54px_1.h"
+#include "Susu64px_1.h"
 
-#include "Susu24px.h"
-#include "Susu34px.h"
-#include "Susu44px.h"
-#include "Susu54px.h"
-#include "Susu64px.h"
+
+#include "MENU_CADRE.h"
+#include "MENU_lock.h"
+#include "MENU_heart.h"
+#include "MENU_heart_creux.h"
 
 #include "Graphics_Items.h"
 
@@ -34,10 +40,10 @@ u16* gfx_heart_menu;
 u16* gfx_heart_creux_menu;
 u16* gfx_lock_menu;
 
-
+void clearSprite();
 void initSprite();
-void configureSprite();
-void configureSpriteMenu();
+void loadSprite(int myLevel);
+void loadSpriteMenu();
 
 
 

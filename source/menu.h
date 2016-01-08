@@ -10,7 +10,7 @@
 #include <nds.h>
 #include "Graphics_BG.h"
 #include "Graphics_SPRITE.h"
-
+#include "StateMachine.h"
 
 // Level Selected : from 1 to 8
 
@@ -30,7 +30,10 @@ void initMenu();
 void playMenu();
 void updateMenu();
 void handlingMenuKey();
-void next_state();
+
+
+//void next_state();
+//void goToLevel();
 
 
 #endif /* MENU_H_ */
