@@ -29,33 +29,33 @@ void loadSprite(int myLevel){
 
 	// -- INITIALISATION DES SPRITES GENERIQUES
 	// Susu 24 px
-	unsigned  int * Susu24pxPal;
+	const unsigned  int * Susu24pxPal;
 	int Susu24pxPalLen;
-	unsigned  short *Susu24pxTiles ;
+	const unsigned  short *Susu24pxTiles ;
 	int Susu24pxTilesLen;
 
 	// Susu 34 px
-	unsigned  int *Susu34pxPal;
+	const unsigned  int *Susu34pxPal;
 	int Susu34pxPalLen;
-	unsigned  short *Susu34pxTiles ;
+	const unsigned  short *Susu34pxTiles ;
 	int Susu34pxTilesLen;
 
 	// Susu 44 px
-	unsigned  int *Susu44pxPal;
+	const unsigned  int *Susu44pxPal;
 	int Susu44pxPalLen;
-	unsigned  short *Susu44pxTiles ;
+	const unsigned  short *Susu44pxTiles ;
 	int Susu44pxTilesLen;
 
 	// Susu 54 px
-	unsigned  int *Susu54pxPal;
+	const unsigned  int *Susu54pxPal;
 	int Susu54pxPalLen;
-	unsigned  short *Susu54pxTiles ;
+	const unsigned  short *Susu54pxTiles ;
 	int Susu54pxTilesLen;
 
 	// Susu 64 px
-	const unsigned  int *Susu64pxPal;
+	 const unsigned  int *Susu64pxPal;
 	int Susu64pxPalLen;
-	const unsigned short *Susu64pxTiles;
+	 const unsigned short *Susu64pxTiles;
 	int Susu64pxTilesLen;
 
 
@@ -64,24 +64,24 @@ void loadSprite(int myLevel){
 	case 1 : // LEVEL 1 SPRITES
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_1PalLen;
-		Susu24pxPal = Susu24px_1Pal;
+		Susu24pxPal = &Susu24px_1Pal;
 		Susu24pxTilesLen = Susu24px_1TilesLen;
-		Susu24pxTiles = Susu24px_1Tiles;
+		Susu24pxTiles = &Susu24px_1Tiles;
 		// Susu 34 px
 		Susu34pxPalLen = Susu34px_1PalLen;
-		Susu34pxPal = Susu34px_1Pal;
+		Susu34pxPal = &Susu34px_1Pal;
 		Susu34pxTilesLen = Susu34px_1TilesLen;
-		Susu34pxTiles = Susu34px_1Tiles;
+		Susu34pxTiles = &Susu34px_1Tiles;
 		// Susu 44 px
 		Susu44pxPalLen = Susu44px_1PalLen;
-		Susu44pxPal = Susu44px_1Pal;
+		Susu44pxPal = &Susu44px_1Pal;
 		Susu44pxTilesLen = Susu44px_1TilesLen;
-		Susu44pxTiles = Susu44px_1Tiles;
+		Susu44pxTiles = &Susu44px_1Tiles;
 		// Susu 54 px
 		Susu54pxPalLen = Susu54px_1PalLen;
-		Susu54pxPal = Susu54px_1Pal;
+		Susu54pxPal = &Susu54px_1Pal;
 		Susu54pxTilesLen = Susu54px_1TilesLen;
-		Susu54pxTiles = Susu54px_1Tiles;
+		Susu54pxTiles = &Susu54px_1Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_1PalLen;
 		Susu64pxPal = &Susu64px_1Pal;

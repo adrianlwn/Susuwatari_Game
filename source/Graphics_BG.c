@@ -6,10 +6,7 @@
  */
 #include "Graphics_BG.h"
 
-#include "BG_main.h"
-#include  "BG_sub.h"
-#include "MENU_main.h"
-#include "MENU_BG_sub.h"
+
 
 void configureGraphics_Main(){
 	//Enable a proper RAM memory bank for the main engine
@@ -34,7 +31,45 @@ void configureGraphics_Sub(){
 
 
 
-void loadGraphics_Main(){
+void loadGraphics_Main(int myLevel){
+	const unsigned int *BG_mainTiles;
+	int BG_mainTilesLen;
+	const unsigned short *BG_mainMap;
+	int BG_mainMapLen;
+	const unsigned short *BG_mainPal;
+	int BG_mainPalLen;
+	// CHOOSE SPECIFIC BG
+	switch (myLevel) {
+	case 1 : // LEVEL 1
+		BG_mainTiles = &BG_main_1Tiles;
+		BG_mainTilesLen = BG_main_1TilesLen;
+		BG_mainMap = &BG_main_1Map;
+		BG_mainMapLen = BG_main_1MapLen;
+		BG_mainPal = &BG_main_1Pal;
+		BG_mainPalLen = BG_main_1PalLen;
+		break;
+	case 2 : //LEVEL 2
+		break;
+
+	case 3:
+		break;
+
+	case 4 :
+		break;
+
+	case 5 :
+		break;
+
+	case 6 :
+		break;
+
+	case 7 :
+		break;
+
+	case 8 :
+		break;
+	}
+	// LOADING SPECIFIED BG :
 	BGCTRL[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
 	dmaCopy(BG_mainTiles,BG_TILE_RAM(1),BG_mainTilesLen);
 	dmaCopy(BG_mainMap,BG_MAP_RAM(0),BG_mainMapLen);
@@ -43,7 +78,46 @@ void loadGraphics_Main(){
 }
 
 
-void loadGraphics_Sub(){
+void loadGraphics_Sub(int myLevel){
+
+	const unsigned int *BG_subTiles;
+	int BG_subTilesLen;
+	const unsigned short *BG_subMap;
+	int BG_subMapLen;
+	const unsigned short *BG_subPal;
+	int BG_subPalLen;
+	// CHOOSE SPECIFIC BG
+	switch (myLevel) {
+	case 1 : // LEVEL 1
+		BG_subTiles = &BG_sub_1Tiles;
+		BG_subTilesLen = BG_sub_1TilesLen;
+		BG_subMap = &BG_sub_1Map;
+		BG_subMapLen = BG_sub_1MapLen;
+		BG_subPal = &BG_sub_1Pal;
+		BG_subPalLen = BG_sub_1PalLen;
+		break;
+	case 2 : //LEVEL 2
+		break;
+
+	case 3:
+		break;
+
+	case 4 :
+		break;
+
+	case 5 :
+		break;
+
+	case 6 :
+		break;
+
+	case 7 :
+		break;
+
+	case 8 :
+		break;
+	}
+
 	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
 	dmaCopy(BG_subTiles ,BG_TILE_RAM_SUB(1) , BG_subTilesLen );
 	dmaCopy(BG_subMap,BG_MAP_RAM_SUB(0),BG_subMapLen);

@@ -8,7 +8,6 @@
 #include "Graphics_Susu.h"
 #include "Graphics_Items.h"
 #include "Graphics_SPRITE.h"
-#include "Susu.h"
 
 void initSusu(pSusu mySusu){
 

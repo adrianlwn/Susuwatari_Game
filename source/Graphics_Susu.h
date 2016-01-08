@@ -10,7 +10,6 @@
 
 #include <math.h>
 #include <nds.h>
-#include "Susu.h"
 
 // ----Susu_struc: structure du Susu avec toutes ses propriétés
 //----typedef: 'Susu_struct' devient un type nommé 'Susu'

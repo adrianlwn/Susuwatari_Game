@@ -19,8 +19,8 @@
 
 void initLevel1(){
 	// LOAD GAME GRAPHICS
-		loadGraphics_Main();
-		loadGraphics_Sub();
+		loadGraphics_Main(1);
+		loadGraphics_Sub(1);
 
 
 		theSusu = malloc(sizeof(Susu));
