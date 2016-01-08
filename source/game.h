@@ -49,4 +49,6 @@ void initPlayer(pPlayer myPlayer);
 void LifeScore(pPlayer myPlayer);
 void StarScore(pPlayer myPlayer);
 
+void checkGameOver(pPlayer myPlayer, pSusu mySusu);
+
 #endif /* GAME_H_ */

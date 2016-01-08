@@ -8,6 +8,9 @@
 #include "Graphics_Susu.h"
 #include "Graphics_Items.h"
 #include "Graphics_SPRITE.h"
+#define HAUTEUR 192
+#define LARGEUR 256
+
 
 void initSusu(pSusu mySusu){
 
@@ -34,8 +37,8 @@ void initSusu(pSusu mySusu){
 	mySusu->v_angle=150;
 	mySusu->a_angle=2;
 
-	mySusu->x = 256/2;
-	mySusu->y = 192+192/2;
+	mySusu->x = LARGEUR/2;
+	mySusu->y = HAUTEUR+HAUTEUR/2;
 	mySusu->v= 0;
 	mySusu->a = -0.005;
 
@@ -81,15 +84,15 @@ void setSusuBigger(pSusu mySusu){
 		if (mySusu->x - mySusu->rayon < 0  ){
 			mySusu->x = mySusu->rayon;
 		}
-		if (mySusu->x + mySusu->rayon > 256  ){
-			mySusu->x = 256 - mySusu->rayon;
+		if (mySusu->x + mySusu->rayon > LARGEUR  ){
+			mySusu->x = LARGEUR - mySusu->rayon;
 		}
 
 		if (mySusu->y - mySusu->rayon < 0  ){
 			mySusu->y = mySusu->rayon;
 		}
-		if (mySusu->y + mySusu->rayon > 2*192  ){
-			mySusu->y = 2*192 - mySusu->rayon;
+		if (mySusu->y + mySusu->rayon > 2*HAUTEUR  ){
+			mySusu->y = 2*HAUTEUR - mySusu->rayon;
 		}
 	}
 
@@ -160,7 +163,7 @@ void SusuUpdate(pSusu mySusu){
 
 	//on affiche le Susu si :
 
-	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= 192+ halfwidth)){
+	if ( (mySusu->y >= 0- halfwidth ) && ( mySusu->y <= HAUTEUR+ halfwidth)){
 		oamSet(&oamMain, 	// oam handler
 
 				mySusu->oamIndex,			// Number of sprite
@@ -211,11 +214,11 @@ void SusuUpdate(pSusu mySusu){
 	// Dans l'écran SUB //
 
 	//On affiche le  Susu si :
-	if( (mySusu->y >= 192- halfwidth ) && ( mySusu->y <= 2*192 + halfwidth )){
+	if( (mySusu->y >= HAUTEUR- halfwidth ) && ( mySusu->y <= 2*HAUTEUR + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
 				mySusu->oamIndex,		// Number of sprite
 
-				(int)mySusu->x- halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+				(int)mySusu->x- halfwidth ,(int)mySusu->y-HAUTEUR - halfwidth,			// Coordinates
 
 				0,				// Priority
 				mySusu->oamIndex,				// Palette to use
@@ -238,7 +241,7 @@ void SusuUpdate(pSusu mySusu){
 		oamSet(&oamSub, 	// oam handler
 
 				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x - halfwidth ,(int)mySusu->y-192 - halfwidth,			// Coordinates
+				(int)mySusu->x - halfwidth ,(int)mySusu->y-HAUTEUR - halfwidth,			// Coordinates
 
 				0,				// Priority
 				mySusu->oamIndex,				// Palette to use
@@ -312,12 +315,21 @@ void SusuMove(pSusu mySusu){
 	up=keysUp();
 
 	// On verifie si la position du touch screen est dans la surface du Susu
-	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py + 192);
+	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py + HAUTEUR);
 
 	//Petite machine d'etat fini régissant le comportement en fonction de la position et de l'etat actuel.
 	switch (myTouchState) {
+
 	case NOT_TOUCHED: // Cas ou le Susu n'est pas touché
-		//mySusu->v = abs(mySusu->v + mySusu->a);
+		// Deceleration
+		if (mySusu->v >= - mySusu->a){
+		mySusu->v = mySusu->v + mySusu->a;
+		}
+		else {
+			mySusu->v  =0 ;
+		}
+
+		// Changment d'etat si touché
 		if(touch_inside == 1 && (down & KEY_TOUCH)){
 			myTouchState = TOUCHING;
 		}

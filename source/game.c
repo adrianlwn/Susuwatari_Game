@@ -27,7 +27,6 @@ void initLevel1(){
 		initSusu(theSusu);
 
 
-		initMapObstacle( theMapObstacle);
 		int i;
 		for(i = 0 ; i <15 ; i++){
 			Items[i]= malloc(sizeof(Item));
@@ -71,8 +70,6 @@ void initLevel8(){
 }
 
 
-
-
 int previousIndexTouched, indexTouched;
 
 void playGame(){
@@ -94,7 +91,7 @@ void playGame(){
 
 			itemDisappear(indexTouched);
 			thePlayer->life--;
-			//LifeScore(thePlayer);
+			LifeScore(thePlayer);
 
 		}
 
@@ -102,7 +99,7 @@ void playGame(){
 		else if( Items[indexTouched]->itemType == STAR)
 		{ thePlayer->score++;
 		itemDisappear(indexTouched);
-		//StarScore(thePlayer);
+		StarScore(thePlayer);
 
 
 		}
@@ -112,7 +109,7 @@ void playGame(){
 		{ setSusuBigger(theSusu);
 		itemDisappear(indexTouched);
 		thePlayer->life++;
-		//LifeScore(thePlayer);
+		LifeScore(thePlayer);
 
 
 		}
@@ -206,6 +203,23 @@ void initPlayer(pPlayer myPlayer){
 	LifeScore( myPlayer);
 	StarScore( myPlayer);
 
+
+}
+
+void checkGameOver(pPlayer myPlayer, pSusu mySusu){
+	int nb_max_stars = 5;
+
+	// --- LEVEL ACCOMPLISHED :
+	// quand toutes les etoiles sont ramassées.
+	if (myPlayer->score == nb_max_stars){
+
+	}
+
+	// --- LEVEL FAILED :
+	// Si le joueur perd toutes ses vies. Ou si le Susu a une vitesse 0 sur l'ecran du haut.
+	if (myPlayer->life == 0 || (mySusu->v == 0 && mySusu->y < 192 - mySusu->rayon)){
+
+		}
 
 }
 
