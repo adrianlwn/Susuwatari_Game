@@ -17,35 +17,61 @@
 #include "Graphics_SPRITE.h"
 
 
-
-void initGame(){
+void initLevel1(){
 	// LOAD GAME GRAPHICS
-	loadGraphics_Main();
-	loadGraphics_Sub();
+		loadGraphics_Main();
+		loadGraphics_Sub();
 
 
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
 
 
-	initMapObstacle( theMapObstacle);
-	int i;
-	for(i = 0 ; i <15 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
+		initMapObstacle( theMapObstacle);
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
-	initItems(Items);
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
 
 
-	initPlayer(thePlayer);
+		initPlayer(thePlayer);
+}
 
-	counter = 0;
-
+void initLevel2(){
 
 }
+
+void initLevel3(){
+
+}
+
+void initLevel4(){
+
+}
+
+void initLevel5(){
+
+}
+
+void initLevel6(){
+
+}
+
+void initLevel7(){
+
+}
+
+void initLevel8(){
+
+}
+
+
+
 
 int previousIndexTouched, indexTouched;
 

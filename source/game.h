@@ -30,7 +30,18 @@ pPlayer thePlayer;
 mapObstacle theMapObstacle;
 int wow_counter,counter;
 
-void initGame();
+
+void initLevel1();
+void initLevel2();
+void initLevel3();
+void initLevel4();
+void initLevel5();
+void initLevel6();
+void initLevel7();
+void initLevel8();
+
+
+
 void playGame();
 int collision();
 void itemDisappear(int indexTouched);

@@ -167,13 +167,7 @@ void handlingMenuKey(){
 	scanKeys();
 
 	u16 keys = keysDown();
-	/*
-	if (keys & KEY_START){
-		oamAllocReset(&oamSub);
-		next_state();
 
-	}
-*/
 	if ((keys & KEY_RIGHT) && levelSelected <8){
 
 		levelSelected++;
@@ -189,9 +183,11 @@ void handlingMenuKey(){
 	if ((keys & KEY_DOWN) && levelSelected < 5){
 		levelSelected += 4;
 	}
+
 	if (keys & KEY_A){
-		oamAllocReset(&oamSub);
-		next_state();
+
+		if(levelList[levelSelected-1]->locked == 0){
+			goToLevel(levelSelected);}
 
 	}
 
@@ -217,8 +213,8 @@ void handlingMenuKey(){
 		}
 
 		if( px >= 213 && px <= 233 && py >=15 && py <= 33 ){
-			oamAllocReset(&oamSub);
-			next_state();
+			if(levelList[levelSelected-1]->locked == 0){
+				goToLevel(levelSelected);}
 		}
 	}
 

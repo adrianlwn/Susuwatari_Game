@@ -17,7 +17,14 @@ typedef enum etat{
 		INIT,
 		INIT_MENU,
 		MENU,
-		INIT_GAME,
+		INIT_LV1,
+		INIT_LV2,
+		INIT_LV3,
+		INIT_LV4,
+		INIT_LV5,
+		INIT_LV6,
+		INIT_LV7,
+		INIT_LV8,
 		PLAY_GAME,
 		END
 	} state ;
@@ -26,6 +33,7 @@ typedef enum etat{
 int run();
 int level_list[8];
 void next_state();
+void goToLevel(int myLevel);
 
 void handlingMenuKey();
 
