@@ -1,5 +1,5 @@
 #include "Graphics_Susu.h"
-
+#include "audio.h"
 
 
 typedef double mapObstacle[256][192*2];

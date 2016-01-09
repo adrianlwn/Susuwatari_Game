@@ -2,6 +2,7 @@
 
 #define HAUTEUR 192
 #define LARGEUR 256
+#define DECALAGE 0
 
 void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On utilise une methode  simple et  fiable pour la detection des murs.
@@ -24,7 +25,7 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 		BounceSusu(mySusu,0);
 	}
 	// mur bas :
-	if ( mySusu->y >= HAUTEUR*2 - mySusu->rayon){
+	if ( mySusu->y >= DECALAGE + HAUTEUR*2 - mySusu->rayon){
 		BounceSusu(mySusu, 0);
 	}
 
@@ -37,6 +38,7 @@ void BounceSusu(pSusu mySusu, double bounce_angle){
 	int angle_previous = oamAngle2deg( mySusu->angle);
 
 	setSusuAngle(mySusu, - angle_previous + 2* bounce_angle);
+	mmEffect(SFX_SUSUBOUNCE);
 
 }
 
