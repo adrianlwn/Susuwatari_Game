@@ -11,7 +11,7 @@
 
 #define HAUTEUR 192
 #define LARGEUR 256
-#define DECALAGE 0
+#define DECALAGE 96
 
 
 void initSusu(pSusu mySusu){
@@ -40,7 +40,7 @@ void initSusu(pSusu mySusu){
 	mySusu->a_angle=2;
 
 	mySusu->x = LARGEUR/2;
-	mySusu->y = HAUTEUR+HAUTEUR/2;
+	mySusu->y = DECALAGE + HAUTEUR+HAUTEUR/2;
 	mySusu->v= 0;
 	mySusu->a = -0.005;
 
@@ -93,8 +93,8 @@ void setSusuBigger(pSusu mySusu){
 		if (mySusu->y - mySusu->rayon < 0  ){
 			mySusu->y = mySusu->rayon;
 		}
-		if (mySusu->y + mySusu->rayon > 2*HAUTEUR  ){
-			mySusu->y = 2*HAUTEUR - mySusu->rayon;
+		if (mySusu->y + mySusu->rayon > 2*HAUTEUR + DECALAGE ){
+			mySusu->y = 2*HAUTEUR + DECALAGE - mySusu->rayon;
 		}
 	}
 
@@ -131,9 +131,7 @@ void SusuRotate(pSusu mySusu,int ON){
 
 void SusuRotateToNewAngle(pSusu mySusu){
 	int delta = (int)(mySusu->angle - mySusu->orientation) % 32768 ;
-	/*if (delta >= 32768/2 ){
-		delta -= 32768;
-	}*/
+
 	int etha = 50;
 	if(delta > etha  ){
 		if(delta > 32768/2){
@@ -216,11 +214,11 @@ void SusuUpdate(pSusu mySusu){
 	// Dans l'écran SUB //
 
 	//On affiche le  Susu si :
-	if( (mySusu->y >= HAUTEUR- halfwidth ) && ( mySusu->y <= 2*HAUTEUR + halfwidth )){
+	if( (mySusu->y >=  DECALAGE + HAUTEUR- halfwidth ) && ( mySusu->y <= DECALAGE + 2*HAUTEUR + halfwidth )){
 		oamSet(&oamSub, 	// oam handler
 				mySusu->oamIndex,		// Number of sprite
 
-				(int)mySusu->x- halfwidth ,(int)mySusu->y-HAUTEUR - halfwidth,			// Coordinates
+				(int)mySusu->x- halfwidth ,(int)mySusu->y- (DECALAGE +HAUTEUR) - halfwidth,			// Coordinates
 
 				0,				// Priority
 				mySusu->oamIndex,				// Palette to use
@@ -243,7 +241,7 @@ void SusuUpdate(pSusu mySusu){
 		oamSet(&oamSub, 	// oam handler
 
 				mySusu->oamIndex,				// Number of sprite
-				(int)mySusu->x - halfwidth ,(int)mySusu->y-HAUTEUR - halfwidth,			// Coordinates
+				(int)mySusu->x - halfwidth ,(int)mySusu->y- (DECALAGE +HAUTEUR) - halfwidth,			// Coordinates
 
 				0,				// Priority
 				mySusu->oamIndex,				// Palette to use
@@ -317,7 +315,7 @@ void SusuMove(pSusu mySusu){
 	up=keysUp();
 
 	// On verifie si la position du touch screen est dans la surface du Susu
-	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py + HAUTEUR);
+	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py  + DECALAGE + HAUTEUR);
 
 	//Petite machine d'etat fini régissant le comportement en fonction de la position et de l'etat actuel.
 	switch (myTouchState) {
@@ -344,6 +342,8 @@ void SusuMove(pSusu mySusu){
 		break;
 
 	case TOUCHED : // Cas ou le Susu est touché.
+
+
 
 		SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
 		if ((touch_inside == 0 && (held & KEY_TOUCH) ) || (up & KEY_TOUCH) ){

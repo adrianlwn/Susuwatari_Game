@@ -2,7 +2,7 @@
 
 #define HAUTEUR 192
 #define LARGEUR 256
-#define DECALAGE 0
+#define DECALAGE 96
 
 void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On utilise une methode  simple et  fiable pour la detection des murs.
