@@ -17,6 +17,10 @@
 #include  "Clover.h"
 #include "Graphics_SPRITE.h"
 
+#define HAUTEUR 192
+#define LARGEUR 256
+#define DECALAGE 96
+
 
 void initLevel1(){
 	// LOAD GAME GRAPHICS
@@ -223,7 +227,7 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 
 	// --- LEVEL FAILED :
 	// Si le joueur perd toutes ses vies. Ou si le Susu a une vitesse 0 sur l'ecran du haut.
-	if (myPlayer->life == 0 || (mySusu->v == 0 && mySusu->y < 192 - mySusu->rayon)){
+	if (myPlayer->life == 0 || (mySusu->v == 0 && mySusu->y < HAUTEUR + DECALAGE - mySusu->rayon)){
 		goToEndLevel();
 
 		}
