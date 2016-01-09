@@ -10,6 +10,7 @@
 #include "Graphics_Susu.h"
 #include "Graphics_BG.h"
 #include "Graphics_Items.h"
+#include "menu.h"
 
 #include "Star.h"
 #include "Mushroom.h"
@@ -74,7 +75,7 @@ int previousIndexTouched, indexTouched;
 
 void playGame(){
 
-
+	checkGameOver(thePlayer, theSusu);
 	SusuMove(theSusu);
 	BounceUpdate(theSusu, theMapObstacle);
 	previousIndexTouched = indexTouched;
@@ -212,12 +213,18 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 	// --- LEVEL ACCOMPLISHED :
 	// quand toutes les etoiles sont ramassées.
 	if (myPlayer->score == nb_max_stars){
+		levelList[levelSelected-1]->best_score = mySusu->size +1;
+		levelList[levelSelected]->locked = false;
+
+		writeScore();
+		goToEndLevel();
 
 	}
 
 	// --- LEVEL FAILED :
 	// Si le joueur perd toutes ses vies. Ou si le Susu a une vitesse 0 sur l'ecran du haut.
 	if (myPlayer->life == 0 || (mySusu->v == 0 && mySusu->y < 192 - mySusu->rayon)){
+		goToEndLevel();
 
 		}
 

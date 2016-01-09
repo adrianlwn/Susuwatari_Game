@@ -10,8 +10,11 @@
 #include <nds.h>
 #include "init.h"
 #include "Graphics_SPRITE.h"
+#include "handlingKeys.h"
 #include "game.h"
 #include "menu.h"
+#include "audio.h"
+#include "fileSystem.h"
 
 typedef enum etat{
 		INIT,
@@ -26,6 +29,7 @@ typedef enum etat{
 		INIT_LV7,
 		INIT_LV8,
 		PLAY_GAME,
+		END_LEVEL,
 		END
 	} state ;
 
@@ -34,8 +38,9 @@ int run();
 int level_list[8];
 void next_state();
 void goToLevel(int myLevel);
+void goToEndLevel();
+void backToMenu();
 
-void handlingMenuKey();
 
 
 

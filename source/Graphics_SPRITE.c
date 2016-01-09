@@ -12,8 +12,15 @@
 
 void clearSprite(){
 	// Reinitialisation des index OAM :
+
+	oamClear(&oamMain,0,0);
+	oamClear(&oamSub,0,0);
+
 	oamAllocReset(&oamMain);
 	oamAllocReset(&oamSub);
+
+	oamUpdate(&oamMain);
+	oamUpdate(&oamSub);
 }
 
 void initSprite(){
@@ -447,6 +454,7 @@ void loadSpriteMenu(){
 	// Tiles :
 	swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
 
+	REG_BLDCNT = BLEND_ALPHA;
 	// --------COEUR Creux
 	gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
 

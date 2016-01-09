@@ -11,6 +11,8 @@
 #include "Graphics_BG.h"
 #include "Graphics_SPRITE.h"
 #include "StateMachine.h"
+#include "fileSystem.h"
+
 
 // Level Selected : from 1 to 8
 
@@ -27,6 +29,7 @@ int levelSelected;
 plevel levelList[8];
 
 void initMenu();
+void loadMenu();
 void playMenu();
 void updateMenu();
 void handlingMenuKey();

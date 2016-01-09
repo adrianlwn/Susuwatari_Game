@@ -8,8 +8,10 @@
 #include "Graphics_Susu.h"
 #include "Graphics_Items.h"
 #include "Graphics_SPRITE.h"
+
 #define HAUTEUR 192
 #define LARGEUR 256
+#define DECALAGE 0
 
 
 void initSusu(pSusu mySusu){

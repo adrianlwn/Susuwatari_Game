@@ -11,8 +11,13 @@ void init_NDS(){
 	// Initialization of graphics main and sub :
 	configureGraphics_Main();
 	configureGraphics_Sub();
-
+	// init the sprites
 	initSprite();
-
+	// init the menu
+	initMenu();
+	// init the fat system
+	writeInit();
+	//init the audio mode
+	audioInit();
 
 }

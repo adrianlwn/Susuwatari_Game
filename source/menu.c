@@ -8,9 +8,7 @@
 
 
 void initMenu(){
-	loadGraphics_Menu();
 	levelSelected = 1;
-
 	// Initialize The Level List
 	int i ;
 	for( i = 0 ; i < 8 ; i++){
@@ -23,9 +21,14 @@ void initMenu(){
 
 	levelList[0]->best_score = 2;
 	levelList[0]->locked = false;
-	levelList[1]->best_score = 4;
-	levelList[1]->locked = false;
+	//levelList[1]->best_score = 4;
+	//levelList[1]->locked = false;
 
+}
+
+void loadMenu(){
+	loadGraphics_Menu();
+	readScore();
 }
 
 void playMenu(){
@@ -163,59 +166,3 @@ void updateMenu(){
 }
 
 
-void handlingMenuKey(){
-	scanKeys();
-
-	u16 keys = keysDown();
-
-	if ((keys & KEY_RIGHT) && levelSelected <8){
-
-		levelSelected++;
-	}
-	if ((keys & KEY_LEFT) && levelSelected >1){
-		levelSelected--;
-
-	}
-	if ((keys & KEY_UP) && levelSelected > 4){
-		levelSelected -= 4;
-	}
-
-	if ((keys & KEY_DOWN) && levelSelected < 5){
-		levelSelected += 4;
-	}
-
-	if (keys & KEY_A){
-
-		if(levelList[levelSelected-1]->locked == 0){
-			goToLevel(levelSelected);}
-
-	}
-
-	// Gestion du touch :
-
-	if (keys & KEY_TOUCH){
-		touchPosition pos_menu;
-		touchRead(&pos_menu);
-
-		//int held=keysHeld();
-		int px = pos_menu.px;
-		int py = pos_menu.py;
-
-		// Coordonnées dans un rectangle élémentaire
-		int X = px %(8+54);
-		int Y = (py - 50) % (63+8);
-		// Coordonnée du rectangle élémentaire.
-		int nX = px /(8+54);
-		int nY = (py - 50) / (63+8);
-
-		if (Y >0 && X > 8 && Y < 63){
-			levelSelected = (nX+1) + 4*nY;
-		}
-
-		if( px >= 213 && px <= 233 && py >=15 && py <= 33 ){
-			if(levelList[levelSelected-1]->locked == 0){
-				goToLevel(levelSelected);}
-		}
-	}
-
-}

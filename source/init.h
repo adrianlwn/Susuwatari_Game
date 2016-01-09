@@ -11,6 +11,7 @@
 
 #include "Graphics_BG.h"
 #include "Graphics_SPRITE.h"
+#include "fileSystem.h"
 
 // file to call all the initializers of the needed functions.
 void init_NDS();
