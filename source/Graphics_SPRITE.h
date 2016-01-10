@@ -19,6 +19,14 @@
 #include "Susu64px_1.h"
 
 
+
+// For Level 8 :
+#include "Susu24px_8.h"
+#include "Susu34px_8.h"
+#include "Susu44px_8.h"
+#include "Susu54px_8.h"
+#include "Susu64px_8.h"
+
 #include "MENU_CADRE.h"
 #include "MENU_lock.h"
 #include "MENU_heart.h"

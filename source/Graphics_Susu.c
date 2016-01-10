@@ -42,7 +42,7 @@ void initSusu(pSusu mySusu){
 	mySusu->x = LARGEUR/2;
 	mySusu->y = DECALAGE + HAUTEUR+HAUTEUR/2;
 	mySusu->v= 0;
-	mySusu->a = -0.005;
+	mySusu->a = -0.002;
 
 
 }

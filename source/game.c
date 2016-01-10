@@ -47,31 +47,164 @@ void initLevel1(){
 }
 
 void initLevel2(){
+	loadGraphics_Main(2);
+		loadGraphics_Sub(2);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel3(){
+	loadGraphics_Main(3);
+		loadGraphics_Sub(3);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel4(){
+	loadGraphics_Main(4);
+		loadGraphics_Sub(4);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel5(){
+	loadGraphics_Main(5);
+		loadGraphics_Sub(5);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel6(){
+	loadGraphics_Main(6);
+		loadGraphics_Sub(6);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel7(){
+	loadGraphics_Main(7);
+		loadGraphics_Sub(7);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 void initLevel8(){
+	loadGraphics_Main(8);
+		loadGraphics_Sub(8);
 
+
+		theSusu = malloc(sizeof(Susu));
+		initSusu(theSusu);
+
+
+		int i;
+		for(i = 0 ; i <15 ; i++){
+			Items[i]= malloc(sizeof(Item));
+		}
+
+
+		chooseItems (Items);
+		setItemsPosition( Items);
+		initItems(Items);
+
+
+		initPlayer(thePlayer);
 }
 
 
@@ -95,6 +228,7 @@ void playGame(){
 			setSusuSmaller(theSusu);
 
 			itemDisappear(indexTouched);
+
 			thePlayer->life--;
 			LifeScore(thePlayer);
 
@@ -113,7 +247,8 @@ void playGame(){
 		else if( Items[indexTouched]->itemType == CLOVER)
 		{ setSusuBigger(theSusu);
 		itemDisappear(indexTouched);
-		thePlayer->life++;
+		if (thePlayer->life <5){
+		thePlayer->life++;}
 		LifeScore(thePlayer);
 
 

@@ -273,7 +273,7 @@ void loadSprite(int myLevel){
 		*/
 		break;
 	case 8 : // LEVEL 8 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_8PalLen;
 		Susu24pxPal = Susu24px_8Pal;
@@ -299,7 +299,7 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_8Pal;
 		Susu64pxTilesLen = Susu64px_8TilesLen;
 		Susu64pxTiles = &Susu64px_8Tiles;
-		*/
+
 		break;
 
 	}

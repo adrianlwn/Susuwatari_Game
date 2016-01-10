@@ -3,6 +3,7 @@
 #define HAUTEUR 192
 #define LARGEUR 256
 #define DECALAGE 96
+#define H_SCORE 12
 
 void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 	// On utilise une methode  simple et  fiable pour la detection des murs.
@@ -25,7 +26,7 @@ void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
 		BounceSusu(mySusu,0);
 	}
 	// mur bas :
-	if ( mySusu->y >= DECALAGE + HAUTEUR*2 - mySusu->rayon){
+	if ( mySusu->y >= DECALAGE + HAUTEUR*2 - H_SCORE - mySusu->rayon){
 		BounceSusu(mySusu, 0);
 	}
 

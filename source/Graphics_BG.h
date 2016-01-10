@@ -11,6 +11,32 @@
 
 #include "BG_main_1.h"
 #include  "BG_sub_1.h"
+
+#include "BG_main_2.h"
+#include  "BG_sub_2.h"
+
+#include "BG_main_3.h"
+#include  "BG_sub_3.h"
+
+#include "BG_main_3.h"
+#include  "BG_sub_3.h"
+
+#include "BG_main_4.h"
+#include  "BG_sub_4.h"
+
+#include "BG_main_5.h"
+#include  "BG_sub_5.h"
+
+#include "BG_main_6.h"
+#include  "BG_sub_6.h"
+
+#include "BG_main_7.h"
+#include  "BG_sub_7.h"
+
+#include "BG_main_8.h"
+#include  "BG_sub_8.h"
+
+
 #include "MENU_main.h"
 #include "MENU_BG_sub.h"
 
