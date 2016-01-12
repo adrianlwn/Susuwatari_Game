@@ -297,7 +297,7 @@ void StarScore(pPlayer myPlayer)
 				i+5+5 +5 +5,				// Number of sprite
 				185+i*11- halfwidth , 192-6- halfwidth ,			// Coordinates
 				0,				// Priority
-				11,				// Palette to use
+				nbr_pal_score_creux,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				gfx_star_creux_score ,			// Loaded graphic to display
@@ -316,7 +316,7 @@ void StarScore(pPlayer myPlayer)
 					i+5,				// Number of sprite
 					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
 					0,				// Priority
-					10,				// Palette to use
+					nbr_pal_score,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_star_score,			// Loaded graphic to display
@@ -333,7 +333,7 @@ void StarScore(pPlayer myPlayer)
 					i+5,				// Number of sprite
 					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
 					0,				// Priority
-					10,				// Palette to use
+					nbr_pal_score,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_star_score,			// Loaded graphic to display
@@ -362,7 +362,7 @@ void LifeScore(pPlayer myPlayer)
 				i+5+5 +5,				// Number of sprite
 				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 				0,				// Priority
-				9,				// Palette to use
+				nbr_pal_coeur_creux,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				gfx_heart_creux_score ,			// Loaded graphic to display
@@ -382,7 +382,7 @@ void LifeScore(pPlayer myPlayer)
 					8,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
-					gfx_heart_score,			// Loaded graphic to display
+					nbr_pal_coeur,			// Loaded graphic to display
 					-1,				// Affine rotation to use (-1 none)
 					false,			// Double size if rotating
 					false,			// Hide this sprite
@@ -396,7 +396,7 @@ void LifeScore(pPlayer myPlayer)
 					i+5+5,				// Number of sprite
 					55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 					0,				// Priority
-					8,				// Palette to use
+					nbr_pal_coeur,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_heart_score,			// Loaded graphic to display

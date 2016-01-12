@@ -450,17 +450,13 @@ void loadSprite(int myLevel){
 	swiCopy(MENU_star_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[11], MENU_star_creuxPalLen/2);
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 	// Tiles :
-
-<<<<<<< HEAD
-		nbr_pal_coeur =8;
-		nbr_pal_coeur_creux=9;
-		nbr_pal_star=5;
-		nbr_pal_star_creux=5;
-=======
 	swiCopy(MENU_star_creuxTiles, gfx_star_creux_score, MENU_star_creuxTilesLen/2);
->>>>>>> master
 
 
+	nbr_pal_coeur =8;
+	nbr_pal_coeur_creux=9;
+	nbr_pal_score=10;
+	nbr_pal_score_creux=11;
 
 }
 
