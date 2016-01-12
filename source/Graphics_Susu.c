@@ -36,8 +36,8 @@ void initSusu(pSusu mySusu){
 	mySusu->orientation = mySusu->angle;
 
 
-	mySusu->v_angle=150;
-	mySusu->a_angle=2;
+	mySusu->v_angle=0;
+	mySusu->a_angle=1;
 
 	mySusu->x = LARGEUR/2;
 	mySusu->y = DECALAGE + HAUTEUR+HAUTEUR/2;
@@ -115,15 +115,11 @@ void setSusuSmaller(pSusu mySusu){
 }
 
 
-void SusuRotate(pSusu mySusu,int ON){
+void SusuRotate(pSusu mySusu){
 
-	if (ON == false){
+	mySusu->v_angle+=mySusu->a_angle;
 
-		mySusu->v_angle = 0;
-	}
-	else{mySusu->v_angle+=mySusu->a_angle;
 
-	}
 	mySusu->angle += mySusu->v_angle;
 	mySusu->orientation = mySusu->angle;
 
@@ -337,7 +333,7 @@ void SusuMove(pSusu mySusu){
 		break;
 	case TOUCHING : // Action a entreprendre au moment ou le Susu est touché.
 		mySusu->v=0;
-		mySusu->v_angle = 30;
+		mySusu->v_angle = 50;
 		myTouchState = TOUCHED;
 		break;
 
@@ -345,14 +341,14 @@ void SusuMove(pSusu mySusu){
 
 
 
-		SusuRotate( mySusu, true); // le susu tourne sur lui même de plus en plus vite
+		SusuRotate( mySusu); // le susu tourne sur lui même de plus en plus vite
 		if ((touch_inside == 0 && (held & KEY_TOUCH) ) || (up & KEY_TOUCH) ){
 			myTouchState = RELEASING;
 		}
 		break;
 
 	case RELEASING : // Actions à entreprendre au moment ou le Susu est laché, ou quand le stylet sort de celui-ci
-		mySusu->v=1 +mySusu->v_angle/300;
+		mySusu->v=1.5 +mySusu->v_angle/300;
 		mySusu->v_angle=0;
 		myTouchState = NOT_TOUCHED;
 		break;
