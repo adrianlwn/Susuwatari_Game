@@ -57,7 +57,7 @@ double oamAngle2deg(double angle);
 void initSusu(pSusu mySusu);
 
 //---- Changer la position du Susu
-void setSusuPosition(pSusu mySusu,double x, double y);
+void setSusuPosition(pSusu mySusu,int x, int y);
 
 //---- Changer la direction du Susu instantanément
 void setSusuAngle(pSusu mySusu, double angle);
