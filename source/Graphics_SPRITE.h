@@ -18,7 +18,47 @@
 #include "Susu54px_1.h"
 #include "Susu64px_1.h"
 
+// For Level 2 :
+#include "Susu24px_2.h"
+#include "Susu34px_2.h"
+#include "Susu44px_2.h"
+#include "Susu54px_2.h"
+#include "Susu64px_2.h"
 
+// For Level 3 :
+#include "Susu24px_3.h"
+#include "Susu34px_3.h"
+#include "Susu44px_3.h"
+#include "Susu54px_3.h"
+#include "Susu64px_3.h"
+
+// For Level 4 :
+#include "Susu24px_4.h"
+#include "Susu34px_4.h"
+#include "Susu44px_4.h"
+#include "Susu54px_4.h"
+#include "Susu64px_4.h"
+
+// For Level 5 :
+#include "Susu24px_5.h"
+#include "Susu34px_5.h"
+#include "Susu44px_5.h"
+#include "Susu54px_5.h"
+#include "Susu64px_5.h"
+
+// For Level 6 :
+#include "Susu24px_6.h"
+#include "Susu34px_6.h"
+#include "Susu44px_6.h"
+#include "Susu54px_6.h"
+#include "Susu64px_6.h"
+
+// For Level 7 :
+#include "Susu24px_7.h"
+#include "Susu34px_7.h"
+#include "Susu44px_7.h"
+#include "Susu54px_7.h"
+#include "Susu64px_7.h"
 
 // For Level 8 :
 #include "Susu24px_8.h"
@@ -26,6 +66,7 @@
 #include "Susu44px_8.h"
 #include "Susu54px_8.h"
 #include "Susu64px_8.h"
+
 
 #include "MENU_CADRE.h"
 #include "MENU_lock.h"
