@@ -48,12 +48,15 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV2 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(2);
 			initLevel2();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV3 :
+			mmSetModuleVolume(1024*10/100);
 
 			clearSprite();
 			loadSprite(3);
@@ -61,30 +64,40 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV4 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(4);
 			initLevel4();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV5 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(5);
 			initLevel5();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV6 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(6);
 			initLevel6();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV7 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(7);
 			initLevel7();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV8 :
+			mmSetModuleVolume(1024*10/100);
+
 			clearSprite();
 			loadSprite(8);
 			initLevel8();

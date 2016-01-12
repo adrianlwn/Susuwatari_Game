@@ -72,6 +72,8 @@
 #include "MENU_lock.h"
 #include "MENU_heart.h"
 #include "MENU_heart_creux.h"
+#include "MENU_star.h"
+#include "MENU_star_creux.h"
 
 #include "Graphics_Items.h"
 
@@ -83,6 +85,11 @@ u16 * gfx_mushroom;
 u16 * gfx_star_sub;
 u16 * gfx_clover_sub;
 u16 * gfx_mushroom_sub;
+
+u16* gfx_star_score;
+u16* gfx_star_creux_score;
+u16* gfx_heart_score;
+u16* gfx_heart_creux_score;
 
 u16* gfx_cadre_menu;
 u16* gfx_heart_menu;
