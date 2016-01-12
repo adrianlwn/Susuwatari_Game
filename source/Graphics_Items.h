@@ -52,7 +52,7 @@ int nbr_items;
 void initItems(pItem myItem[]);
 
 //---- Changer la position des Items
-void setItemsPosition(pItem myItem[]);
+void setItemsPosition(pItem myItem[],int myLevel);
 
 void displayItems(pItem myItem[]);
 
