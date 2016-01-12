@@ -16,25 +16,96 @@
 
 
 
+
+
+// /!\ 5
+void chooseItems (pItem myItem[], int myLevel){
+
+	switch(myLevel){
+	case 1:
+		nbr_mushroom=5;
+		nbr_clover=5;
+		nbr_star=5;
+		break;
+
+	case 2:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 3:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 4:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 5:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 6:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 7:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	case 8:
+			nbr_mushroom=5;
+			nbr_clover=5;
+			nbr_star=5;
+			break;
+
+	}
+
+ nbr_items= nbr_mushroom +nbr_clover +nbr_star;
+
+	int i;
+	for (i=0 ; i<nbr_mushroom ; i++)
+	{myItem[i]->itemType=MUSHROOM;}
+
+	for (i=nbr_mushroom ; i< nbr_mushroom +nbr_clover ; i++)
+	{myItem[i]->itemType=CLOVER;}
+
+	for (i=nbr_mushroom +nbr_clover  ; i< nbr_mushroom +nbr_clover  +nbr_star; i++)
+	{myItem[i]->itemType=STAR;}
+	}
+
+
+// /!\ 5
+
 void initItems(pItem myItem[]){
 
 	int i;
-	for(i=0; i<15;i++)
+	for(i=0; i<nbr_items;i++)
 	{
-
-		myItem[i]->v= 0;
 		myItem[i]->oamIndex = i+5; // Index OAM est incrémenté de 5 car on reserve la place pour les 5 susus de taille différentes
 
-		myItem[i]->hidden =0;
+		myItem[i]->hidden =0;// ils sont tous affichés au début du jeu
 
+		// sert à qlqch ???, on le fait dans displayItems
 		if(myItem[i]->itemType==MUSHROOM) {myItem[i]->gfx_main=gfx_mushroom;}
 		if(myItem[i]->itemType==STAR) {myItem[i]->gfx_main=gfx_star;}
 		if(myItem[i]->itemType==CLOVER) {myItem[i]->gfx_main=gfx_clover;}
-
-
 	}
 }
 
+
+// /!\ 5
 void displayItems(pItem myItem[])
 {
 
@@ -42,7 +113,7 @@ void displayItems(pItem myItem[])
 	// de facon à ce que la coordonnée de l'Item corresponde au centre de celui-ci->
 	int halfwidth = 16;
 	int i;
-	for(i=0; i<15;i++)
+	for(i=0; i<nbr_items;i++)
 	{
 
 		if(myItem[i]->itemType==MUSHROOM)
@@ -51,7 +122,7 @@ void displayItems(pItem myItem[])
 					myItem[i]->oamIndex,				// Number of sprite
 					(int)myItem[i]->x- halfwidth , (int) myItem[i]->y- halfwidth ,			// Coordinates
 					0,				// Priority
-					2+5,				// Palette to use
+					nbr_pal_mushroom,				// Palette to use
 					SpriteSize_32x32,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_mushroom,			// Loaded graphic to display
@@ -69,7 +140,7 @@ void displayItems(pItem myItem[])
 					myItem[i]->oamIndex,				// Number of sprite
 					(int)myItem[i]->x- halfwidth , (int)myItem[i]->y- halfwidth ,			// Coordinates
 					0,				// Priority
-					0+5,				// Palette to use
+					nbr_pal_star,				// Palette to use
 					SpriteSize_32x32,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_star,			// Loaded graphic to display
@@ -87,7 +158,7 @@ void displayItems(pItem myItem[])
 					myItem[i]->oamIndex,				// Number of sprite
 					(int)myItem[i]->x- halfwidth , (int)myItem[i]->y- halfwidth ,			// Coordinates
 					0,				// Priority
-					1+5,				// Palette to use
+					nbr_pal_clover,				// Palette to use
 					SpriteSize_32x32,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_clover,			// Loaded graphic to display
@@ -105,7 +176,7 @@ void displayItems(pItem myItem[])
 }
 
 
-
+// /!\ 5
 void setItemsPosition(pItem myItem[]){
 
 	//1ere ligne
@@ -163,18 +234,7 @@ void setItemsPosition(pItem myItem[]){
 
 }
 
-void chooseItems (pItem myItem[]){
 
-	int i;
-	for (i=0 ; i<5 ; i++)
-	{myItem[i]->itemType=MUSHROOM;}
-
-	for (i=5 ; i<10 ; i++)
-	{myItem[i]->itemType=CLOVER;}
-
-	for (i=10 ; i<15 ; i++)
-	{myItem[i]->itemType=STAR;}
-}
 
 
 

@@ -30,9 +30,6 @@ typedef struct Item_struct {
 	double x,y ; // positions dans la matrice de pixel 256x(192*2)
 	double angle;
 
-	// Dynamique:
-	double v; // vitesse
-
 	// Gestion mémoire :
 	int oamIndex; //numero of sprite;
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
@@ -45,6 +42,12 @@ typedef struct Item_struct {
 } Item, *pItem;
 
 
+int nbr_mushroom;
+int nbr_clover;
+int nbr_star;
+int nbr_items;
+
+
 //---- Initialisation des propriétés de l'item,  placement tile et palette de l'item dans la mémoire (swicopy)
 void initItems(pItem myItem[]);
 
@@ -53,7 +56,7 @@ void setItemsPosition(pItem myItem[]);
 
 void displayItems(pItem myItem[]);
 
-void chooseItems (pItem myItem[]);
+void chooseItems (pItem myItem[], int myLevel);
 
 
 #endif /* SOURCE_GRAPHICS_ITEMS_H_ */
