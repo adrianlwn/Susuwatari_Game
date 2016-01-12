@@ -96,6 +96,15 @@ u16* gfx_heart_menu;
 u16* gfx_heart_creux_menu;
 u16* gfx_lock_menu;
 
+int nbr_pal_mushroom;
+int nbr_pal_clover;
+int nbr_pal_star;
+
+int nbr_pal_coeur ;
+int nbr_pal_coeur_creux;
+int nbr_pal_score;
+int nbr_pal_score_creux;
+
 void clearSprite();
 void initSprite();
 void loadSprite(int myLevel);

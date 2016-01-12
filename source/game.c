@@ -33,13 +33,13 @@ void initLevel1(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,1);
+	setItemsPosition( Items,1);
 	initItems(Items);
 
 
@@ -56,13 +56,13 @@ void initLevel2(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,2);
+	setItemsPosition( Items,2);
 	initItems(Items);
 
 
@@ -79,13 +79,13 @@ void initLevel3(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,3);
+	setItemsPosition( Items,3);
 	initItems(Items);
 
 
@@ -102,13 +102,13 @@ void initLevel4(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,4);
+	setItemsPosition( Items,4);
 	initItems(Items);
 
 
@@ -125,13 +125,13 @@ void initLevel5(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,5);
+	setItemsPosition( Items,5);
 	initItems(Items);
 
 
@@ -148,13 +148,13 @@ void initLevel6(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,6);
+	setItemsPosition( Items,6);
 	initItems(Items);
 
 
@@ -171,13 +171,13 @@ void initLevel7(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,7);
+	setItemsPosition( Items,7);
 	initItems(Items);
 
 
@@ -192,13 +192,13 @@ void initLevel8(){
 
 
 	int i;
-	for(i = 0 ; i <15 ; i++){
+	for(i = 0 ; i <100 ; i++){
 		Items[i]= malloc(sizeof(Item));
 	}
 
 
-	chooseItems (Items);
-	setItemsPosition( Items);
+	chooseItems (Items,8);
+	setItemsPosition( Items,8);
 	initItems(Items);
 
 
@@ -266,7 +266,7 @@ void playGame(){
 int collision(){
 	int i;
 	int indexTouched = -1;
-	for(i=0; i< 15 ; i++){
+	for(i=0; i< 100 ; i++){
 		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1)
 		{
 			indexTouched=i;
@@ -297,7 +297,7 @@ void StarScore(pPlayer myPlayer)
 				i+5+5 +5 +5,				// Number of sprite
 				185+i*11- halfwidth , 192-6- halfwidth ,			// Coordinates
 				0,				// Priority
-				11,				// Palette to use
+				nbr_pal_score_creux,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				gfx_star_creux_score ,			// Loaded graphic to display
@@ -316,7 +316,7 @@ void StarScore(pPlayer myPlayer)
 					i+5,				// Number of sprite
 					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
 					0,				// Priority
-					10,				// Palette to use
+					nbr_pal_score,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_star_score,			// Loaded graphic to display
@@ -333,7 +333,7 @@ void StarScore(pPlayer myPlayer)
 					i+5,				// Number of sprite
 					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
 					0,				// Priority
-					10,				// Palette to use
+					nbr_pal_score,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_star_score,			// Loaded graphic to display
@@ -362,7 +362,7 @@ void LifeScore(pPlayer myPlayer)
 				i+5+5 +5,				// Number of sprite
 				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 				0,				// Priority
-				9,				// Palette to use
+				nbr_pal_coeur_creux,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
 				gfx_heart_creux_score ,			// Loaded graphic to display
@@ -379,7 +379,7 @@ void LifeScore(pPlayer myPlayer)
 					i+5+5,				// Number of sprite
 					55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 					0,				// Priority
-					8,				// Palette to use
+					nbr_pal_coeur,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_heart_score,			// Loaded graphic to display
@@ -396,7 +396,7 @@ void LifeScore(pPlayer myPlayer)
 					i+5+5,				// Number of sprite
 					55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 					0,				// Priority
-					8,				// Palette to use
+					nbr_pal_coeur,				// Palette to use
 					SpriteSize_8x16,			// Sprite size
 					SpriteColorFormat_256Color,	// Color format
 					gfx_heart_score,			// Loaded graphic to display
