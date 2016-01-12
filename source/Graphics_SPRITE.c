@@ -405,7 +405,27 @@ void loadSprite(int myLevel){
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 
 
+	// --------COEUR
+		gfx_heart_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
 
+		// Palette :
+		vramSetBankI(VRAM_I_LCD);
+		swiCopy(MENU_heartPal,  &VRAM_I_EXT_SPR_PALETTE[8], MENU_heartPalLen/2);
+		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+		// Tiles :
+		swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
+
+		// --------COEUR Creux
+		gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+		// Palette :
+		vramSetBankI(VRAM_I_LCD);
+		swiCopy(MENU_heart_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[9], MENU_heart_creuxPalLen/2);
+		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+		// Tiles :
+		swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_menu, MENU_heart_creuxTilesLen/2);
 
 
 
@@ -454,7 +474,6 @@ void loadSpriteMenu(){
 	// Tiles :
 	swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
 
-	REG_BLDCNT = BLEND_ALPHA;
 	// --------COEUR Creux
 	gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
 

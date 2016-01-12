@@ -289,49 +289,122 @@ void itemDisappear(int indexTouched)
 void StarScore(pPlayer myPlayer)
 {
 	int i;
-	int halfwidth=16;
+	int halfwidth=5;
 
-	for(i=0; i< myPlayer->score; i++)
+
+	for(i=0; i<5; i++)
 	{
-		//tiles ?
+
 		oamSet( &oamSub, 	// oam handler
-				i+5,				// Number of sprite
-				256-32-i*32- halfwidth ,192-32- halfwidth ,			// Coordinates
+				i+5+5 +5 +5,				// Number of sprite
+				185+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 				0,				// Priority
-				5,				// Palette to use
-				SpriteSize_32x32,			// Sprite size
+				9,				// Palette to use
+				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
-				gfx_star_sub,			// Loaded graphic to display
+				gfx_heart_creux_menu ,			// Loaded graphic to display
 				-1,				// Affine rotation to use (-1 none)
 				false,			// Double size if rotating
 				false,			// Hide this sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+
+		if(i < myPlayer->score )
+		{
+		//tiles ?
+		oamSet( &oamSub, 	// oam handler
+				i+5,				// Number of sprite
+				185+i*11- halfwidth ,192-4- halfwidth ,			// Coordinates
+				0,				// Priority
+				8,				// Palette to use
+				SpriteSize_8x16,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				gfx_heart_menu,			// Loaded graphic to display
+				-1,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				false,			// Hide this sprite
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
+		}
+		else {
+			//tiles ?
+					oamSet( &oamSub, 	// oam handler
+							i+5,				// Number of sprite
+							185+i*11- halfwidth ,192-4- halfwidth ,			// Coordinates
+							0,				// Priority
+							8,				// Palette to use
+							SpriteSize_8x16,			// Sprite size
+							SpriteColorFormat_256Color,	// Color format
+							gfx_heart_menu,			// Loaded graphic to display
+							-1,				// Affine rotation to use (-1 none)
+							false,			// Double size if rotating
+							true,			// Hide this sprite
+							false, false,	// Horizontal or vertical flip
+							false			// Mosaic
+					);
+		}
 	}
+
 }
 
 void LifeScore(pPlayer myPlayer)
 {
 	int i;
-	int halfwidth=16;
+	int halfwidth=5;
 
-	for(i=0; i< myPlayer->life; i++)
+	for(i=0; i< 5; i++)
+
 	{
 		oamSet( &oamSub, 	// oam handler
-				i+5+5,				// Number of sprite
-				0+i*32- halfwidth , 192-32- halfwidth ,			// Coordinates
+				i+5+5 +5,				// Number of sprite
+				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
 				0,				// Priority
-				6,				// Palette to use
-				SpriteSize_32x32,			// Sprite size
+				9,				// Palette to use
+				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
-				gfx_clover_sub,			// Loaded graphic to display
+				gfx_heart_creux_menu ,			// Loaded graphic to display
 				-1,				// Affine rotation to use (-1 none)
 				false,			// Double size if rotating
 				false,			// Hide this sprite
 				false, false,	// Horizontal or vertical flip
 				false			// Mosaic
 		);
+
+		if(i<myPlayer->life)
+		{
+		oamSet( &oamSub, 	// oam handler
+				i+5+5,				// Number of sprite
+				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
+				0,				// Priority
+				8,				// Palette to use
+				SpriteSize_8x16,			// Sprite size
+				SpriteColorFormat_256Color,	// Color format
+				gfx_heart_menu,			// Loaded graphic to display
+				-1,				// Affine rotation to use (-1 none)
+				false,			// Double size if rotating
+				false,			// Hide this sprite
+				false, false,	// Horizontal or vertical flip
+				false			// Mosaic
+		);
+		}
+		else{
+			oamSet( &oamSub, 	// oam handler
+							i+5+5,				// Number of sprite
+							55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
+							0,				// Priority
+							8,				// Palette to use
+							SpriteSize_8x16,			// Sprite size
+							SpriteColorFormat_256Color,	// Color format
+							gfx_heart_menu,			// Loaded graphic to display
+							-1,				// Affine rotation to use (-1 none)
+							false,			// Double size if rotating
+							true,			// Hide this sprite
+							false, false,	// Horizontal or vertical flip
+							false			// Mosaic
+					);
+		}
 	}
 }
 
