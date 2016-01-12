@@ -20,4 +20,5 @@ void loadMusic(){
 
 void loadEffect(){
 	mmLoadEffect(SFX_SUSUBOUNCE);
+
 }
