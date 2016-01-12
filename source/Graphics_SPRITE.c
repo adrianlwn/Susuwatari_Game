@@ -60,9 +60,9 @@ void loadSprite(int myLevel){
 	int Susu54pxTilesLen;
 
 	// Susu 64 px
-	 const unsigned  int *Susu64pxPal;
+	const unsigned  int *Susu64pxPal;
 	int Susu64pxPalLen;
-	 const unsigned short *Susu64pxTiles;
+	const unsigned short *Susu64pxTiles;
 	int Susu64pxTilesLen;
 
 
@@ -408,32 +408,57 @@ void loadSprite(int myLevel){
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE); */
 
 
-	// --------COEUR
-		gfx_heart_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+	// --------COEUR SCORE
+	gfx_heart_score = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
 
-		// Palette :
-		vramSetBankI(VRAM_I_LCD);
-		swiCopy(MENU_heartPal,  &VRAM_I_EXT_SPR_PALETTE[8], MENU_heartPalLen/2);
-		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_heartPal,  &VRAM_I_EXT_SPR_PALETTE[8], MENU_heartPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 
-		// Tiles :
-		swiCopy(MENU_heartTiles, gfx_heart_menu, MENU_heartTilesLen/2);
+	// Tiles :
+	swiCopy(MENU_heartTiles, gfx_heart_score, MENU_heartTilesLen/2);
 
-		// --------COEUR Creux
-		gfx_heart_creux_menu = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+	// --------COEUR SCORE - Creux
+	gfx_heart_creux_score = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
 
-		// Palette :
-		vramSetBankI(VRAM_I_LCD);
-		swiCopy(MENU_heart_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[9], MENU_heart_creuxPalLen/2);
-		vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_heart_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[9], MENU_heart_creuxPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 
-		// Tiles :
-		swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_menu, MENU_heart_creuxTilesLen/2);
+	// Tiles :
+	swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_score, MENU_heart_creuxTilesLen/2);
 
+
+	// --------STAR SCORE
+	gfx_star_score = oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_starPal,  &VRAM_I_EXT_SPR_PALETTE[10], MENU_starPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(MENU_starTiles, gfx_star_score, MENU_starTilesLen/2);
+
+	// --------STAR SCORE - Creux
+	gfx_star_creux_score= oamAllocateGfx(&oamSub, SpriteSize_8x16, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(MENU_star_creuxPal,  &VRAM_I_EXT_SPR_PALETTE[11], MENU_star_creuxPalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+	// Tiles :
+
+<<<<<<< HEAD
 		nbr_pal_coeur =8;
 		nbr_pal_coeur_creux=9;
 		nbr_pal_star=5;
 		nbr_pal_star_creux=5;
+=======
+	swiCopy(MENU_star_creuxTiles, gfx_star_creux_score, MENU_star_creuxTilesLen/2);
+>>>>>>> master
 
 
 
