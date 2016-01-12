@@ -24,187 +24,185 @@
 
 void initLevel1(){
 	// LOAD GAME GRAPHICS
-		loadGraphics_Main(1);
-		loadGraphics_Sub(1);
+	loadGraphics_Main(1);
+	loadGraphics_Sub(1);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel2(){
 	loadGraphics_Main(2);
-		loadGraphics_Sub(2);
+	loadGraphics_Sub(2);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel3(){
 	loadGraphics_Main(3);
-		loadGraphics_Sub(3);
+	loadGraphics_Sub(3);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel4(){
 	loadGraphics_Main(4);
-		loadGraphics_Sub(4);
+	loadGraphics_Sub(4);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel5(){
 	loadGraphics_Main(5);
-		loadGraphics_Sub(5);
+	loadGraphics_Sub(5);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel6(){
 	loadGraphics_Main(6);
-		loadGraphics_Sub(6);
+	loadGraphics_Sub(6);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel7(){
 	loadGraphics_Main(7);
-		loadGraphics_Sub(7);
+	loadGraphics_Sub(7);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 void initLevel8(){
 	loadGraphics_Main(8);
-		loadGraphics_Sub(8);
+	loadGraphics_Sub(8);
+	theSusu = malloc(sizeof(Susu));
+	initSusu(theSusu);
 
 
-		theSusu = malloc(sizeof(Susu));
-		initSusu(theSusu);
+	int i;
+	for(i = 0 ; i <15 ; i++){
+		Items[i]= malloc(sizeof(Item));
+	}
 
 
-		int i;
-		for(i = 0 ; i <15 ; i++){
-			Items[i]= malloc(sizeof(Item));
-		}
+	chooseItems (Items);
+	setItemsPosition( Items);
+	initItems(Items);
 
 
-		chooseItems (Items);
-		setItemsPosition( Items);
-		initItems(Items);
-
-
-		initPlayer(thePlayer);
+	initPlayer(thePlayer);
 }
 
 
@@ -248,7 +246,7 @@ void playGame(){
 		{ setSusuBigger(theSusu);
 		itemDisappear(indexTouched);
 		if (thePlayer->life <5){
-		thePlayer->life++;}
+			thePlayer->life++;}
 		LifeScore(thePlayer);
 
 
@@ -313,6 +311,7 @@ void StarScore(pPlayer myPlayer)
 		if(i < myPlayer->score )
 		{
 		//tiles ?
+
 		oamSet( &oamSub, 	// oam handler
 				i+5,				// Number of sprite
 				185+i*11- halfwidth ,192-4- halfwidth ,			// Coordinates
@@ -345,6 +344,7 @@ void StarScore(pPlayer myPlayer)
 							false			// Mosaic
 					);
 		}
+
 	}
 
 }
@@ -357,6 +357,7 @@ void LifeScore(pPlayer myPlayer)
 	for(i=0; i< 5; i++)
 
 	{
+		if (i< myPlayer->life){
 		oamSet( &oamSub, 	// oam handler
 				i+5+5 +5,				// Number of sprite
 				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
@@ -389,6 +390,7 @@ void LifeScore(pPlayer myPlayer)
 				false			// Mosaic
 		);
 		}
+
 		else{
 			oamSet( &oamSub, 	// oam handler
 							i+5+5,				// Number of sprite
@@ -398,6 +400,7 @@ void LifeScore(pPlayer myPlayer)
 							SpriteSize_8x16,			// Sprite size
 							SpriteColorFormat_256Color,	// Color format
 							gfx_heart_menu,			// Loaded graphic to display
+
 							-1,				// Affine rotation to use (-1 none)
 							false,			// Double size if rotating
 							true,			// Hide this sprite
@@ -428,7 +431,9 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 		levelList[levelSelected-1]->best_score = mySusu->size +1;
 		levelList[levelSelected]->locked = false;
 
-		writeScore();
+		// On ecrit le score dans le fichier. Si le score est meilleur que l'actuel Best Score :
+		if (thePlayer->score > levelList[levelSelected-1]->best_score ){
+		writeScore();}
 		goToEndLevel();
 
 	}
@@ -438,8 +443,10 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 	if (myPlayer->life == 0 || (mySusu->v == 0 && mySusu->y < HAUTEUR + DECALAGE - mySusu->rayon)){
 		goToEndLevel();
 
-		}
+	}
 
+
+}
 }
 
 

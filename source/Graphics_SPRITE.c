@@ -97,7 +97,7 @@ void loadSprite(int myLevel){
 
 		break;
 	case 2 : // LEVEL 2 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_2PalLen;
 		Susu24pxPal = Susu24px_2Pal;
@@ -123,10 +123,10 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_2Pal;
 		Susu64pxTilesLen = Susu64px_2TilesLen;
 		Susu64pxTiles = &Susu64px_2Tiles;
-		*/
+
 		break;
 	case 3 : // LEVEL 3 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_3PalLen;
 		Susu24pxPal = Susu24px_3Pal;
@@ -152,11 +152,11 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_3Pal;
 		Susu64pxTilesLen = Susu64px_3TilesLen;
 		Susu64pxTiles = &Susu64px_3Tiles;
-		*/
+
 		break;
 
 	case 4 : // LEVEL 4 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_4PalLen;
 		Susu24pxPal = Susu24px_4Pal;
@@ -182,10 +182,10 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_4Pal;
 		Susu64pxTilesLen = Susu64px_4TilesLen;
 		Susu64pxTiles = &Susu64px_4Tiles;
-		*/
+
 		break;
 	case 5 : // LEVEL 5 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_5PalLen;
 		Susu24pxPal = Susu24px_5Pal;
@@ -211,11 +211,11 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_5Pal;
 		Susu64pxTilesLen = Susu64px_5TilesLen;
 		Susu64pxTiles = &Susu64px_5Tiles;
-		*/
+
 		break;
 
 	case 6 : // LEVEL 6 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_6PalLen;
 		Susu24pxPal = Susu24px_6Pal;
@@ -241,10 +241,10 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_6Pal;
 		Susu64pxTilesLen = Susu64px_6TilesLen;
 		Susu64pxTiles = &Susu64px_6Tiles;
-		*/
+
 		break;
 	case 7 : // LEVEL 7 SPRITES
-		/*
+
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_7PalLen;
 		Susu24pxPal = Susu24px_7Pal;
@@ -270,7 +270,7 @@ void loadSprite(int myLevel){
 		Susu64pxPal = &Susu64px_7Pal;
 		Susu64pxTilesLen = Susu64px_7TilesLen;
 		Susu64pxTiles = &Susu64px_7Tiles;
-		*/
+
 		break;
 	case 8 : // LEVEL 8 SPRITES
 
