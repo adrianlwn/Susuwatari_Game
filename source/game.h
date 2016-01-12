@@ -41,6 +41,7 @@ void playGame();
 int collision();
 void itemDisappear(int indexTouched);
 void initPlayer(pPlayer myPlayer);
+
 void LifeScore(pPlayer myPlayer);
 void StarScore(pPlayer myPlayer);
 

@@ -295,12 +295,12 @@ void StarScore(pPlayer myPlayer)
 
 		oamSet( &oamSub, 	// oam handler
 				i+5+5 +5 +5,				// Number of sprite
-				185+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
+				185+i*11- halfwidth , 192-6- halfwidth ,			// Coordinates
 				0,				// Priority
-				9,				// Palette to use
+				11,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
-				gfx_heart_creux_menu ,			// Loaded graphic to display
+				gfx_star_creux_score ,			// Loaded graphic to display
 				-1,				// Affine rotation to use (-1 none)
 				false,			// Double size if rotating
 				false,			// Hide this sprite
@@ -310,39 +310,39 @@ void StarScore(pPlayer myPlayer)
 
 		if(i < myPlayer->score )
 		{
-		//tiles ?
+			//tiles ?
 
-		oamSet( &oamSub, 	// oam handler
-				i+5,				// Number of sprite
-				185+i*11- halfwidth ,192-4- halfwidth ,			// Coordinates
-				0,				// Priority
-				8,				// Palette to use
-				SpriteSize_8x16,			// Sprite size
-				SpriteColorFormat_256Color,	// Color format
-				gfx_heart_menu,			// Loaded graphic to display
-				-1,				// Affine rotation to use (-1 none)
-				false,			// Double size if rotating
-				false,			// Hide this sprite
-				false, false,	// Horizontal or vertical flip
-				false			// Mosaic
-		);
+			oamSet( &oamSub, 	// oam handler
+					i+5,				// Number of sprite
+					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
+					0,				// Priority
+					10,				// Palette to use
+					SpriteSize_8x16,			// Sprite size
+					SpriteColorFormat_256Color,	// Color format
+					gfx_star_score,			// Loaded graphic to display
+					-1,				// Affine rotation to use (-1 none)
+					false,			// Double size if rotating
+					false,			// Hide this sprite
+					false, false,	// Horizontal or vertical flip
+					false			// Mosaic
+			);
 		}
 		else {
 			//tiles ?
-					oamSet( &oamSub, 	// oam handler
-							i+5,				// Number of sprite
-							185+i*11- halfwidth ,192-4- halfwidth ,			// Coordinates
-							0,				// Priority
-							8,				// Palette to use
-							SpriteSize_8x16,			// Sprite size
-							SpriteColorFormat_256Color,	// Color format
-							gfx_heart_menu,			// Loaded graphic to display
-							-1,				// Affine rotation to use (-1 none)
-							false,			// Double size if rotating
-							true,			// Hide this sprite
-							false, false,	// Horizontal or vertical flip
-							false			// Mosaic
-					);
+			oamSet( &oamSub, 	// oam handler
+					i+5,				// Number of sprite
+					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
+					0,				// Priority
+					10,				// Palette to use
+					SpriteSize_8x16,			// Sprite size
+					SpriteColorFormat_256Color,	// Color format
+					gfx_star_score,			// Loaded graphic to display
+					-1,				// Affine rotation to use (-1 none)
+					false,			// Double size if rotating
+					true,			// Hide this sprite
+					false, false,	// Horizontal or vertical flip
+					false			// Mosaic
+			);
 		}
 
 	}
@@ -357,7 +357,7 @@ void LifeScore(pPlayer myPlayer)
 	for(i=0; i< 5; i++)
 
 	{
-		if (i< myPlayer->life){
+
 		oamSet( &oamSub, 	// oam handler
 				i+5+5 +5,				// Number of sprite
 				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
@@ -365,7 +365,7 @@ void LifeScore(pPlayer myPlayer)
 				9,				// Palette to use
 				SpriteSize_8x16,			// Sprite size
 				SpriteColorFormat_256Color,	// Color format
-				gfx_heart_creux_menu ,			// Loaded graphic to display
+				gfx_heart_creux_score ,			// Loaded graphic to display
 				-1,				// Affine rotation to use (-1 none)
 				false,			// Double size if rotating
 				false,			// Hide this sprite
@@ -375,41 +375,42 @@ void LifeScore(pPlayer myPlayer)
 
 		if(i<myPlayer->life)
 		{
-		oamSet( &oamSub, 	// oam handler
-				i+5+5,				// Number of sprite
-				55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
-				0,				// Priority
-				8,				// Palette to use
-				SpriteSize_8x16,			// Sprite size
-				SpriteColorFormat_256Color,	// Color format
-				gfx_heart_menu,			// Loaded graphic to display
-				-1,				// Affine rotation to use (-1 none)
-				false,			// Double size if rotating
-				false,			// Hide this sprite
-				false, false,	// Horizontal or vertical flip
-				false			// Mosaic
-		);
+			oamSet( &oamSub, 	// oam handler
+					i+5+5,				// Number of sprite
+					55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
+					0,				// Priority
+					8,				// Palette to use
+					SpriteSize_8x16,			// Sprite size
+					SpriteColorFormat_256Color,	// Color format
+					gfx_heart_score,			// Loaded graphic to display
+					-1,				// Affine rotation to use (-1 none)
+					false,			// Double size if rotating
+					false,			// Hide this sprite
+					false, false,	// Horizontal or vertical flip
+					false			// Mosaic
+			);
 		}
 
 		else{
 			oamSet( &oamSub, 	// oam handler
-							i+5+5,				// Number of sprite
-							55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
-							0,				// Priority
-							8,				// Palette to use
-							SpriteSize_8x16,			// Sprite size
-							SpriteColorFormat_256Color,	// Color format
-							gfx_heart_menu,			// Loaded graphic to display
+					i+5+5,				// Number of sprite
+					55+i*11- halfwidth , 192-4- halfwidth ,			// Coordinates
+					0,				// Priority
+					8,				// Palette to use
+					SpriteSize_8x16,			// Sprite size
+					SpriteColorFormat_256Color,	// Color format
+					gfx_heart_score,			// Loaded graphic to display
 
-							-1,				// Affine rotation to use (-1 none)
-							false,			// Double size if rotating
-							true,			// Hide this sprite
-							false, false,	// Horizontal or vertical flip
-							false			// Mosaic
-					);
+					-1,				// Affine rotation to use (-1 none)
+					false,			// Double size if rotating
+					true,			// Hide this sprite
+					false, false,	// Horizontal or vertical flip
+					false			// Mosaic
+			);
 		}
 	}
 }
+
 
 
 void initPlayer(pPlayer myPlayer){
@@ -433,7 +434,7 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 
 		// On ecrit le score dans le fichier. Si le score est meilleur que l'actuel Best Score :
 		if (thePlayer->score > levelList[levelSelected-1]->best_score ){
-		writeScore();}
+			writeScore();}
 		goToEndLevel();
 
 	}
@@ -447,7 +448,7 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 
 
 }
-}
+
 
 
 
