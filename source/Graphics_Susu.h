@@ -73,7 +73,7 @@ void setSusuBigger(pSusu mySusu);
 void setSusuSmaller(pSusu mySusu);
 
 //---- Rotation du Susu ON /OFF
-void SusuRotate(pSusu mySusu,int ON);
+void SusuRotate(pSusu mySusu);
 
 //----  Rotation du Susu jusqu'à atteindre la valeur de new_angle (Rotation assez lente pour effet realiste)
 void SusuRotateToNewAngle(pSusu mySusu);
