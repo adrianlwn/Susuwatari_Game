@@ -19,7 +19,7 @@ typedef struct Player_struct {
 }Player, *pPlayer;
 
 pSusu theSusu;
-pItem Items[15];
+pItem Items[100];
 pPlayer thePlayer;
 
 mapObstacle theMapObstacle;
