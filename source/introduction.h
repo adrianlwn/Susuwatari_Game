@@ -9,4 +9,11 @@
 #define SOURCE_INTRODUCTION_H_
 
 
+#include "StateMachine.h"
+#include "Graphics_BG.h"
+
+
+void loadStart();
+void loadMessage();
+
 #endif /* SOURCE_INTRODUCTION_H_ */

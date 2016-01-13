@@ -21,15 +21,36 @@ int run(){
 			loadEffect();
 			next_state();
 			break;
+		case INIT_START :
+				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
+				mmSetModuleVolume(1024*50/100);
+				loadStart();
+				next_state();
+				break;
+			case START :
+				handlingStartKey();
+
+				break;
+			case INIT_MESSAGE :
+				loadMessage();
+				next_state();
+
+				break;
+			case MESSAGE :
+				handlingMessageKey();
+
+				break;
 
 		case INIT_MENU :
 			// Load Graphics of the Menu
 			clearSprite();
 			loadMenu();
 			loadSpriteMenu();
+			if (mmActive()){
 			// Start Playing Music
 			mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
-			mmSetModuleVolume(1024*20/100);
+			mmSetModuleVolume(1024*50/100);
+			}
 			//mmSetModuleTempo()
 			next_state();
 			break;
@@ -41,14 +62,14 @@ int run(){
 		case INIT_LV1 :
 
 			// mettre les 2 prochaines fonctions dans initLevel ?
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 			clearSprite();
 			loadSprite(1);
 			initLevel1();
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV2 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(2);
@@ -56,7 +77,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV3 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(3);
@@ -64,7 +85,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV4 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(4);
@@ -72,7 +93,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV5 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(5);
@@ -80,7 +101,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV6 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(6);
@@ -88,7 +109,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV7 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(7);
@@ -96,7 +117,7 @@ int run(){
 			state_G = PLAY_GAME;
 			break;
 		case INIT_LV8 :
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 
 			clearSprite();
 			loadSprite(8);
@@ -110,6 +131,8 @@ int run(){
 
 		case END_LEVEL :
 			clearSprite();
+			mmStop();
+
 			handlingGameOverKey();
 			break;
 		case END :

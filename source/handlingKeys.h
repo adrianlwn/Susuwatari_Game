@@ -12,4 +12,8 @@
 void handlingMenuKey();
 void handlingGameOverKey();
 
+void handlingStartKey();
+void handlingMessageKey();
+
+
 #endif /* SOURCE_HANDLINGKEYS_H_ */
