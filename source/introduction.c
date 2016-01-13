@@ -8,11 +8,3 @@
 #include "introduction.h"
 
 
-void loadStart(){
-	loadGraphics_Start();
-}
-
-void loadMessage(){
-	loadGraphics_Message();
-}
-

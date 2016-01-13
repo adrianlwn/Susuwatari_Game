@@ -11,5 +11,4 @@
 #include <nds.h>
 
 
-
 #endif /* SOURCE_INTERRUPTIONS_H_ */

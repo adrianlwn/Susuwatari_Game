@@ -72,22 +72,3 @@ void handlingGameOverKey(){
 		backToMenu();
 	}
 }
-
-
-
-void handlingStartKey(){
-	scanKeys();
-
-		u16 keys = keysDown();
-		if (keys & (KEY_START | KEY_A)){
-			next_state();
-		}
-}
-void handlingMessageKey(){
-	scanKeys();
-
-		u16 keys = keysDown();
-		if (keys & (KEY_START | KEY_A)){
-			next_state();
-		}
-}

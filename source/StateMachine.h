@@ -12,7 +12,6 @@
 #include "Graphics_SPRITE.h"
 #include "handlingKeys.h"
 #include "game.h"
-#include "introduction.h"
 #include "menu.h"
 #include "audio.h"
 #include "fileSystem.h"
@@ -20,10 +19,6 @@
 
 typedef enum etat{
 		INIT,
-		INIT_START,
-		START,
-		INIT_MESSAGE,
-		MESSAGE,
 		INIT_MENU,
 		MENU,
 		INIT_LV1,
