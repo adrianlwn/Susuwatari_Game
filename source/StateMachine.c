@@ -21,6 +21,24 @@ int run(){
 			loadEffect();
 			next_state();
 			break;
+		case INIT_START :
+			mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
+			loadStart();
+			next_state();
+			break;
+		case START :
+			handlingStartKey();
+
+			break;
+		case INIT_MESSAGE :
+			loadMessage();
+			next_state();
+
+			break;
+		case MESSAGE :
+			handlingMessageKey();
+
+			break;
 
 		case INIT_MENU :
 			// Load Graphics of the Menu
@@ -28,8 +46,12 @@ int run(){
 			loadMenu();
 			loadSpriteMenu();
 			// Start Playing Music
+			if (!mmActive()){
+
 			mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
-			mmSetModuleVolume(1024*20/100);
+			mmSetModuleVolume(1024*50/100);
+			}
+
 			//mmSetModuleTempo()
 			next_state();
 			break;
@@ -41,7 +63,7 @@ int run(){
 		case INIT_LV1 :
 
 			// mettre les 2 prochaines fonctions dans initLevel ?
-			mmSetModuleVolume(1024*10/100);
+			mmSetModuleVolume(1024*20/100);
 			clearSprite();
 			loadSprite(1);
 			initLevel1();
@@ -110,6 +132,7 @@ int run(){
 
 		case END_LEVEL :
 			clearSprite();
+			mmStop();
 			handlingGameOverKey();
 			break;
 		case END :

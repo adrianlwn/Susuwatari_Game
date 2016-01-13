@@ -364,7 +364,6 @@ void loadSprite(int myLevel){
 	gfx_clover = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_mushroom= oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_star = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
-
 	/*gfx_clover_sub = oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_mushroom_sub= oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);
 	gfx_star_sub = oamAllocateGfx(&oamSub, SpriteSize_32x32, SpriteColorFormat_256Color);*/
