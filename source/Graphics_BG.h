@@ -40,6 +40,9 @@
 #include "MENU_main.h"
 #include "MENU_BG_sub.h"
 
+#include "MESSAGE_BG.h"
+#include "START_BG.h"
+
 // ECRIRE LES HEADERS ICI
 
 void configureGraphics_Main();
@@ -50,6 +53,8 @@ void loadGraphics_Menu();
 void loadGraphics_Main(int myLevel);
 void loadGraphics_Sub(int myLevel);
 
+void loadGraphics_Message();
+void loadGraphics_Start();
 
 
 

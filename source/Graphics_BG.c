@@ -226,3 +226,36 @@ void loadGraphics_Menu(){
 
 }
 
+void loadGraphics_Start(){
+	// Chargement de l'ecran Main
+
+	BGCTRL[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(MENU_mainTiles,BG_TILE_RAM(1),MENU_mainTilesLen);
+	dmaCopy(MENU_mainMap,BG_MAP_RAM(0),MENU_mainMapLen);
+	dmaCopy(MENU_mainPal,BG_PALETTE,MENU_mainPalLen);
+	// Chargement de l'ecran Sub
+
+	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(START_BGTiles ,BG_TILE_RAM_SUB(1) , START_BGTilesLen );
+	dmaCopy(START_BGMap,BG_MAP_RAM_SUB(0),START_BGMapLen);
+	dmaCopy(START_BGPal,BG_PALETTE_SUB,START_BGPalLen);
+
+}
+
+void loadGraphics_Message(){
+	// Inutile de recharger le Main screen qui restera toujours le meme
+	/*
+	BGCTRL[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(MENU_mainTiles,BG_TILE_RAM(1),MENU_mainTilesLen);
+	dmaCopy(MENU_mainMap,BG_MAP_RAM(0),MENU_mainMapLen);
+	dmaCopy(MENU_mainPal,BG_PALETTE,MENU_mainPalLen);
+	 */
+
+	BGCTRL_SUB[3] = BG_COLOR_256 | BG_32x32 | BG_MAP_BASE(0) | BG_TILE_BASE(1);
+	dmaCopy(MESSAGE_BGTiles ,BG_TILE_RAM_SUB(1) , MESSAGE_BGTilesLen );
+	dmaCopy(MESSAGE_BGMap,BG_MAP_RAM_SUB(0),MESSAGE_BGMapLen);
+	dmaCopy(MESSAGE_BGPal,BG_PALETTE_SUB,MESSAGE_BGPalLen);
+
+}
+
+
