@@ -68,8 +68,23 @@ void handlingGameOverKey(){
 	scanKeys();
 
 	u16 keys = keysDown();
-	if (keys & KEY_A){
-		backToMenu();
+
+	if (keys & KEY_TOUCH){
+		touchPosition pos_menu;
+		touchRead(&pos_menu);
+
+		//int held=keysHeld();
+		int px = pos_menu.px;
+		int py = pos_menu.py;
+
+		if (py > 29 && px > 73 && px < 184 && py < 74){
+			goToLevel(levelSelected);
+		}
+
+		if (py > 102 && px > 73 && px < 184 && py < 147){
+			backToMenu();
+		}
+
 	}
 }
 
@@ -78,16 +93,16 @@ void handlingGameOverKey(){
 void handlingStartKey(){
 	scanKeys();
 
-		u16 keys = keysDown();
-		if (keys & (KEY_START | KEY_A)){
-			next_state();
-		}
+	u16 keys = keysDown();
+	if (keys & (KEY_START | KEY_A)){
+		next_state();
+	}
 }
 void handlingMessageKey(){
 	scanKeys();
 
-		u16 keys = keysDown();
-		if (keys & (KEY_START | KEY_A)){
-			next_state();
-		}
+	u16 keys = keysDown();
+	if (keys & (KEY_START | KEY_A)){
+		next_state();
+	}
 }

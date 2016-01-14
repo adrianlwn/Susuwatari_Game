@@ -513,6 +513,194 @@ void loadSpriteMenu(){
 	// Tiles :
 	swiCopy(MENU_heart_creuxTiles, gfx_heart_creux_menu, MENU_heart_creuxTilesLen/2);
 
+}
+
+
+void loadSpriteGameOver(){
+	// -------- SUB :
+	// part 1
+	gfx_gameover_sub_1 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_1Pal,  &VRAM_I_EXT_SPR_PALETTE[0], GameOver_sub_1PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_1Tiles, gfx_gameover_sub_1, GameOver_sub_1TilesLen/2);
+
+	// part 2
+	gfx_gameover_sub_2 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_2Pal,  &VRAM_I_EXT_SPR_PALETTE[1], GameOver_sub_2PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_2Tiles, gfx_gameover_sub_2, GameOver_sub_2TilesLen/2);
+
+	// part 3
+	gfx_gameover_sub_3 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_3Pal,  &VRAM_I_EXT_SPR_PALETTE[2], GameOver_sub_3PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_3Tiles, gfx_gameover_sub_3, GameOver_sub_3TilesLen/2);
+
+	// part 4
+	gfx_gameover_sub_4 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_4Pal,  &VRAM_I_EXT_SPR_PALETTE[3], GameOver_sub_4PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_4Tiles, gfx_gameover_sub_4, GameOver_sub_4TilesLen/2);
+
+
+
+	// -------- MAIN : GAME OVER
+
+	// part1
+	gfx_gameover_main_1 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(GameOver_main_1Pal,  &VRAM_F_EXT_SPR_PALETTE[0], GameOver_main_1PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(GameOver_main_1Tiles, gfx_gameover_main_1, GameOver_main_1TilesLen/2);
+
+	//part2
+	gfx_gameover_main_2 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(GameOver_main_2Pal,  &VRAM_F_EXT_SPR_PALETTE[1], GameOver_main_2PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(GameOver_main_2Tiles, gfx_gameover_main_2, GameOver_main_2TilesLen/2);
+
+	//part3
+	gfx_gameover_main_3 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(GameOver_main_3Pal,  &VRAM_F_EXT_SPR_PALETTE[2], GameOver_main_3PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(GameOver_main_3Tiles, gfx_gameover_main_3, GameOver_main_3TilesLen/2);
+
+	//part4
+	gfx_gameover_main_4 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(GameOver_main_4Pal,  &VRAM_F_EXT_SPR_PALETTE[3], GameOver_main_4PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(GameOver_main_4Tiles, gfx_gameover_main_4, GameOver_main_4TilesLen/2);
+
+
+
+
+}
+
+void loadSpriteSucess(){
+	// -------- SUB :
+	// part 1
+	gfx_gameover_sub_1 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_1Pal,  &VRAM_I_EXT_SPR_PALETTE[0], GameOver_sub_1PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_1Tiles, gfx_gameover_sub_1, GameOver_sub_1TilesLen/2);
+
+	// part 2
+	gfx_gameover_sub_2 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_2Pal,  &VRAM_I_EXT_SPR_PALETTE[1], GameOver_sub_2PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_2Tiles, gfx_gameover_sub_2, GameOver_sub_2TilesLen/2);
+
+	// part 3
+	gfx_gameover_sub_3 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_3Pal,  &VRAM_I_EXT_SPR_PALETTE[2], GameOver_sub_3PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_3Tiles, gfx_gameover_sub_3, GameOver_sub_3TilesLen/2);
+
+	// part 4
+	gfx_gameover_sub_4 = oamAllocateGfx(&oamSub, SpriteSize_64x64, SpriteColorFormat_256Color);
+
+	// Palette :
+	vramSetBankI(VRAM_I_LCD);
+	swiCopy(GameOver_sub_4Pal,  &VRAM_I_EXT_SPR_PALETTE[3], GameOver_sub_4PalLen/2);
+	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
+
+	// Tiles :
+	swiCopy(GameOver_sub_4Tiles, gfx_gameover_sub_4, GameOver_sub_4TilesLen/2);
+
+	// -------- MAIN : SUCCESS
+
+	// part1
+	gfx_sucess_main_1 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(Sucess_main_1Pal,  &VRAM_F_EXT_SPR_PALETTE[0], Sucess_main_1PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(Sucess_main_1Tiles, gfx_sucess_main_1, Sucess_main_1TilesLen/2);
+
+	//part2
+	gfx_sucess_main_2 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(Sucess_main_2Pal,  &VRAM_F_EXT_SPR_PALETTE[1], Sucess_main_2PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(Sucess_main_2Tiles, gfx_sucess_main_2, Sucess_main_2TilesLen/2);
+
+	//part3
+	gfx_sucess_main_3 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(Sucess_main_3Pal,  &VRAM_F_EXT_SPR_PALETTE[2], Sucess_main_3PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(Sucess_main_3Tiles, gfx_sucess_main_3, Sucess_main_3TilesLen/2);
+
+	//part4
+	gfx_sucess_main_4 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(Sucess_main_4Pal,  &VRAM_F_EXT_SPR_PALETTE[3], Sucess_main_4PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(Sucess_main_4Tiles, gfx_sucess_main_4, Sucess_main_4TilesLen/2);
+
+	//part5
+	gfx_sucess_main_5 = oamAllocateGfx(&oamMain, SpriteSize_64x64, SpriteColorFormat_256Color);
+	// Palette :
+	vramSetBankF(VRAM_F_LCD);
+	swiCopy(Sucess_main_5Pal,  &VRAM_F_EXT_SPR_PALETTE[4], Sucess_main_5PalLen/2);
+	vramSetBankF(VRAM_F_SPRITE_EXT_PALETTE);
+	// Tiles :
+	swiCopy(Sucess_main_5Tiles, gfx_sucess_main_5, Sucess_main_5TilesLen/2);
+
 
 
 

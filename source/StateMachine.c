@@ -129,12 +129,33 @@ int run(){
 			playGame();
 			break;
 
-		case END_LEVEL :
-			clearSprite();
-			mmStop();
+		case END_LEVEL_INIT :
 
+			clearSprite();
+
+			loadSpriteGameOver();
+
+			if (thePlayer->score == 5 ){
+				loadSpriteSucess();
+			}
+			else{
+			}
+
+			mmStop();
+			next_state();
+			break;
+		case END_LEVEL :
+			playGameOver();
+
+			if (thePlayer->score == 5 ){
+				playSucess();
+			}
+			else{
+
+			}
 			handlingGameOverKey();
 			break;
+
 		case END :
 			break;
 		default :
@@ -154,7 +175,7 @@ void goToLevel(int myLevel){
 }
 
 void goToEndLevel(){
-	state_G = END_LEVEL;
+	state_G = END_LEVEL_INIT;
 }
 void backToMenu(){
 	state_G = INIT_MENU;

@@ -75,6 +75,24 @@
 #include "MENU_star.h"
 #include "MENU_star_creux.h"
 
+#include "GameOver_main_1.h"
+#include "GameOver_main_2.h"
+#include "GameOver_main_3.h"
+#include "GameOver_main_4.h"
+
+#include "GameOver_sub_1.h"
+#include "GameOver_sub_2.h"
+#include "GameOver_sub_3.h"
+#include "GameOver_sub_4.h"
+
+#include "Sucess_main_1.h"
+#include "Sucess_main_2.h"
+#include "Sucess_main_3.h"
+#include "Sucess_main_4.h"
+#include "Sucess_main_5.h"
+
+
+
 #include "Graphics_Items.h"
 
 u16 *gfx_susu_main[5],*gfx_susu_sub[5]; //
@@ -96,6 +114,23 @@ u16* gfx_heart_menu;
 u16* gfx_heart_creux_menu;
 u16* gfx_lock_menu;
 
+u16* gfx_gameover_sub_1;
+u16* gfx_gameover_sub_2;
+u16* gfx_gameover_sub_3;
+u16* gfx_gameover_sub_4;
+
+u16* gfx_gameover_main_1;
+u16* gfx_gameover_main_2;
+u16* gfx_gameover_main_3;
+u16* gfx_gameover_main_4;
+
+u16* gfx_sucess_main_1;
+u16* gfx_sucess_main_2;
+u16* gfx_sucess_main_3;
+u16* gfx_sucess_main_4;
+u16* gfx_sucess_main_5;
+
+
 int nbr_pal_mushroom;
 int nbr_pal_clover;
 int nbr_pal_star;
@@ -110,7 +145,8 @@ void initSprite();
 void loadSprite(int myLevel);
 void loadSpriteMenu();
 
-
+void loadSpriteGameOver();
+void loadSpriteSucess();
 
 
 
