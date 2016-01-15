@@ -217,7 +217,7 @@ void playGame(){
 	indexTouched=collision();
 
 
-	if(indexTouched != -1 && Items[indexTouched]->hidden == 0 && previousIndexTouched != indexTouched)
+	if(indexTouched != -1 && previousIndexTouched != indexTouched)
 	{
 
 
@@ -267,7 +267,7 @@ int collision(){
 	int i;
 	int indexTouched = -1;
 	for(i=0; i< 100 ; i++){
-		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1)
+		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1  && Items[i]->hidden == 0)
 		{
 			indexTouched=i;
 		}

@@ -365,15 +365,15 @@ void SusuUpdate(pSusu mySusu){
 int InSusuSurface(pSusu mySusu, u16 px, u16 py){
 
 	double a,b;
-	int r;
+	double r, distance;
 
 
-	a= mySusu->x;
-	b= mySusu->y;
-	r= mySusu->rayon;
+	a= (double)mySusu->x;
+	b= (double)mySusu->y;
+	r= (double)mySusu->rayon;
+	distance = (px-a) * (px-a) + (py-b) * (py-b);
 
-
-	if((px-a) * (px-a) + (py-b) * (py-b) <=(r * r))
+	if( distance <=r * r )
 	{
 		return 1;}
 
