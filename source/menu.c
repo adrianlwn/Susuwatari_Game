@@ -19,7 +19,7 @@ void initMenu(){
 		levelList[i]->locked = true;
 	}
 
-	levelList[0]->best_score = 2;
+	levelList[0]->best_score = 0;
 	levelList[0]->locked = false;
 	//levelList[1]->best_score = 4;
 	//levelList[1]->locked = false;

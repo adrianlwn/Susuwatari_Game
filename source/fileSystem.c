@@ -16,7 +16,7 @@ void readScore(){
 	di = opendir("/NDS/");
 	file = fopen("/NDS/SusuSave.txt", "r");
 	if(file == NULL){
-		file = fopen("/SusuSave.txt", "w+");
+		file = fopen("/NDS/SusuSave.txt", "w+");
 		//while((pent = readdir(di))!= NULL){
 			stat(pent->d_name, &st);
 

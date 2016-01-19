@@ -11,6 +11,21 @@
 #include "Star.h"
 #include "Mushroom.h"
 #include  "Clover.h"
+
+// Definitions de macro utilisée dans notre projet mais provenant d'une version plus recente de LIBNDS
+
+/** \brief  Used for accessing vram F as an extended sprite palette */
+#define VRAM_F_EXT_SPR_PALETTE ((_palette *)VRAM_F)
+
+/** \brief  Used for accessing vram I as an extended sprite palette */
+#define VRAM_I_EXT_SPR_PALETTE ((_palette *)VRAM_I)
+
+void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble);
+void oamSetHidden(OamState* oam, int id, bool hide);
+
+
+
+
 // For Level 1 :
 #include "Susu24px_1.h"
 #include "Susu34px_1.h"

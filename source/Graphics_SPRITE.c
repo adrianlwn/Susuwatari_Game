@@ -701,7 +701,65 @@ void loadSpriteSucess(){
 	// Tiles :
 	swiCopy(Sucess_main_5Tiles, gfx_sucess_main_5, Sucess_main_5TilesLen/2);
 
-
-
-
 }
+
+
+
+
+
+// RETROCOMPATIBILITE
+/* METHODES TROUVEES DANS UNE VERSION PLUS RECENTE DE LIBNDS
+ * (AJOUTEES ICI POUR UN SOUCIS DE RETROCOMPATIBILITE
+ * AVEC LA MACHINE VIRTUELLE FOURNIE DANS LE COURS
+ */
+
+
+
+
+/**
+*    \brief sets an oam entry to the supplied affine index
+*    \param oam must be: &oamMain or &oamSub
+*    \param id the oam number to be set [0-127]
+*    \param affineIndex affine index to use (if < 0 or > 31 the sprite will be unrotated)
+*    \param sizeDouble if affineIndex >= 0 and < 32 this will be used to double the sprite size for rotation
+*/
+/*
+void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble)
+{
+    sassert(oam == &oamMain || oam == &oamSub, "oamSetAffineIndex() oam must be &oamMain or &oamSub");
+    sassert(id >= 0 && id < SPRITE_COUNT, "oamSetAffineIndex() index is out of bounds, must be 0-127");
+
+    if(affineIndex >= 0 && affineIndex < 32)
+    {
+        oam->oamMemory[id].rotationIndex = affineIndex;
+        oam->oamMemory[id].isSizeDouble  = sizeDouble;
+        oam->oamMemory[id].isRotateScale = true;
+    }
+    else
+    {
+        oam->oamMemory[id].isSizeDouble  = false;
+        oam->oamMemory[id].isRotateScale = false;
+    }
+}
+
+
+*/
+
+/**
+*    \brief sets an oam entry to the supplied hidden state
+*    \param oam must be: &oamMain or &oamSub
+*    \param id the oam number to be set [0-127]
+*    \param hide if non zero (true) the sprite will be hidden
+*/
+
+
+/*
+void oamSetHidden(OamState* oam, int id, bool hide)
+{
+    sassert(oam == &oamMain || oam == &oamSub, "oamSetHidden() oam must be &oamMain or &oamSub");
+    sassert(id >= 0 && id < SPRITE_COUNT, "oamSetHidden() index is out of bounds, must be 0-127");
+    sassert(!oam->oamMemory[id].isRotateScale, "oamSetHidden() cannot set hide on a RotateScale sprite");
+    oam->oamMemory[id].isHidden = hide ? true : false;
+}
+
+*/

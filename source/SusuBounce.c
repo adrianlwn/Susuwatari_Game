@@ -5,7 +5,7 @@
 #define DECALAGE 96
 #define H_SCORE 12
 
-void BounceUpdate(pSusu mySusu, mapObstacle myMapObstacle){
+void BounceUpdate(pSusu mySusu){
 	// On utilise une methode  simple et  fiable pour la detection des murs.
 	// On etablit la conditions du rebond :
 

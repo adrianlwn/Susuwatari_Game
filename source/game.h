@@ -19,28 +19,16 @@ typedef struct Player_struct {
 }Player, *pPlayer;
 
 pSusu theSusu;
+// Liste des items utilisée tout a cours de chaque niveau
 pItem Items[100];
 pPlayer thePlayer;
 
-mapObstacle theMapObstacle;
-int wow_counter,counter;
-
-
-void initLevel1();
-void initLevel2();
-void initLevel3();
-void initLevel4();
-void initLevel5();
-void initLevel6();
-void initLevel7();
-void initLevel8();
-
-
+void initPlayer(pPlayer myPlayer);
+void initLevel(int initLevel);
 
 void playGame();
 int collision();
 void itemDisappear(int indexTouched);
-void initPlayer(pPlayer myPlayer);
 
 void LifeScore(pPlayer myPlayer);
 void StarScore(pPlayer myPlayer);

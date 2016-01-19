@@ -106,7 +106,10 @@ void SusuMove(pSusu mySusu){
 			myTouchState = RELEASING;
 		}
 		else {
-			setSusuPosition( mySusu, pos.px,  pos.py  + DECALAGE + HAUTEUR);
+
+			// ------- DEPLACEMENT SELON LE STYLET !!!! ------------OFF---------------
+			// permet de déplacement en fonction de la position du stylet
+			//setSusuPosition( mySusu, pos.px,  pos.py  + DECALAGE + HAUTEUR);
 			SusuRotate( mySusu); // le susu tourne sur lui même de plus en plus vite
 			//Test gauche
 			if (mySusu->x - mySusu->rayon < 0  ){
@@ -360,6 +363,8 @@ void SusuUpdate(pSusu mySusu){
 	oamUpdate(&oamSub);
 
 }
+
+
 
 //----Vérifie si (px,py) se trouve sur le Susu
 int InSusuSurface(pSusu mySusu, u16 px, u16 py){

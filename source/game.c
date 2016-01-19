@@ -22,15 +22,24 @@
 #define DECALAGE 96
 
 
-void initLevel1(){
+void initPlayer(pPlayer myPlayer){
+
+	myPlayer->life=5;
+	myPlayer->score=0;
+	LifeScore( myPlayer);
+	StarScore( myPlayer);
+
+
+}
+
+void initLevel(int levelNum){
 	// LOAD GAME GRAPHICS
-	loadGraphics_Main(1);
-	loadGraphics_Sub(1);
+	loadGraphics_Main(levelNum);
+	loadGraphics_Sub(levelNum);
 
 
 	theSusu = malloc(sizeof(Susu));
 	initSusu(theSusu);
-
 
 	int i;
 	for(i = 0 ; i <100 ; i++){
@@ -38,167 +47,8 @@ void initLevel1(){
 	}
 
 
-	chooseItems (Items,1);
-	setItemsPosition( Items,1);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel2(){
-	loadGraphics_Main(2);
-	loadGraphics_Sub(2);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,2);
-	setItemsPosition( Items,2);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel3(){
-	loadGraphics_Main(3);
-	loadGraphics_Sub(3);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,3);
-	setItemsPosition( Items,3);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel4(){
-	loadGraphics_Main(4);
-	loadGraphics_Sub(4);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,4);
-	setItemsPosition( Items,4);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel5(){
-	loadGraphics_Main(5);
-	loadGraphics_Sub(5);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,5);
-	setItemsPosition( Items,5);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel6(){
-	loadGraphics_Main(6);
-	loadGraphics_Sub(6);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,6);
-	setItemsPosition( Items,6);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel7(){
-	loadGraphics_Main(7);
-	loadGraphics_Sub(7);
-
-
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,7);
-	setItemsPosition( Items,7);
-	initItems(Items);
-
-
-	initPlayer(thePlayer);
-}
-
-void initLevel8(){
-	loadGraphics_Main(8);
-	loadGraphics_Sub(8);
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
-
-
-	int i;
-	for(i = 0 ; i <100 ; i++){
-		Items[i]= malloc(sizeof(Item));
-	}
-
-
-	chooseItems (Items,8);
-	setItemsPosition( Items,8);
+	chooseItems (Items,levelNum);
+	setItemsPosition( Items,levelNum);
 	initItems(Items);
 
 
@@ -206,55 +56,79 @@ void initLevel8(){
 }
 
 
-int previousIndexTouched, indexTouched;
+/* --- Fonction play Game :
+ * Fonction qui tourne dans la boucle du jeu et qui est chargée d'appeller toutes les fonctions
+ *  qui actualisent les positions des element et l'etat du Jeu (gameOver, colisions avec items)
+ */
 
 void playGame(){
 
+	//--Verifie si on a atteint la situation de GameOver, si c'est le cas, on quitte l'etat actuel du jeu
 	checkGameOver(thePlayer, theSusu);
+	// --Deplacement selon la vitesse
 	SusuMove(theSusu);
-	BounceUpdate(theSusu, theMapObstacle);
-	previousIndexTouched = indexTouched;
-	indexTouched=collision();
+	//-- Actualisation du rebond (angle du mouvement change)
+	BounceUpdate(theSusu);
 
+	// --index de l'element avec lequel il y a eu collision :
+	int indexTouched = collision();
 
-	if(indexTouched != -1 && previousIndexTouched != indexTouched)
+	// -- Gestion de la collision :
+	if(indexTouched != -1 )
 	{
 
-
 		if( Items[indexTouched]->itemType == MUSHROOM)
+			// Reduction de la taille du Susu et perte d'une vie, disparition de l'element touché
 		{
+
 			setSusuSmaller(theSusu);
 
 			itemDisappear(indexTouched);
 
 			thePlayer->life--;
+			// Actualisation du score en bas de l'ecran
+
 			LifeScore(thePlayer);
 
 		}
 
 
 		else if( Items[indexTouched]->itemType == STAR)
-		{ thePlayer->score++;
-		itemDisappear(indexTouched);
-		StarScore(thePlayer);
+			// Le susu gagne une etoile (5 etoiles pour finir le niveau) et l'etoile disparait
+		{
+			thePlayer->score++;
+			itemDisappear(indexTouched);
+			// Actualisation du score en bas de l'ecran
+			StarScore(thePlayer);
 
 
 		}
 
 
 		else if( Items[indexTouched]->itemType == CLOVER)
-		{ setSusuBigger(theSusu);
-		itemDisappear(indexTouched);
-		if (thePlayer->life <5){
-			thePlayer->life++;}
-		LifeScore(thePlayer);
+			// Le Susu gagne une vie et grossit en meme temps (5 vies maximum)
+		{
+			setSusuBigger(theSusu);
+			itemDisappear(indexTouched);
+			if (thePlayer->life <5)
+			{
+				thePlayer->life++;
+			}
+			// Actualisation du score en bas de l'ecran
+			LifeScore(thePlayer);
 
 
 		}
 
 	}
-
+	/* Appel de la fonction qui actualise physiquement la position et l'etat des sprites des
+	 * items
+	 */
 	displayItems(Items);
+
+	/*Appel de la fonction SusuUpdate qui deplace physiquement le Sprite Susu en
+	*fonction  de sa nouvelle position taille, orientation, etc ...
+	*/
 	SusuUpdate(theSusu);
 
 
@@ -262,11 +136,19 @@ void playGame(){
 
 
 
-
+/* FONCTION collision :
+ * Renvoie l'index de l'item touché
+ */
 int collision(){
-	int i;
+
+	// valeur par defaut de l'index de l'element touché
 	int indexTouched = -1;
+
+	int i;
+	// On parcours la liste complete des items
 	for(i=0; i< 100 ; i++){
+
+		// verification pour savoir si le centre de l'item "visible" est dans la surface du SusuWatari
 		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1  && Items[i]->hidden == 0)
 		{
 			indexTouched=i;
@@ -278,7 +160,9 @@ int collision(){
 
 
 
-
+/* FONCTION itemDisappear :
+ * Change l'etat hidden de l'item dans la liste des item en fonction de l'index donné
+ */
 void itemDisappear(int indexTouched)
 {
 	Items[indexTouched]->hidden=1;
@@ -310,7 +194,7 @@ void StarScore(pPlayer myPlayer)
 
 		if(i < myPlayer->score )
 		{
-			//tiles ?
+
 
 			oamSet( &oamSub, 	// oam handler
 					i+5,				// Number of sprite
@@ -328,7 +212,7 @@ void StarScore(pPlayer myPlayer)
 			);
 		}
 		else {
-			//tiles ?
+
 			oamSet( &oamSub, 	// oam handler
 					i+5,				// Number of sprite
 					185+i*11- halfwidth ,192-6- halfwidth ,			// Coordinates
@@ -413,15 +297,7 @@ void LifeScore(pPlayer myPlayer)
 
 
 
-void initPlayer(pPlayer myPlayer){
 
-	myPlayer->life=5;
-	myPlayer->score=0;
-	LifeScore( myPlayer);
-	StarScore( myPlayer);
-
-
-}
 
 void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 	int nb_max_stars = 5;
@@ -433,7 +309,7 @@ void checkGameOver(pPlayer myPlayer, pSusu mySusu){
 		levelList[levelSelected]->locked = false;
 
 		// On ecrit le score dans le fichier. Si le score est meilleur que l'actuel Best Score :
-		if (thePlayer->score > levelList[levelSelected-1]->best_score ){
+		if (thePlayer->score >= levelList[levelSelected-1]->best_score ){
 			writeScore();}
 		goToEndLevel();
 
