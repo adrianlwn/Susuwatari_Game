@@ -14,9 +14,8 @@
 #include "Mushroom.h"
 #include  "Clover.h"
 
-// ----Item_struc: structure d'un Star avec toutes ses propriétés
-//----typedef: 'Item_struct' devient un type nommé 'Item'
-//----pItem: pointeur sur un type Star
+
+//---Structure OBJET---//
 
 typedef struct Item_struct {
 
@@ -34,12 +33,12 @@ typedef struct Item_struct {
 	int oamIndex; //numero of sprite;
 	u16 *gfx_main, *gfx_sub; // memory adresses for copying data;
 
-
 	int hidden; // variable bool caché=1/affiché =0;
 
-
-
 } Item, *pItem;
+// ----Item_struc: structure d'un Star avec toutes ses propriétés
+//----typedef: 'Item_struct' devient un type nommé 'Item'
+//----pItem: pointeur sur un type Star
 
 
 int nbr_mushroom;
@@ -54,8 +53,11 @@ void initItems(pItem myItem[]);
 //---- Changer la position des Items
 void setItemsPosition(pItem myItem[],int myLevel);
 
+
+//---afficher toute la liste des Items
 void displayItems(pItem myItem[]);
 
+//---Choisir le nombre de trèfle/champignon/étoile en fonction du niveau
 void chooseItems (pItem myItem[], int myLevel);
 
 
