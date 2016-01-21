@@ -20,17 +20,10 @@ typedef struct Player_struct {
 	int life;
 }Player, *pPlayer;
 
-<<<<<<< HEAD
 
-pSusu theSusu;
-
-// Liste des items //
-pItem Items[100]; // changer , mettre nbr_items
-
-=======
-// Liste des items utilisée tout a cours de chaque niveau
+// Liste des items
 pItem Items[100];
->>>>>>> master
+
 pPlayer thePlayer;
 
 

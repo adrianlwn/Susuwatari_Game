@@ -41,19 +41,13 @@ typedef struct Susu_struct {
 
 } Susu, *pSusu;
 
-<<<<<<< HEAD
 // ----Susu_struc: structure du Susu avec toutes ses propriétés
 //----typedef: 'Susu_struct' devient un type nommé 'Susu'
 //----pSusu: pointeur sur un type Susu
 
-
-
+pSusu mySusu;
 
 //---Etat du SUSU dans l'écran du sub---//
-
-=======
-pSusu mySusu;
->>>>>>> master
 typedef enum TouchState {
 	NOT_TOUCHED,
 	TOUCHING,
@@ -77,12 +71,6 @@ void setSusuPosition(int x, int y);
 //---- Changer la direction du Susu instantanément
 void setSusuAngle( double angle);
 
-<<<<<<< HEAD
-=======
-//---- Changer la direction du Susu avec retard.
-void setSusuOrientation( double angle);
-
->>>>>>> master
 
 //---- Agrandir le  Susu
 void setSusuBigger();
@@ -96,25 +84,15 @@ void SusuRotate();
 //----  Rotation du Susu jusqu'à atteindre la valeur de new_angle (Rotation assez lente pour effet realiste)
 void SusuRotateToNewAngle();
 
-<<<<<<< HEAD
 
-//--- Implémente la manière de mettre le susu en mouvement avec le stylet;
-void SusuMove(pSusu mySusu);
-
-
-//----Continuité du Susu écran MAIN-SUB
-void SusuUpdate(pSusu mySusu);
-
-//---Vérifie si les coordonnées  (px,py) sont aux alentours du centre du susu dans un rayon a=(taille du sprite)/2;
-int InSusuSurface(pSusu mySusu, u16 px, u16 py);
-=======
+		//--- Implémente la manière de mettre le susu en mouvement avec le stylet;
 void SusuMove();
 void SusuMoveTest2();
 
-//----Continué du Susu écran MAIN-SUB
+//----Continuité du Susu écran MAIN-SUB
 void SusuUpdate();
 
+//---Vérifie si les coordonnées  (px,py) sont aux alentours du centre du susu dans un rayon a=(taille du sprite)/2;
 int InSusuSurface( u16 px, u16 py);
->>>>>>> master
 
 #endif /* SOURCE_GRAPHICS_SUSU_H_ */
