@@ -9,7 +9,7 @@
 #include "Graphics_Items.h"
 
 	int sec=0;
-	int i=-1;
+	int a=-1;
 
 void ISR_TIMER(){
 
@@ -17,11 +17,11 @@ void ISR_TIMER(){
 	if (levelSelected==6){
 		sec=sec+1;
 		if(sec==5){
-			i=i+1;
+			a=a+1;
 			sec=0;
 			//for (i=nbr_mushroom ; i< nbr_mushroom +nbr_clover ; i++)
-		   if ( i <nbr_clover )
-		   {itemDisappear(nbr_mushroom+i);}
+		   if ( a <nbr_clover )
+		   {itemDisappear(nbr_mushroom+a);}
 		}
 	}
 
@@ -30,11 +30,11 @@ void ISR_TIMER(){
 		sec=sec+1;
 		if(sec==5){
 			sec=0;
-			i=i+1;
+			a=a+1;
 			//for (i=nbr_mushroom ; i< nbr_mushroom +nbr_clover ; i++)
-		   if ( i<5) //nbr_clover )
-		   {itemDisappear(nbr_mushroom+i);
-		    itemDisappear(nbr_mushroom+i+5);}
+		   if ( a<5) //nbr_clover )
+		   {itemDisappear(nbr_mushroom+a);
+		    itemDisappear(nbr_mushroom+a+5);}
 		}
 		}
 
@@ -44,15 +44,15 @@ void ISR_TIMER(){
 		if(sec==5){
 
 			//for (i=nbr_mushroom ; i< nbr_mushroom +nbr_clover ; i++)
-		   for(i=-1; i<nbr_clover;i++ )
+		   for(a=-1; a<nbr_clover;a++ )
 		   {
-			  itemDisappear(nbr_mushroom+i);}
+			  itemDisappear(nbr_mushroom+a);}
 		}
 
 		   if(sec==10){
-			   for(i=-1; i<nbr_clover;i++ )
+			   for(a=-1; a<nbr_clover;a++ )
 			 		   {
-			 			  Items[nbr_mushroom+i]->hidden=0;}
+			 			  Items[nbr_mushroom+a]->hidden=0;}
 			   sec=0;
 			 		}
 
@@ -60,6 +60,11 @@ void ISR_TIMER(){
 
 		}
 
+void timerReset()
+{
+sec=0;
+ a=-1;
+}
 
 void timerInit(){
 

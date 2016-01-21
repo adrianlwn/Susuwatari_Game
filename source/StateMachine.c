@@ -7,7 +7,7 @@
 
 #include "StateMachine.h"
 
-state state_G = INIT;
+state state_G = INIT; // état du game;
 
 int run(){
 
@@ -128,6 +128,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			 timerReset();
 			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(6);
@@ -140,6 +141,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			timerReset();
 			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(7);
@@ -152,6 +154,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			timerReset();
 			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(8);

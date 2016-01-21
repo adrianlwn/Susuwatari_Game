@@ -162,9 +162,12 @@ void setSusuAngle(double angle){
 	mySusu->angle = deg2oamAngle(((int)angle)%360);
 }
 
+<<<<<<< HEAD
+=======
 void setSusuOrientation( double angle){
 	mySusu->orientation = deg2oamAngle(((int)angle));
 }
+>>>>>>> master
 
 
 void setSusuBigger(){

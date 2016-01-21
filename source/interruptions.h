@@ -11,7 +11,9 @@
 #include <nds.h>
 #include "menu.h"
 
-void ISR_TIMER();
+void ISR_TIMER(); // A partir du niveau 6, on utilise les timers pour faire disparaître
+//et réapparaître les trèfles;
 
 void timerInit();
+void timerReset();
 #endif /* SOURCE_INTERRUPTIONS_H_ */

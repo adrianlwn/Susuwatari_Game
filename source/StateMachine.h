@@ -13,11 +13,14 @@
 #include "handlingKeys.h"
 #include "game.h"
 #include "introduction.h"
+#include "interruptions.h"
 #include "gameOver.h"
 #include "menu.h"
 #include "audio.h"
 #include "fileSystem.h"
 
+
+// liste des états du game;
 
 typedef enum etat{
 		INIT,
@@ -42,7 +45,7 @@ typedef enum etat{
 	} state ;
 
 
-int run();
+int run(); // exécute la machine d'état;
 int level_list[8];
 void next_state();
 void goToLevel(int myLevel);
