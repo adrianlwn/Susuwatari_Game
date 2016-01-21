@@ -2,6 +2,6 @@
 #include "audio.h"
 
 
-void BounceUpdate(pSusu mySusu);
-void BounceSusu(pSusu mySusu, double bounce_angle);
+void BounceUpdate();
+void BounceSusu( double bounce_angle);
 
