@@ -17,6 +17,7 @@ int run(){
 
 		case INIT :
 			init_NDS();
+			 timerInit();
 			loadMusic();
 			loadEffect();
 			next_state();
@@ -127,6 +128,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(6);
 			initLevel(6);
@@ -138,6 +140,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(7);
 			initLevel(7);
@@ -149,6 +152,7 @@ int run(){
 				mmStart(MOD_ENIGMA,MM_PLAY_LOOP);
 				mmSetModuleVolume(1024*50/100);
 			}
+			irqEnable(IRQ_TIMER0); // Timer active ici
 			clearSprite();
 			loadSprite(8);
 			initLevel(8);
@@ -157,12 +161,12 @@ int run(){
 
 		case PLAY_GAME:
 			mmResume();
-
+			//irqEnable(IRQ_TIMER0); // Timer active ici
 			playGame();
 			break;
 
 		case END_LEVEL_INIT :
-
+			irqDisable(IRQ_TIMER0); // Timer desactive ici
 			clearSprite();
 
 			loadSpriteGameOver();

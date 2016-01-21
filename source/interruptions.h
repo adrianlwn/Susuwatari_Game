@@ -9,6 +9,9 @@
 #define SOURCE_INTERRUPTIONS_H_
 
 #include <nds.h>
+#include "menu.h"
 
+void ISR_TIMER();
 
+void timerInit();
 #endif /* SOURCE_INTERRUPTIONS_H_ */
