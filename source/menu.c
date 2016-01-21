@@ -16,13 +16,11 @@ void initMenu(){
 		// a fait si il n'y a pas de sauvegarde :)
 		levelList[i]->best_score = 0;
 		levelList[i]->level_num = i+1 ;
-		levelList[i]->locked = false;
+		levelList[i]->locked = true;
 	}
 
 	levelList[0]->best_score = 0;
 	levelList[0]->locked = false;
-	//levelList[1]->best_score = 4;
-	//levelList[1]->locked = false;
 
 }
 

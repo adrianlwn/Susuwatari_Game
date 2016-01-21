@@ -44,13 +44,13 @@ void ISR_TIMER(){
 		if(sec==5){
 
 			//for (i=nbr_mushroom ; i< nbr_mushroom +nbr_clover ; i++)
-		   for(a=-1; a<nbr_clover;a++ )
+		   for(a=0; a<nbr_clover;a++ )
 		   {
 			  itemDisappear(nbr_mushroom+a);}
 		}
 
 		   if(sec==10){
-			   for(a=-1; a<nbr_clover;a++ )
+			   for(a=0; a<nbr_clover;a++ )
 			 		   {
 			 			  Items[nbr_mushroom+a]->hidden=0;}
 			   sec=0;
