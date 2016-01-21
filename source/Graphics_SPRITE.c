@@ -36,33 +36,33 @@ void loadSprite(int myLevel){
 
 	// -- INITIALISATION DES SPRITES GENERIQUES
 	// Susu 24 px
-	const unsigned  int * Susu24pxPal;
+	const unsigned  short * Susu24pxPal;
 	int Susu24pxPalLen;
-	const unsigned  short *Susu24pxTiles ;
+	const unsigned  int *Susu24pxTiles ;
 	int Susu24pxTilesLen;
 
 	// Susu 34 px
-	const unsigned  int *Susu34pxPal;
+	const unsigned  short *Susu34pxPal;
 	int Susu34pxPalLen;
-	const unsigned  short *Susu34pxTiles ;
+	const unsigned  int *Susu34pxTiles ;
 	int Susu34pxTilesLen;
 
 	// Susu 44 px
-	const unsigned  int *Susu44pxPal;
+	const unsigned  short *Susu44pxPal;
 	int Susu44pxPalLen;
-	const unsigned  short *Susu44pxTiles ;
+	const unsigned  int *Susu44pxTiles ;
 	int Susu44pxTilesLen;
 
 	// Susu 54 px
-	const unsigned  int *Susu54pxPal;
+	const unsigned  short *Susu54pxPal;
 	int Susu54pxPalLen;
-	const unsigned  short *Susu54pxTiles ;
+	const unsigned  int *Susu54pxTiles ;
 	int Susu54pxTilesLen;
 
 	// Susu 64 px
-	const unsigned  int *Susu64pxPal;
+	const unsigned  short *Susu64pxPal;
 	int Susu64pxPalLen;
-	const unsigned short *Susu64pxTiles;
+	const unsigned int *Susu64pxTiles;
 	int Susu64pxTilesLen;
 
 
@@ -71,29 +71,29 @@ void loadSprite(int myLevel){
 	case 1 : // LEVEL 1 SPRITES
 		// Susu 24 px
 		Susu24pxPalLen = Susu24px_1PalLen;
-		Susu24pxPal = &Susu24px_1Pal;
+		Susu24pxPal = Susu24px_1Pal;
 		Susu24pxTilesLen = Susu24px_1TilesLen;
-		Susu24pxTiles = &Susu24px_1Tiles;
+		Susu24pxTiles = Susu24px_1Tiles;
 		// Susu 34 px
 		Susu34pxPalLen = Susu34px_1PalLen;
-		Susu34pxPal = &Susu34px_1Pal;
+		Susu34pxPal = Susu34px_1Pal;
 		Susu34pxTilesLen = Susu34px_1TilesLen;
-		Susu34pxTiles = &Susu34px_1Tiles;
+		Susu34pxTiles = Susu34px_1Tiles;
 		// Susu 44 px
 		Susu44pxPalLen = Susu44px_1PalLen;
-		Susu44pxPal = &Susu44px_1Pal;
+		Susu44pxPal = Susu44px_1Pal;
 		Susu44pxTilesLen = Susu44px_1TilesLen;
-		Susu44pxTiles = &Susu44px_1Tiles;
+		Susu44pxTiles = Susu44px_1Tiles;
 		// Susu 54 px
 		Susu54pxPalLen = Susu54px_1PalLen;
-		Susu54pxPal = &Susu54px_1Pal;
+		Susu54pxPal = Susu54px_1Pal;
 		Susu54pxTilesLen = Susu54px_1TilesLen;
-		Susu54pxTiles = &Susu54px_1Tiles;
+		Susu54pxTiles = Susu54px_1Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_1PalLen;
-		Susu64pxPal = &Susu64px_1Pal;
+		Susu64pxPal = Susu64px_1Pal;
 		Susu64pxTilesLen = Susu64px_1TilesLen;
-		Susu64pxTiles = &Susu64px_1Tiles;
+		Susu64pxTiles = Susu64px_1Tiles;
 
 		break;
 	case 2 : // LEVEL 2 SPRITES
@@ -120,9 +120,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_2Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_2PalLen;
-		Susu64pxPal = &Susu64px_2Pal;
+		Susu64pxPal = Susu64px_2Pal;
 		Susu64pxTilesLen = Susu64px_2TilesLen;
-		Susu64pxTiles = &Susu64px_2Tiles;
+		Susu64pxTiles = Susu64px_2Tiles;
 
 		break;
 	case 3 : // LEVEL 3 SPRITES
@@ -149,9 +149,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_3Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_3PalLen;
-		Susu64pxPal = &Susu64px_3Pal;
+		Susu64pxPal = Susu64px_3Pal;
 		Susu64pxTilesLen = Susu64px_3TilesLen;
-		Susu64pxTiles = &Susu64px_3Tiles;
+		Susu64pxTiles = Susu64px_3Tiles;
 
 		break;
 
@@ -179,9 +179,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_4Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_4PalLen;
-		Susu64pxPal = &Susu64px_4Pal;
+		Susu64pxPal = Susu64px_4Pal;
 		Susu64pxTilesLen = Susu64px_4TilesLen;
-		Susu64pxTiles = &Susu64px_4Tiles;
+		Susu64pxTiles = Susu64px_4Tiles;
 
 		break;
 	case 5 : // LEVEL 5 SPRITES
@@ -208,9 +208,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_5Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_5PalLen;
-		Susu64pxPal = &Susu64px_5Pal;
+		Susu64pxPal = Susu64px_5Pal;
 		Susu64pxTilesLen = Susu64px_5TilesLen;
-		Susu64pxTiles = &Susu64px_5Tiles;
+		Susu64pxTiles = Susu64px_5Tiles;
 
 		break;
 
@@ -238,9 +238,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_6Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_6PalLen;
-		Susu64pxPal = &Susu64px_6Pal;
+		Susu64pxPal = Susu64px_6Pal;
 		Susu64pxTilesLen = Susu64px_6TilesLen;
-		Susu64pxTiles = &Susu64px_6Tiles;
+		Susu64pxTiles = Susu64px_6Tiles;
 
 		break;
 	case 7 : // LEVEL 7 SPRITES
@@ -267,9 +267,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_7Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_7PalLen;
-		Susu64pxPal = &Susu64px_7Pal;
+		Susu64pxPal = Susu64px_7Pal;
 		Susu64pxTilesLen = Susu64px_7TilesLen;
-		Susu64pxTiles = &Susu64px_7Tiles;
+		Susu64pxTiles = Susu64px_7Tiles;
 
 		break;
 	case 8 : // LEVEL 8 SPRITES
@@ -296,9 +296,9 @@ void loadSprite(int myLevel){
 		Susu54pxTiles = Susu54px_8Tiles;
 		// Susu 64 px
 		Susu64pxPalLen = Susu64px_8PalLen;
-		Susu64pxPal = &Susu64px_8Pal;
+		Susu64pxPal = Susu64px_8Pal;
 		Susu64pxTilesLen = Susu64px_8TilesLen;
-		Susu64pxTiles = &Susu64px_8Tiles;
+		Susu64pxTiles = Susu64px_8Tiles;
 
 		break;
 
@@ -712,7 +712,7 @@ void loadSpriteSucess(){
  * (AJOUTEES ICI POUR UN SOUCIS DE RETROCOMPATIBILITE
  * AVEC LA MACHINE VIRTUELLE FOURNIE DANS LE COURS
  */
-
+#ifndef VRAM_I_EXT_SPR_PALETTE
 
 
 
@@ -723,7 +723,7 @@ void loadSpriteSucess(){
 *    \param affineIndex affine index to use (if < 0 or > 31 the sprite will be unrotated)
 *    \param sizeDouble if affineIndex >= 0 and < 32 this will be used to double the sprite size for rotation
 */
-/*
+
 void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble)
 {
     sassert(oam == &oamMain || oam == &oamSub, "oamSetAffineIndex() oam must be &oamMain or &oamSub");
@@ -743,7 +743,7 @@ void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble)
 }
 
 
-*/
+
 
 /**
 *    \brief sets an oam entry to the supplied hidden state
@@ -753,7 +753,7 @@ void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble)
 */
 
 
-/*
+
 void oamSetHidden(OamState* oam, int id, bool hide)
 {
     sassert(oam == &oamMain || oam == &oamSub, "oamSetHidden() oam must be &oamMain or &oamSub");
@@ -762,4 +762,4 @@ void oamSetHidden(OamState* oam, int id, bool hide)
     oam->oamMemory[id].isHidden = hide ? true : false;
 }
 
-*/
+#endif

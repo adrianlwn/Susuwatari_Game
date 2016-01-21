@@ -41,73 +41,73 @@ void loadGraphics_Main(int myLevel){
 	// CHOOSE SPECIFIC BG
 	switch (myLevel) {
 	case 1 : // LEVEL 1
-		BG_mainTiles = &BG_main_1Tiles;
+		BG_mainTiles = BG_main_1Tiles;
 		BG_mainTilesLen = BG_main_1TilesLen;
-		BG_mainMap = &BG_main_1Map;
+		BG_mainMap = BG_main_1Map;
 		BG_mainMapLen = BG_main_1MapLen;
-		BG_mainPal = &BG_main_1Pal;
+		BG_mainPal = BG_main_1Pal;
 		BG_mainPalLen = BG_main_1PalLen;
 		break;
 	case 2 : //LEVEL 2
-		BG_mainTiles = &BG_main_2Tiles;
+		BG_mainTiles = BG_main_2Tiles;
 				BG_mainTilesLen = BG_main_2TilesLen;
-				BG_mainMap = &BG_main_2Map;
+				BG_mainMap = BG_main_2Map;
 				BG_mainMapLen = BG_main_2MapLen;
-				BG_mainPal = &BG_main_2Pal;
+				BG_mainPal = BG_main_2Pal;
 				BG_mainPalLen = BG_main_2PalLen;
 		break;
 
 	case 3:
-		BG_mainTiles = &BG_main_3Tiles;
+		BG_mainTiles = BG_main_3Tiles;
 				BG_mainTilesLen = BG_main_3TilesLen;
-				BG_mainMap = &BG_main_3Map;
+				BG_mainMap = BG_main_3Map;
 				BG_mainMapLen = BG_main_3MapLen;
-				BG_mainPal = &BG_main_3Pal;
+				BG_mainPal = BG_main_3Pal;
 				BG_mainPalLen = BG_main_3PalLen;
 		break;
 
 	case 4 :
-		BG_mainTiles = &BG_main_4Tiles;
+		BG_mainTiles = BG_main_4Tiles;
 				BG_mainTilesLen = BG_main_4TilesLen;
-				BG_mainMap = &BG_main_4Map;
+				BG_mainMap = BG_main_4Map;
 				BG_mainMapLen = BG_main_4MapLen;
-				BG_mainPal = &BG_main_4Pal;
+				BG_mainPal = BG_main_4Pal;
 				BG_mainPalLen = BG_main_4PalLen;
 		break;
 
 	case 5 :
-		BG_mainTiles = &BG_main_5Tiles;
+		BG_mainTiles = BG_main_5Tiles;
 				BG_mainTilesLen = BG_main_5TilesLen;
-				BG_mainMap = &BG_main_5Map;
+				BG_mainMap = BG_main_5Map;
 				BG_mainMapLen = BG_main_5MapLen;
-				BG_mainPal = &BG_main_5Pal;
+				BG_mainPal = BG_main_5Pal;
 				BG_mainPalLen = BG_main_5PalLen;
 		break;
 
 	case 6 :
-		BG_mainTiles = &BG_main_6Tiles;
+		BG_mainTiles = BG_main_6Tiles;
 				BG_mainTilesLen = BG_main_6TilesLen;
-				BG_mainMap = &BG_main_6Map;
+				BG_mainMap = BG_main_6Map;
 				BG_mainMapLen = BG_main_6MapLen;
-				BG_mainPal = &BG_main_6Pal;
+				BG_mainPal = BG_main_6Pal;
 				BG_mainPalLen = BG_main_6PalLen;
 		break;
 
 	case 7 :
-		BG_mainTiles = &BG_main_7Tiles;
+		BG_mainTiles = BG_main_7Tiles;
 				BG_mainTilesLen = BG_main_7TilesLen;
-				BG_mainMap = &BG_main_7Map;
+				BG_mainMap = BG_main_7Map;
 				BG_mainMapLen = BG_main_7MapLen;
-				BG_mainPal = &BG_main_7Pal;
+				BG_mainPal = BG_main_7Pal;
 				BG_mainPalLen = BG_main_7PalLen;
 		break;
 
 	case 8 :
-		BG_mainTiles = &BG_main_8Tiles;
+		BG_mainTiles = BG_main_8Tiles;
 				BG_mainTilesLen = BG_main_8TilesLen;
-				BG_mainMap = &BG_main_8Map;
+				BG_mainMap = BG_main_8Map;
 				BG_mainMapLen = BG_main_8MapLen;
-				BG_mainPal = &BG_main_8Pal;
+				BG_mainPal = BG_main_8Pal;
 				BG_mainPalLen = BG_main_8PalLen;
 		break;
 	}
@@ -131,74 +131,74 @@ void loadGraphics_Sub(int myLevel){
 	// CHOOSE SPECIFIC BG
 	switch (myLevel) {
 	case 1 : // LEVEL 1
-		BG_subTiles = &BG_sub_1Tiles;
+		BG_subTiles = BG_sub_1Tiles;
 		BG_subTilesLen = BG_sub_1TilesLen;
-		BG_subMap = &BG_sub_1Map;
+		BG_subMap = BG_sub_1Map;
 		BG_subMapLen = BG_sub_1MapLen;
-		BG_subPal = &BG_sub_1Pal;
+		BG_subPal = BG_sub_1Pal;
 		BG_subPalLen = BG_sub_1PalLen;
 		break;
 
 	case 2 : //LEVEL 2
-		BG_subTiles = &BG_sub_2Tiles;
+		BG_subTiles = BG_sub_2Tiles;
 				BG_subTilesLen = BG_sub_2TilesLen;
-				BG_subMap = &BG_sub_2Map;
+				BG_subMap = BG_sub_2Map;
 				BG_subMapLen = BG_sub_2MapLen;
-				BG_subPal = &BG_sub_2Pal;
+				BG_subPal = BG_sub_2Pal;
 				BG_subPalLen = BG_sub_2PalLen;
 		break;
 
 	case 3:
-		BG_subTiles = &BG_sub_3Tiles;
+		BG_subTiles = BG_sub_3Tiles;
 				BG_subTilesLen = BG_sub_3TilesLen;
-				BG_subMap = &BG_sub_3Map;
+				BG_subMap = BG_sub_3Map;
 				BG_subMapLen = BG_sub_3MapLen;
-				BG_subPal = &BG_sub_3Pal;
+				BG_subPal = BG_sub_3Pal;
 				BG_subPalLen = BG_sub_3PalLen;
 		break;
 
 	case 4 :
-		BG_subTiles = &BG_sub_4Tiles;
+		BG_subTiles = BG_sub_4Tiles;
 				BG_subTilesLen = BG_sub_4TilesLen;
-				BG_subMap = &BG_sub_4Map;
+				BG_subMap = BG_sub_4Map;
 				BG_subMapLen = BG_sub_4MapLen;
-				BG_subPal = &BG_sub_4Pal;
+				BG_subPal = BG_sub_4Pal;
 				BG_subPalLen = BG_sub_4PalLen;
 		break;
 
 	case 5 :
-		BG_subTiles = &BG_sub_5Tiles;
+		BG_subTiles = BG_sub_5Tiles;
 				BG_subTilesLen = BG_sub_5TilesLen;
-				BG_subMap = &BG_sub_5Map;
+				BG_subMap = BG_sub_5Map;
 				BG_subMapLen = BG_sub_5MapLen;
-				BG_subPal = &BG_sub_5Pal;
+				BG_subPal = BG_sub_5Pal;
 				BG_subPalLen = BG_sub_5PalLen;
 		break;
 
 	case 6 :
-		BG_subTiles = &BG_sub_6Tiles;
+		BG_subTiles = BG_sub_6Tiles;
 				BG_subTilesLen = BG_sub_6TilesLen;
-				BG_subMap = &BG_sub_6Map;
+				BG_subMap = BG_sub_6Map;
 				BG_subMapLen = BG_sub_6MapLen;
-				BG_subPal = &BG_sub_6Pal;
+				BG_subPal = BG_sub_6Pal;
 				BG_subPalLen = BG_sub_6PalLen;
 		break;
 
 	case 7 :
-		BG_subTiles = &BG_sub_7Tiles;
+		BG_subTiles = BG_sub_7Tiles;
 				BG_subTilesLen = BG_sub_7TilesLen;
-				BG_subMap = &BG_sub_7Map;
+				BG_subMap = BG_sub_7Map;
 				BG_subMapLen = BG_sub_7MapLen;
-				BG_subPal = &BG_sub_7Pal;
+				BG_subPal = BG_sub_7Pal;
 				BG_subPalLen = BG_sub_7PalLen;
 		break;
 
 	case 8 :
-		BG_subTiles = &BG_sub_8Tiles;
+		BG_subTiles = BG_sub_8Tiles;
 				BG_subTilesLen = BG_sub_8TilesLen;
-				BG_subMap = &BG_sub_8Map;
+				BG_subMap = BG_sub_8Map;
 				BG_subMapLen = BG_sub_8MapLen;
-				BG_subPal = &BG_sub_8Pal;
+				BG_subPal = BG_sub_8Pal;
 				BG_subPalLen = BG_sub_8PalLen;
 		break;
 

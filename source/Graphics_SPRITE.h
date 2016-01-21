@@ -14,14 +14,26 @@
 
 // Definitions de macro utilisée dans notre projet mais provenant d'une version plus recente de LIBNDS
 
+
+#ifndef VRAM_F_EXT_SPR_PALETTE
 /** \brief  Used for accessing vram F as an extended sprite palette */
 #define VRAM_F_EXT_SPR_PALETTE ((_palette *)VRAM_F)
+
+#endif
+
+#ifndef VRAM_I_EXT_SPR_PALETTE
 
 /** \brief  Used for accessing vram I as an extended sprite palette */
 #define VRAM_I_EXT_SPR_PALETTE ((_palette *)VRAM_I)
 
 void oamSetAffineIndex(OamState* oam, int id, int affineIndex, bool sizeDouble);
 void oamSetHidden(OamState* oam, int id, bool hide);
+
+#endif
+
+
+
+
 
 
 

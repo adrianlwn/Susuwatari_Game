@@ -102,7 +102,7 @@ void SusuMove(pSusu mySusu){
 
 	case TOUCHED : // Cas ou le Susu est touché.
 		//touch_inside == 0 && (held & KEY_TOUCH) ) ||
-		if ((up & KEY_TOUCH) ){
+		if ((up & KEY_TOUCH) ||  (touch_inside == 0 && (held & KEY_TOUCH)) ){
 			myTouchState = RELEASING;
 		}
 		else {
