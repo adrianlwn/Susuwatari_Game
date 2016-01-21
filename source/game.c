@@ -38,8 +38,8 @@ void initLevel(int levelNum){
 	loadGraphics_Sub(levelNum);
 
 
-	theSusu = malloc(sizeof(Susu));
-	initSusu(theSusu);
+	mySusu = malloc(sizeof(Susu));
+	initSusu(mySusu);
 
 	int i;
 	for(i = 0 ; i <100 ; i++){
@@ -64,11 +64,11 @@ void initLevel(int levelNum){
 void playGame(){
 
 	//--Verifie si on a atteint la situation de GameOver, si c'est le cas, on quitte l'etat actuel du jeu
-	checkGameOver(thePlayer, theSusu);
+	checkGameOver(thePlayer);
 	// --Deplacement selon la vitesse
-	SusuMove(theSusu);
+	SusuMove();
 	//-- Actualisation du rebond (angle du mouvement change)
-	BounceUpdate(theSusu);
+	BounceUpdate();
 
 	// --index de l'element avec lequel il y a eu collision :
 	int indexTouched = collision();
@@ -81,7 +81,7 @@ void playGame(){
 			// Reduction de la taille du Susu et perte d'une vie, disparition de l'element touché
 		{
 
-			setSusuSmaller(theSusu);
+			setSusuSmaller();
 
 			itemDisappear(indexTouched);
 
@@ -108,7 +108,7 @@ void playGame(){
 		else if( Items[indexTouched]->itemType == CLOVER)
 			// Le Susu gagne une vie et grossit en meme temps (5 vies maximum)
 		{
-			setSusuBigger(theSusu);
+			setSusuBigger();
 			itemDisappear(indexTouched);
 			if (thePlayer->life <5)
 			{
@@ -129,7 +129,7 @@ void playGame(){
 	/*Appel de la fonction SusuUpdate qui deplace physiquement le Sprite Susu en
 	*fonction  de sa nouvelle position taille, orientation, etc ...
 	*/
-	SusuUpdate(theSusu);
+	SusuUpdate();
 
 
 }
@@ -149,7 +149,7 @@ int collision(){
 	for(i=0; i< 100 ; i++){
 
 		// verification pour savoir si le centre de l'item "visible" est dans la surface du SusuWatari
-		if( InSusuSurface(theSusu, Items[i]->x, Items[i]->y) ==1  && Items[i]->hidden == 0)
+		if( InSusuSurface( Items[i]->x, Items[i]->y) ==1  && Items[i]->hidden == 0)
 		{
 			indexTouched=i;
 		}
@@ -299,7 +299,7 @@ void LifeScore(pPlayer myPlayer)
 
 
 
-void checkGameOver(pPlayer myPlayer, pSusu mySusu){
+void checkGameOver(pPlayer myPlayer){
 	int nb_max_stars = 5;
 
 	// --- LEVEL ACCOMPLISHED :

@@ -17,7 +17,7 @@
 #define halfwidth 32
 
 
-void initSusu(pSusu mySusu){
+void initSusu(){
 
 	// Allocate la memoire oam pour la taille du sprite.
 	mySusu->size=4;
@@ -55,7 +55,7 @@ void initSusu(pSusu mySusu){
 TouchState myTouchState = NOT_TOUCHED;
 
 
-void SusuMove(pSusu mySusu){
+void SusuMove(){
 	/* Tant que le stylet touche le susu ( à l'intérieur du cercle de rayon ___
 	 * et de centre les coordonees du susu ) le susu tourne sur lui meme.
 	 * sa vitesse augmente.
@@ -74,7 +74,7 @@ void SusuMove(pSusu mySusu){
 	up=keysUp();
 
 	// On verifie si la position du touch screen est dans la surface du Susu
-	touch_inside=InSusuSurface( mySusu, pos.px,  pos.py  + DECALAGE + HAUTEUR);
+	touch_inside=InSusuSurface(pos.px,  pos.py  + DECALAGE + HAUTEUR);
 
 	//Petite machine d'etat fini régissant le comportement en fonction de la position et de l'etat actuel.
 	switch (myTouchState) {
@@ -144,7 +144,7 @@ void SusuMove(pSusu mySusu){
 
 
 
-void setSusuPosition(pSusu mySusu,int px, int py){
+void setSusuPosition(int px, int py){
 	mySusu->x =  px;
 	mySusu->y = py;
 }
@@ -158,13 +158,19 @@ double oamAngle2deg(double angle){
 }
 
 
-void setSusuAngle(pSusu mySusu,double angle){
+void setSusuAngle(double angle){
 	mySusu->angle = deg2oamAngle(((int)angle)%360);
 }
 
+<<<<<<< HEAD
+=======
+void setSusuOrientation( double angle){
+	mySusu->orientation = deg2oamAngle(((int)angle));
+}
+>>>>>>> master
 
 
-void setSusuBigger(pSusu mySusu){
+void setSusuBigger(){
 
 	if (mySusu->size < 4) {
 
@@ -194,7 +200,7 @@ void setSusuBigger(pSusu mySusu){
 
 
 }
-void setSusuSmaller(pSusu mySusu){
+void setSusuSmaller(){
 	if (mySusu->size  > 0) {
 
 		mySusu->size--;
@@ -209,7 +215,7 @@ void setSusuSmaller(pSusu mySusu){
 }
 
 
-void SusuRotate(pSusu mySusu){
+void SusuRotate(){
 
 	mySusu->v_angle+=mySusu->a_angle;
 
@@ -219,7 +225,7 @@ void SusuRotate(pSusu mySusu){
 
 }
 
-void SusuRotateToNewAngle(pSusu mySusu){
+void SusuRotateToNewAngle(){
 	int delta = (int)(mySusu->angle - mySusu->orientation) % 32768 ;
 
 	int etha = 50;
@@ -243,7 +249,7 @@ void SusuRotateToNewAngle(pSusu mySusu){
 }
 
 
-void SusuUpdate(pSusu mySusu){
+void SusuUpdate(){
 	// C'est la moité de la longueur du coté du sprite. Dans la suite cela sert à décaller la position du Susu
 	// de facon à ce que la coordonnée du Susu corresponde au centre de celui-ci.
 	int j;
@@ -364,7 +370,7 @@ void SusuUpdate(pSusu mySusu){
 
 
 //----Vérifie si (px,py) se trouve sur le Susu
-int InSusuSurface(pSusu mySusu, u16 px, u16 py){
+int InSusuSurface( u16 px, u16 py){
 
 	double a,b;
 	double r, distance;
