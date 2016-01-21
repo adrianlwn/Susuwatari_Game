@@ -40,6 +40,7 @@ typedef struct Susu_struct {
 
 } Susu, *pSusu;
 
+pSusu mySusu;
 typedef enum TouchState {
 	NOT_TOUCHED,
 	TOUCHING,
@@ -54,36 +55,36 @@ double oamAngle2deg(double angle);
 
 
 //---- Initialisation des propriétés du Susu,  placement tile et palette du Susu dans la mémoire (swicopy)
-void initSusu(pSusu mySusu);
+void initSusu();
 
 //---- Changer la position du Susu
-void setSusuPosition(pSusu mySusu,int x, int y);
+void setSusuPosition(int x, int y);
 
 //---- Changer la direction du Susu instantanément
-void setSusuAngle(pSusu mySusu, double angle);
+void setSusuAngle( double angle);
 
 //---- Changer la direction du Susu avec retard.
-void setSusuOrientation(pSusu mySusu, double angle);
+void setSusuOrientation( double angle);
 
 
 //---- Agrandir le  Susu
-void setSusuBigger(pSusu mySusu);
+void setSusuBigger();
 
 //---- Rapetisser le Susu
-void setSusuSmaller(pSusu mySusu);
+void setSusuSmaller();
 
 //---- Rotation du Susu ON /OFF
-void SusuRotate(pSusu mySusu);
+void SusuRotate();
 
 //----  Rotation du Susu jusqu'à atteindre la valeur de new_angle (Rotation assez lente pour effet realiste)
-void SusuRotateToNewAngle(pSusu mySusu);
+void SusuRotateToNewAngle();
 
-void SusuMove(pSusu mySusu);
-void SusuMoveTest2(pSusu mySusu);
+void SusuMove();
+void SusuMoveTest2();
 
 //----Continué du Susu écran MAIN-SUB
-void SusuUpdate(pSusu mySusu);
+void SusuUpdate();
 
-int InSusuSurface(pSusu mySusu, u16 px, u16 py);
+int InSusuSurface( u16 px, u16 py);
 
 #endif /* SOURCE_GRAPHICS_SUSU_H_ */

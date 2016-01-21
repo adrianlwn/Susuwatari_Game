@@ -18,7 +18,6 @@ typedef struct Player_struct {
 	int life;
 }Player, *pPlayer;
 
-pSusu theSusu;
 // Liste des items utilisée tout a cours de chaque niveau
 pItem Items[100];
 pPlayer thePlayer;
@@ -33,6 +32,6 @@ void itemDisappear(int indexTouched);
 void LifeScore(pPlayer myPlayer);
 void StarScore(pPlayer myPlayer);
 
-void checkGameOver(pPlayer myPlayer, pSusu mySusu);
+void checkGameOver(pPlayer myPlayer);
 
 #endif /* GAME_H_ */
