@@ -7,7 +7,7 @@ Design a game for the Nintendo DS. Using low level C Programming with the [libND
 ## Game  : 
 The design of the game was inspired by [Hayao Miyasaki](https://en.wikipedia.org/wiki/Hayao_Miyazaki)'s universe, and the main character is the little [Susuwatari](https://en.wikipedia.org/wiki/Susuwatari)
 
-![Screenshot 1](https://github.com/adrianlwn/Susuwatari_Game/screenshot1.jpg)
+![Screenshot 1](./screenshot1.jpg)
 
 ## Who worked on this Project : 
 [Adrian Löwenstein](https://www.linkedin.com/in/adrian-löwenstein/) - [Valentine Santarelli](https://www.linkedin.com/in/v-santarelli/)
